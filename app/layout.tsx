@@ -1,7 +1,6 @@
 import "@/app/css/globals.css";
 
 import { Inter } from "next/font/google";
-import localFont from "next/font/local";
 import Theme from "./theme-provider";
 import Header from "@/components/ui/header";
 
@@ -11,20 +10,20 @@ const inter = Inter({
   display: "swap",
 });
 
-const aspekta = localFont({
-  src: [
-    {
-      path: "../public/fonts/Aspekta-500.woff2",
-      weight: "500",
-    },
-    {
-      path: "../public/fonts/Aspekta-650.woff2",
-      weight: "650",
-    },
-  ],
-  variable: "--font-aspekta",
-  display: "swap",
-});
+// const aspekta = localFont({
+//   src: [
+//     {
+//       path: "../public/fonts/Aspekta-500.woff2",
+//       weight: "500",
+//     },
+//     {
+//       path: "../public/fonts/Aspekta-650.woff2",
+//       weight: "650",
+//     },
+//   ],
+//   variable: "--font-aspekta",
+//   display: "swap",
+// });
 
 export const metadata = {
   title: "Create Next App",
@@ -40,7 +39,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       {/* suppressHydrationWarning: https://github.com/vercel/next.js/issues/44343 */}
       <body
-        className={`${inter.variable} ${aspekta.variable} font-inter antialiased bg-background text-foreground tracking-tight`}
+        className={`${inter.variable} font-inter antialiased bg-background text-foreground tracking-tight`}
       >
         <Theme>
           <div className="max-w-7xl mx-auto">

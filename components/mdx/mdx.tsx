@@ -3,6 +3,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import PostLink from "./link";
 import PostImage from "./image";
 import rehypePrettyCode from "rehype-pretty-code";
+import PostBanner from "./banner";
 
 const transformToSlug = (input: string) => {
   return input
@@ -38,6 +39,7 @@ const mdxComponents = {
   h4: generateHeading(4),
   Link: PostLink,
   Image: PostImage,
+  Banner: PostBanner,
 };
 
 export function CustomMDX(props: any) {
@@ -73,4 +75,3 @@ export function CustomMDX(props: any) {
     />
   );
 }
-

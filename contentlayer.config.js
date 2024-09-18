@@ -1,41 +1,90 @@
-import { defineDocumentType, makeSource } from 'contentlayer/source-files'
-import remarkGfm from 'remark-gfm'
-import rehypePrettyCode from 'rehype-pretty-code'
-import rehypeSlug from 'rehype-slug'
+import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import remarkGfm from "remark-gfm";
+import rehypePrettyCode from "rehype-pretty-code";
+import rehypeSlug from "rehype-slug";
+
+const NameSlugPair = defineNestedType(() => ({
+  name: "NameSlugPair",
+  fields: {
+    name: {
+      type: "string",
+      required: true,
+    },
+    slug: {
+      type: "string",
+      required: true,
+    },
+  },
+}));
 
 const Post = defineDocumentType(() => ({
-  name: 'Post',
+  name: "Post",
   filePathPattern: `**/*.mdx`,
-  contentType: 'mdx',
+  contentType: "mdx",
   fields: {
     title: {
-      type: 'string',
-      required: true
+      type: "string",
+      required: true,
     },
     publishedAt: {
-      type: 'string',
+      type: "string",
       required: true,
     },
     image: {
-      type: 'string',
+      type: "string",
       required: true,
-    },    
+    },
     summary: {
-      type: 'string',
+      type: "string",
       required: true,
-    },    
+    },
   },
   computedFields: {
     slug: {
-      type: 'string',
+      type: "string",
       resolve: (doc) => doc._raw.flattenedPath,
-    },    
+    },
   },
-}))
+}));
+
+const Doc = defineDocumentType(() => ({
+  name: "Post",
+  filePathPattern: `**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: {
+      type: "string",
+      required: true,
+    },
+    summary: {
+      type: "string",
+      required: true,
+    },
+    topic: {
+      type: "nested",
+      of: NameSlugPair,
+      required: true,
+    },
+    prev: {
+      type: "nested",
+      of: NameSlugPair,
+    },
+    next: {
+      type: "nested",
+      of: NameSlugPair,
+    },
+  },
+  computedFields: {
+    slug: {
+      type: "string",
+      resolve: (doc) => doc._raw.flattenedPath,
+    },
+  },
+}));
 
 export default makeSource({
-  contentDirPath: 'content',
-  documentTypes: [Post],
+  contentDirPath: "content",
+  documentTypes: [Post, Doc],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
@@ -43,24 +92,24 @@ export default makeSource({
       [
         rehypePrettyCode,
         {
-          theme: 'one-dark-pro',
+          theme: "one-dark-pro",
           onVisitLine(node) {
             // Prevent lines from collapsing in `display: grid` mode, and
             // allow empty lines to be copy/pasted
             if (node.children.length === 0) {
-              node.children = [{ type: 'text', value: ' ' }]
+              node.children = [{ type: "text", value: " " }];
             }
           },
           onVisitHighlightedLine(node) {
             // Each line node by default has `class="line"`.
-            node.properties.className.push('line--highlighted')
+            node.properties.className.push("line--highlighted");
           },
           onVisitHighlightedWord(node) {
             // Each word node has no className by default.
-            node.properties.className = ['word--highlighted']
+            node.properties.className = ["word--highlighted"];
           },
         },
       ],
     ],
-  }  
-})
+  },
+});
