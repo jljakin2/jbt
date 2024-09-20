@@ -51,7 +51,7 @@ export default function RootLayout({
   return (
     <AppProvider>
       <div className="flex flex-col min-h-screen overflow-hidden">
-        <Header />
+        {/* <Header /> */}
 
         {/*  Page content */}
         <main className="grow">

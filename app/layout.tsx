@@ -1,9 +1,9 @@
 import "@/app/css/globals.css";
 
 import { Inter } from "next/font/google";
-import Theme from "./theme-provider";
+import { ThemeProvider } from "./theme-provider";
 import Header from "@/components/ui/header";
-
+import Footer from "@/components/ui/footer";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -41,7 +41,12 @@ export default function RootLayout({
       <body
         className={`${inter.variable} font-inter antialiased bg-background text-foreground tracking-tight`}
       >
-        <Theme>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <div className="max-w-7xl mx-auto">
             <div className="min-h-screen flex">
               {/* <SideNavigation /> */}
@@ -52,11 +57,12 @@ export default function RootLayout({
                   <Header />
 
                   {children}
+                  <Footer />
                 </div>
               </main>
             </div>
           </div>
-        </Theme>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -12,6 +12,7 @@ type PostMetadata = {
   summary?: string;
   author?: string;
   authorImg?: string;
+  tag?: string;
 };
 
 function parsePostFrontmatter(fileContent: string) {

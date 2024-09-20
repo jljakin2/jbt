@@ -1,23 +1,28 @@
-import Image, { StaticImageData } from 'next/image'
-
+import Image, { StaticImageData } from "next/image";
 
 interface PostImageProps {
-  alt: string
-  caption?: string
-  size?: string
-  src: StaticImageData
+  alt: string;
+  caption?: string;
+  size?: string;
+  src: StaticImageData;
 }
 
-export default function PostImage({ alt, caption, size, ...props }: PostImageProps) {
-
-  const classes = (size === 'lg') ? 'lg:-ml-32 lg:-mr-32' : ''
+export default function PostImage({
+  alt,
+  caption,
+  size,
+  ...props
+}: PostImageProps) {
+  const classes = size === "lg" ? "lg:-ml-32 lg:-mr-32" : "";
 
   return (
     <figure className={classes}>
-      <Image className="w-full" {...props} alt={alt} />
-      {caption &&
-        <figcaption className="text-sm text-center text-slate-500 mt-3">{caption}</figcaption>
-      }
+      <Image className="w-full rounded-lg" {...props} alt={alt} />
+      {caption && (
+        <figcaption className="text-sm text-center text-muted-foreground mt-3">
+          {caption}
+        </figcaption>
+      )}
     </figure>
-  )
+  );
 }

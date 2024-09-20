@@ -3,14 +3,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "../logo";
-import { SquareUserRound } from "lucide-react";
 
 export default function Navigation() {
   const pathname = usePathname();
 
   const navigationMenu = [
     { label: "Essays", link: "/essays" },
-    { label: "Tutorials", link: "/tutorials" },
+    // { label: "Tutorials", link: "/tutorials" },
     { label: "Tools", link: "/tools" },
     { label: "Podcast", link: "https://brickbybrick.fm" },
   ];
@@ -30,7 +29,7 @@ export default function Navigation() {
               href={item.link}
               className={`${
                 pathname === `${item.link}`
-                  ? "text-primary"
+                  ? "text-primary border-b-2 border-primary pb-1"
                   : "text-muted-foreground hover:text-primary transition-colors"
               }`}
               target={item.label === "Podcast" ? "_blank" : "_self"}

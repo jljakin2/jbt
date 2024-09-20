@@ -1,12 +1,12 @@
 import Link from "next/link";
-import ThemeToggle from "./theme-toggle";
+import { ThemeSwitch } from "./theme-switch";
 import Navigation from "./navigation";
 import { Button } from "@/components/ui/button";
 
 export default function Header() {
   return (
-    <header className="mb-8">
-      <div className="flex items-center justify-between h-16 before:block">
+    <header className="mb-2">
+      <div className="flex items-center justify-between h-[72px] before:block">
         <Navigation />
         <div className="grow flex justify-end space-x-4">
           {/* Search form */}
@@ -32,16 +32,13 @@ export default function Header() {
           </form> */}
 
           {/* Light switch */}
-          <ThemeToggle />
+          <ThemeSwitch />
 
           {/* Button */}
-          <div>
-            <Link href="/subscribe">
-              <Button className="text-slate-100 bg-sky-500 hover:bg-sky-600">
-                Subscribe
-              </Button>
-            </Link>
-          </div>
+
+          <Button>
+            <Link href="/subscribe">Subscribe</Link>
+          </Button>
         </div>
       </div>
     </header>

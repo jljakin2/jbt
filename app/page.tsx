@@ -18,7 +18,7 @@ export default function About() {
           <section>
             {/* Page title */}
             <h1 className="h1 font-aspekta mb-5">
-              Hi. I'm Jeff{" "}
+              Hi. I'm{" "}
               <span className="inline-flex relative text-sky-500 before:absolute before:inset-0 before:bg-sky-200 dark:before:bg-sky-500 before:opacity-30 before:-z-10 before:-rotate-2 before:translate-y-1/4">
                 @jeffbuildstech
               </span>{" "}
@@ -42,7 +42,7 @@ export default function About() {
                 motion and build useful things together 🚀.
               </p>
               <p className="text-muted-foreground">
-                I'm currentlyworking on{" "}
+                I'm currently working on{" "}
                 <a
                   href="https://www.stitch3d.io"
                   target="_blank"
@@ -50,7 +50,8 @@ export default function About() {
                 >
                   Stitch3D
                 </a>{" "}
-                . We are building the place for 3D LIDAR tools on the web.
+                as the lead developer. We are building <i>the</i> place for 3D
+                LIDAR tools on the web.
               </p>
 
               <Experience />
