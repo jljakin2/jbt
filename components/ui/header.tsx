@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 
 export default function Header() {
   return (
-    <header>
-      <div className="flex border border-red-500 items-center justify-between h-16 before:block">
+    <header className="mb-8">
+      <div className="flex items-center justify-between h-16 before:block">
         <Navigation />
         <div className="grow flex justify-end space-x-4">
           {/* Search form */}
@@ -36,11 +36,10 @@ export default function Header() {
 
           {/* Button */}
           <div>
-            <Link
-              className="btn-sm text-slate-100 bg-sky-500 hover:bg-sky-600"
-              href="/subscribe"
-            >
-              <Button>Subscribe</Button>
+            <Link href="/subscribe">
+              <Button className="text-slate-100 bg-sky-500 hover:bg-sky-600">
+                Subscribe
+              </Button>
             </Link>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import HeroImage from "@/public/images/me.jpg";
 
-export default function Hero() {
+export default function EssaysHero() {
   return (
     <section>
       <div className="max-w-[700px]">

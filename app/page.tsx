@@ -1,90 +1,97 @@
-import { getBlogPosts } from '@/components/mdx/utils'
-import Hero from '@/components/hero'
-import PostItem from './post-item'
-import Talks from '@/components/talks'
-import FeaturedProjects from '@/components/featured-projects'
-import WidgetNewsletter from '@/components/widget-newsletter'
-import WidgetSponsor from '@/components/widget-sponsor'
-import WidgetBook from '@/components/widget-book'
+import Image from "next/image";
+import WidgetNewsletter from "@/components/widget-newsletter";
+import WidgetSponsor from "@/components/widget-sponsor";
+import AboutImg from "@/public/images/jbt_hero.svg";
+import Experience from "@/components/experience";
 
 export const metadata = {
-  title: 'Home - DevSpace',
-  description: 'Page description',
-}
+  title: "About - DevSpace",
+  description: "Page description",
+};
 
-export default async function Home() {
-  const allBlogs = getBlogPosts();
-
-  // Sort posts by date
-  allBlogs.sort((a, b) => {
-    return (new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)) ? -1 : 1
-  })
-
+export default function About() {
   return (
-    <>
-      <Hero />
-      { /* Content */}
-      <div className="grow md:flex space-y-8 md:space-y-0 md:space-x-8 pb-16 md:pb-20">
+    <div className="grow md:flex space-y-8 md:space-y-0 md:space-x-8 pt-12 md:pt-16 pb-16 md:pb-20">
+      {/* Middle area */}
+      <div className="grow">
+        <div className="max-w-[700px]">
+          <section>
+            {/* Page title */}
+            <h1 className="h1 font-aspekta mb-5">
+              Hi. I'm Jeff{" "}
+              <span className="inline-flex relative text-sky-500 before:absolute before:inset-0 before:bg-sky-200 dark:before:bg-sky-500 before:opacity-30 before:-z-10 before:-rotate-2 before:translate-y-1/4">
+                @jeffbuildstech
+              </span>{" "}
+              🤙
+            </h1>
+            <Image
+              className="w-4/5 mx-auto my-8"
+              src={AboutImg}
+              width={692}
+              height={390}
+              alt="About"
+            />
+            {/* Page content */}
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <h2 className="h3 font-aspekta text-foreground">Short Bio</h2>
+              </div>
+              <p className="text-muted-foreground">
+                I’m a full-stack developer with a digital marketing and PM
+                background. I&apos;m on a mission to find curious people in
+                motion and build useful things together 🚀.
+              </p>
+              <p className="text-muted-foreground">
+                I'm currentlyworking on{" "}
+                <a
+                  href="https://www.stitch3d.io"
+                  target="_blank"
+                  className="link"
+                >
+                  Stitch3D
+                </a>{" "}
+                . We are building the place for 3D LIDAR tools on the web.
+              </p>
 
-        { /* Middle area */}
-        <div className="grow">
-          <div className="max-w-[700px]">
-            <div className="space-y-10">
+              <Experience />
 
-              <section>
-                <h2 className="font-aspekta text-xl font-[650] mb-3">Latest Articles</h2>
-
-                {/* Filters */}
-                <ul className="flex flex-wrap text-sm border-b border-slate-100 dark:border-slate-800">
-                  <li className="px-3 -mb-px">
-                    <a className="block py-3 font-medium text-slate-800 dark:text-slate-100 border-b-2 border-sky-500" href="#0">
-                      Coding
-                    </a>
-                  </li>
-                  <li className="px-3 -mb-px">
-                    <a className="block py-3 text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300" href="#0">
-                      Startups
-                    </a>
-                  </li>
-                  <li className="px-3 -mb-px">
-                    <a className="block py-3 text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300" href="#0">
-                      Tutorials
-                    </a>
-                  </li>
-                  <li className="px-3 -mb-px">
-                    <a className="block py-3 text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300" href="#0">
-                      Indie Hacking
-                    </a>
-                  </li>
-                </ul>
-
-                {/* Articles list */}
-                <div>
-                  {allBlogs.map((post, postIndex) => (
-                      <PostItem key={postIndex} {...post} />
-                  ))}
-                </div>
-              </section>
-
-              <Talks />
-              <FeaturedProjects />
-
+              <div className="space-y-4">
+                <h2 className="h3 font-aspekta text-slate-800 dark:text-slate-100">
+                  Let's Connect
+                </h2>
+                <p>
+                  I'm excited to connect with others via{" "}
+                  <a
+                    className="font-medium text-sky-500 hover:underline"
+                    href="#0"
+                  >
+                    email
+                  </a>{" "}
+                  and{" "}
+                  <a
+                    className="font-medium text-sky-500 hover:underline"
+                    href="#0"
+                  >
+                    Twitter
+                  </a>{" "}
+                  to chat about projects and ideas. Currently, I'm not taking on
+                  freelance projects, but I am open to hearing about potential
+                  opportunities, discussing them with you and then potentially
+                  collaborating if it's a good fit.
+                </p>
+              </div>
             </div>
-          </div>
+          </section>
         </div>
-
-        { /* Right sidebar */}
-        <aside className="md:w-[240px] lg:w-[300px] shrink-0">
-          <div className="space-y-6">
-
-            <WidgetNewsletter />
-            <WidgetSponsor />
-            <WidgetBook />
-
-          </div>
-        </aside>
-
       </div>
-    </>
-  )
+
+      {/* Right sidebar */}
+      <aside className="md:w-[240px] lg:w-[300px] shrink-0">
+        <div className="space-y-6">
+          <WidgetNewsletter />
+          {/* <WidgetSponsor /> */}
+        </div>
+      </aside>
+    </div>
+  );
 }

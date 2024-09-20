@@ -8,28 +8,38 @@ import { SquareUserRound } from "lucide-react";
 export default function Navigation() {
   const pathname = usePathname();
 
+  const navigationMenu = [
+    { label: "Essays", link: "/essays" },
+    { label: "Tutorials", link: "/tutorials" },
+    { label: "Tools", link: "/tools" },
+    { label: "Podcast", link: "https://brickbybrick.fm" },
+  ];
+
   return (
     <nav className="flex items-center w-full">
       <ul className="flex items-center space-x-4">
-        <li className="px-2">
+        <li>
           <Link href="/">
             <span className="sr-only">Home</span>
             <Logo className="w-14 h-14" />
           </Link>
         </li>
-        <li className="px-2">
-          <Link
-            href="/about"
-            className={`w-full h-6 flex items-center justify-center relative after:absolute after:w-0.5 after:right-0 after:bottom-0 ${
-              pathname === "/about"
-                ? "text-sky-500 after:bg-sky-500"
-                : "text-slate-400 hover:text-slate-500 dark:text-slate-500 dark:hover:text-slate-400"
-            }`}
-          >
-            <span className="sr-only">About</span>
-            About
-          </Link>
-        </li>
+        {navigationMenu.map((item) => (
+          <li className="px-2" key={item.label}>
+            <Link
+              href={item.link}
+              className={`${
+                pathname === `${item.link}`
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-primary transition-colors"
+              }`}
+              target={item.label === "Podcast" ? "_blank" : "_self"}
+            >
+              <span className="sr-only">{item.label}</span>
+              {item.label}
+            </Link>
+          </li>
+        ))}
         {/* <li className="py-2">
           <Link
             href="/projects"
