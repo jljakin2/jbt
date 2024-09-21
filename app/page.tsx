@@ -24,6 +24,11 @@ export default function About() {
               </span>{" "}
               🤙
             </h1>
+            <p className="text-muted-foreground">
+              I’m a full-stack developer with a digital marketing and PM
+              background. I&apos;m on a mission to find curious people in motion
+              and build useful things together 🚀.
+            </p>
             <Image
               className="w-4/5 mx-auto my-8"
               src={AboutImg}
@@ -33,7 +38,7 @@ export default function About() {
             />
             {/* Page content */}
             <div className="space-y-8">
-              <div className="space-y-4">
+              {/* <div className="space-y-4">
                 <h2 className="h3 font-aspekta text-foreground">Short Bio</h2>
               </div>
               <p className="text-muted-foreground">
@@ -52,33 +57,27 @@ export default function About() {
                 </a>{" "}
                 as the lead developer. We are building <i>the</i> place for 3D
                 LIDAR tools on the web.
-              </p>
+              </p> */}
 
-              <Experience />
+              {/* <Experience /> */}
 
               <div className="space-y-4">
-                <h2 className="h3 font-aspekta text-slate-800 dark:text-slate-100">
-                  Let's Connect
+                <h2 className="h3 font-aspekta text-foreground">
+                  What can I help you with?
                 </h2>
-                <p>
-                  I'm excited to connect with others via{" "}
+                <p className="text-foreground font-semibold">
+                  Do you need something built?
+                </p>
+                <p className="font-normal text-muted-foreground">
+                  Let’s go! I love to build. Check out my{" "}
                   <a
-                    className="font-medium text-sky-500 hover:underline"
-                    href="#0"
+                    href="https://github.com/jljakin2"
+                    target="_blank"
+                    className="link"
                   >
-                    email
+                    projects
                   </a>{" "}
-                  and{" "}
-                  <a
-                    className="font-medium text-sky-500 hover:underline"
-                    href="#0"
-                  >
-                    Twitter
-                  </a>{" "}
-                  to chat about projects and ideas. Currently, I'm not taking on
-                  freelance projects, but I am open to hearing about potential
-                  opportunities, discussing them with you and then potentially
-                  collaborating if it's a good fit.
+                  🏗️
                 </p>
               </div>
             </div>

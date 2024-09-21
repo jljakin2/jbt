@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 export default function Header() {
   return (
     <header className="mb-2">
-      <div className="flex items-center justify-between h-[72px] before:block">
+      <div className="flex items-center justify-between h-20 before:block">
         <Navigation />
         <div className="grow flex justify-end space-x-4">
           {/* Search form */}
