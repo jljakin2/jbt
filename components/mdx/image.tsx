@@ -17,7 +17,7 @@ export default function PostImage({
 
   return (
     <figure className={classes}>
-      <Image className="w-full rounded-lg" {...props} alt={alt} />
+      <Image className="w-full" {...props} alt={alt} />
       {caption && (
         <figcaption className="text-sm text-center text-muted-foreground mt-3">
           {caption}

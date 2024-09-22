@@ -14,20 +14,20 @@ export default function PostItem({ ...props }) {
           alt={props.metadata.title}
         />
         <div>
-          <div className="text-xs text-slate-500 uppercase mb-1">
-            <span className="text-sky-500">—</span>{" "}
+          <div className="text-xs text-muted-foreground uppercase mb-1">
+            <span className="text-primary">—</span>{" "}
             <PostDate dateString={props.metadata.publishedAt} />
           </div>
           <h3 className="font-aspekta text-lg font-[650] mb-1">
             <Link
-              className="inline-flex relative hover:text-sky-500 duration-150 ease-out before:scale-x-0 before:origin-center before:absolute before:inset-0 before:bg-sky-200 dark:before:bg-sky-500 before:opacity-30 before:-z-10 before:translate-y-1/4 before:-rotate-2 hover:before:scale-100 before:duration-150 before:ease-in-out"
+              className="inline-flex relative hover:text-primary duration-150 ease-out before:scale-x-0 before:origin-center before:absolute before:inset-0 before:bg-sky-200 dark:before:bg-sky-500 before:opacity-30 before:-z-10 before:translate-y-1/4 before:-rotate-1 hover:before:scale-100 before:duration-150 before:ease-in-out"
               href={`/essays/${props.slug}`}
             >
               {props.metadata.title}
             </Link>
           </h3>
           <div className="flex">
-            <div className="grow text-sm text-slate-500 dark:text-slate-400">
+            <div className="grow text-sm text-muted-foreground">
               {props.metadata.summary}
             </div>
             <Link

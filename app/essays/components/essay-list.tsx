@@ -7,7 +7,9 @@ const filters = [
   { label: "Dev", tag: "dev" },
   { label: "Product", tag: "product" },
   { label: "Marketing", tag: "marketing" },
-  { label: "Design", tag: "design" },
+  { label: "Writing", tag: "writing" },
+  { label: "Learning", tag: "learning" },
+  { label: "Career", tag: "career" },
 ];
 
 export default function EssayList({ essays }: { essays: any }) {
@@ -42,7 +44,7 @@ export default function EssayList({ essays }: { essays: any }) {
               className={`block py-3 font-medium ${
                 selectedTag === filter.tag
                   ? "text-primary border-b-2 border-primary"
-                  : "text-muted-foreground hover:text-foreground transition-colors"
+                  : "text-muted-foreground hover:text-primary transition-colors"
               }`}
               onClick={() => setSelectedTag(filter.tag)}
             >

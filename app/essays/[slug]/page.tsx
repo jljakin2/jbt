@@ -125,7 +125,7 @@ export default async function SinglePost({
               <h1 className="h1 font-aspekta mb-4">{post.metadata.title}</h1>
             </header>
             {/* <div className="prose text-slate-500 dark:text-slate-400 max-w-none prose-p:leading-normal prose-headings:text-slate-800 dark:prose-headings:text-slate-200 prose-a:font-medium prose-a:text-sky-500 prose-a:no-underline hover:prose-a:underline prose-strong:font-medium prose-strong:text-slate-800 dark:prose-strong:text-slate-100 prose-pre:bg-slate-800 dark:prose-code:text-slate-200"> */}
-            <div className="prose text-muted-foreground max-w-none prose-p:leading-normal prose-headings:text-foreground prose-a:link prose-strong:font-medium prose-strong:text-foreground prose-pre:bg-orange-500 dark:prose-code:text-red-500">
+            <div className="prose text-muted-foreground max-w-none prose-p:leading-normal prose-headings:text-foreground prose-a:link prose-strong:font-medium prose-strong:text-foreground prose-pre:bg-slate-800 dark:prose-code:text-slate-200">
               <CustomMDX source={post.content} />
             </div>
           </article>

@@ -1,0 +1,57 @@
+---
+title: "4 Reasons Why You Should Build Your Next Web App Using Next.js"
+tag: "dev"
+publishedAt: "2022-09-12"
+image: "https://jbt-images.s3.amazonaws.com/posts/caspar-camille-rubin-0qvbnep1y04-unsplash-scaled.jpeg"
+summary: "Next.js, a flexible React framework, can save you time and frustration. It offers better SEO with server-side rendering, seamless navigation through the folder structure, simplified API configuration, and optimized images for a smooth user experience."
+---
+
+![Post](https://jbt-images.s3.amazonaws.com/posts/caspar-camille-rubin-0qvbnep1y04-unsplash-scaled.jpeg)
+
+I love React.
+
+It is the most popular JavaScript library and for good reason. But there are things about it that can drive you crazy. Especially when you are ready to go to production.
+
+You need extra packages to handle navigation, images are left to the developer to optimize, and nothing is handled by the server.
+
+All of these things are not deal breakers but add little bits of friction for the developers.
+
+Enter Next.js.
+
+Next.js is a flexible React framework that helps you build apps fast. It removes a lot of the annoying details of building with React.
+
+## If you haven't considered Next.js before, here are 4 reasons why you should switch:
+
+### 1. Better SEO
+
+React is rendered on the client at build time.
+
+This means that when a user goes to your app, an HTML file is served as a UI placeholder until all of the attached scripts are loaded. This is terrible for SEO. Search engines need page data and metadata when the page is loaded in order to properly index the results.
+
+Next.js uses server-side rendering.
+
+When a user goes to your Next.js app, all of the javascript and data are loaded upon request. This means that search engines are able to see all of the page data and metadata they need to properly index your app.
+
+### 2. Easier navigation
+
+In order to handle navigation with React, you need to use a third-party package.
+
+This isn't the end of the world but it can add extra friction that slows down development time. Next.js uses the folder structure as a way to handle navigation seamlessly.
+
+All you need to do is create a folder called "pages". Any file you put inside of that folder can become a page that your users can navigate to. It is super easy.
+
+### 3. Easier API configuration
+
+Next.js allows you to set API routes in the same "pages" directory.
+
+You can create an "api" directory and define any routes you need to take data from the front end and handle it on the server or add it to a database.
+
+With React you need to set up a separate Node.js project that connects to the client to handle API routes. With Next.js, it can all be done in one project.
+
+### 4. Optimized images
+
+Handling images properly is a critical task for any production app.
+
+If there are too many images or if the images are too big, the user experience will suffer. As will your SEO ranking. Fortunately, Next.js handles this automatically by using its "Image" component.
+
+When you need to use an image, instead of putting it inside of an "img" tag you use the built-in "Image" component. This component handles a lot of optimizations which include things like making sure the correct image size is served up and only loading images once they enter the viewport to maximize page load times.
