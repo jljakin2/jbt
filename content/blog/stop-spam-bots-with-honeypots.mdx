@@ -1,0 +1,156 @@
+---
+title: "How To Stop Form Spam Bots With Honeypot Fields"
+tag: "dev"
+publishedAt: "2024-07-31"
+image: "https://jbt-images.s3.amazonaws.com/posts/corinne-kutz-tmi2_-r5nfo-unsplash-scaled.jpeg"
+summary: "Learn how to create a simple honeypot field to trap bots and stop them from completing your forms. No CAPTCHAs needed."
+---
+
+![Post](https://jbt-images.s3.amazonaws.com/posts/corinne-kutz-tmi2_-r5nfo-unsplash-scaled.jpeg)
+
+Spam bots are the worst.
+
+They can ruin a good contact form in a heartbeat.
+
+While getting rid of spam bots requires a lot of strategy and technology, simple honeypots are quite effective for their low effort.
+
+## What is a honeypot?
+
+![Post](<https://jbt-images.s3.amazonaws.com/posts/giphy+(1).webp>)
+
+In the world of cybersecurity, [there are many types of honeypots](<https://en.wikipedia.org/wiki/Honeypot_(computing)>), but they are all essentially bot traps.
+
+Today we are talking about honeypots used in frontend forms.
+
+When bots spam your contact form, they must read the page source to "see" what to fill out. The good news is bots don't "see" like humans.
+
+This is precisely what a honeypot exploits.
+
+The process will look a little something like this:
+
+- Create a fake input inside a form
+- Hide it from the human users but not the bots
+- Filter for the field in your backend
+
+It would look something like this.
+
+## Setting up the honeypot field
+
+Let's pretend we have a basic contact form:
+
+```html
+<form action="/submit" method="POST">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required />
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required />
+
+  <label for="message">Message:</label>
+  <textarea id="message" name="message" required></textarea>
+
+  <button type="submit">Send</button>
+</form>
+```
+
+Bots will fill out every input and submit our form, so we need to add our honeypot.
+
+```html
+<form action="/submit" method="POST">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required />
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required />
+
+  <label for="message">Message:</label>
+  <textarea id="message" name="message" required></textarea>
+
+  <div class="phone">
+    <label for="phone">Phone:</label>
+    <input type="text" id="phone" name="phone" />
+  </div>
+
+  <button type="submit">Send</button>
+</form>
+```
+
+We added an extra field called `phone`. This field should not be visible to the user but should be visible to bots. To hide the field, we can add a simple CSS rule.
+
+```css
+.phone {
+  display: none;
+}
+```
+
+The user will not be able to see our honeypot, but bots will. And when they see it, they will most likely fill it out, which means we have them trapped.
+
+![Post](<https://jbt-images.s3.amazonaws.com/posts/CleanShot-2024-07-31-at-15.22.20%402x+(1).webp>)
+
+### Make sure you pick a good name for the honeypot
+
+Before we discuss how to deal with this extra field in our backend, I want to point out one thing.
+
+**The name of our honeypot shouldn't be random.**
+
+These bots are aware honeypots exist.
+
+They have logic that filters out any irrelevant inputs when completing forms.
+
+So if we create a field called random or, even worse, honeypot, we tell the bot the field is a trap, so they should avoid it.
+
+Instead, we should consider related topics or fields related to the form.
+
+In most contact forms, that means we'd add anything related to contact details like:
+
+- phone number
+- address
+- birthday
+- first name
+- last name
+- full name
+- etc.
+
+## Trap the bot and kick it out
+
+Now that we have the honeypot set up on the frontend we need to handle it in our backend.
+
+I set up a `pseudo-express` route to show the basic logic of handling this extra field.
+
+```js
+app.post("/submit", (req, res) => {
+  const { name, email, message, phone } = req.body;
+
+  if (phone) {
+    // If the honeypot field is filled, it's a bot
+    console.log("Potential bot detected");
+    res.status(400).send("Bad request");
+  } else {
+    // Process the legitimate submission
+    console.log("Legitimate submission:", { name, email, message });
+    res.send("Thank you for your submission!");
+  }
+});
+```
+
+We pull the honeypot off the body and then check if there is a value.
+
+If there is, we caught the bot!
+
+Send back a `400` error and sit back as your form zaps bot after bot.
+
+## More than one honeypot
+
+In the last few years, I've noticed the effectiveness of one honeypot isn't what it used to be.
+
+The good news is we can add more honeypots.
+
+This is a bit more effort but can bolster the strategy's effectiveness.
+
+Remember to keep all honeypot names related to the other fields in the form, and we should be good to go.
+
+I've been using three honey pots per form, which seems to be the sweet spot.
+
+Let me know if you have questions.
+
+Happy coding 🤙

@@ -125,7 +125,7 @@ export default async function SinglePost({
               <h1 className="h1 font-aspekta mb-4">{post.metadata.title}</h1>
             </header>
             {/* <div className="prose text-slate-500 dark:text-slate-400 max-w-none prose-p:leading-normal prose-headings:text-slate-800 dark:prose-headings:text-slate-200 prose-a:font-medium prose-a:text-sky-500 prose-a:no-underline hover:prose-a:underline prose-strong:font-medium prose-strong:text-slate-800 dark:prose-strong:text-slate-100 prose-pre:bg-slate-800 dark:prose-code:text-slate-200"> */}
-            <div className="prose text-muted-foreground max-w-none prose-p:leading-normal prose-headings:text-foreground prose-a:link prose-strong:font-medium prose-strong:text-foreground prose-pre:bg-slate-800 dark:prose-code:text-slate-200">
+            <div className="prose text-muted-foreground max-w-none prose-p:leading-normal prose-headings:text-foreground prose-a:link prose-strong:font-medium prose-strong:text-foreground prose-pre:bg-slate-800 not-prose-pre:prose-code:bg-gray-100 not-prose-pre:prose-code:text-gray-800 dark:not-prose-pre:prose-code:bg-gray-800 dark:not-prose-pre:prose-code:text-gray-200 not-prose-pre:prose-code:rounded-sm not-prose-pre:prose-code:px-1 not-prose-pre:prose-code:py-0.5 not-prose-pre:prose-code:font-normal not-prose-pre:prose-code:font-mono not-prose-pre:prose-code:before:content-[''] not-prose-pre:prose-code:after:content-['']">
               <CustomMDX source={post.content} />
             </div>
           </article>

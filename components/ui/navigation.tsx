@@ -8,7 +8,7 @@ export default function Navigation() {
   const pathname = usePathname();
 
   const navigationMenu = [
-    { label: "Essays", link: "/essays" },
+    { label: "Posts", link: "/posts" },
     // { label: "Tutorials", link: "/tutorials" },
     { label: "Tools", link: "/tools" },
     { label: "Podcast", link: "https://brickbybrick.fm" },
@@ -16,8 +16,8 @@ export default function Navigation() {
 
   return (
     <nav className="flex items-center w-full">
-      <ul className="flex items-center space-x-4">
-        <li>
+      <ul className="flex items-center space-x-4 font-semibold">
+        <li className="mr-4">
           <Link href="/">
             <span className="sr-only">Home</span>
             <Logo className="w-14 h-14" />

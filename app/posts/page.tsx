@@ -25,12 +25,12 @@ export default async function Home() {
 
   return (
     <>
-      <EssaysHero />
       {/* Content */}
-      <div className="grow md:flex space-y-8 md:space-y-0 md:space-x-8 pb-16 md:pb-20">
+      <div className="grow md:flex space-y-8 md:space-y-0 md:space-x-8 pt-12 md:pt-16 pb-16 md:pb-20">
         {/* Middle area */}
         <div className="grow">
           <div className="max-w-[700px]">
+            <EssaysHero />
             <div className="space-y-10">
               <EssayList essays={allBlogs} />
               <Talks />

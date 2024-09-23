@@ -5,7 +5,7 @@ export default function EssaysHero() {
   return (
     <section>
       <div className="max-w-[700px]">
-        <div className="pt-8 pb-10">
+        <div className="pb-10">
           <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-5 shadow-md">
             <svg
               width="24"
@@ -65,16 +65,20 @@ export default function EssaysHero() {
           </div>
 
           <h1 className="h1 font-aspekta mb-5">
-            I{" "}
+            Thoughts on{" "}
             <span className="inline-flex relative text-primary before:absolute before:inset-0 before:bg-sky-200 before:opacity-30 before:-z-10 before:-rotate-2 before:translate-y-1/4">
-              simplify ideas
+              building
             </span>{" "}
-            so you can build better products.
+            and{" "}
+            <span className="inline-flex relative text-primary before:absolute before:inset-0 before:bg-sky-200 before:opacity-30 before:-z-10 before:-rotate-2 before:translate-y-1/4">
+              selling
+            </span>{" "}
+            quality tech products.
           </h1>
-          <p className="text-lg text-slate-500 dark:text-slate-400">
+          <p className="text-lg text-muted-foreground">
             Coding, design, creativity, product, marketing, copywriting, you
-            name it. I explore only the most valuable ideas so you can build the
-            best products possible.
+            name it. I explore only the most valuable ideas so you can become
+            the best builder and seller.
           </p>
         </div>
       </div>

@@ -20,8 +20,9 @@ export default function PostItem({ ...props }) {
           </div>
           <h3 className="font-aspekta text-lg font-[650] mb-1">
             <Link
-              className="inline-flex relative hover:text-primary duration-150 ease-out before:scale-x-0 before:origin-center before:absolute before:inset-0 before:bg-sky-200 dark:before:bg-sky-500 before:opacity-30 before:-z-10 before:translate-y-1/4 before:-rotate-1 hover:before:scale-100 before:duration-150 before:ease-in-out"
-              href={`/essays/${props.slug}`}
+              // className="inline-flex relative hover:text-primary duration-150 ease-out before:scale-x-0 before:origin-center before:absolute before:inset-0 before:bg-sky-200 dark:before:bg-sky-500 before:opacity-30 before:-z-10 before:translate-y-1/4 before:-rotate-1 hover:before:scale-100 before:duration-150 before:ease-in-out"
+              className="inline-flex relative hover:text-primary transition-all"
+              href={`/posts/${props.slug}`}
             >
               {props.metadata.title}
             </Link>
@@ -32,7 +33,7 @@ export default function PostItem({ ...props }) {
             </div>
             <Link
               className="hidden lg:flex shrink-0 text-sky-500 items-center justify-center w-12 group"
-              href={`/essays/${props.slug}`}
+              href={`/posts/${props.slug}`}
               tabIndex={-1}
             >
               <svg

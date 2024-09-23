@@ -69,7 +69,7 @@ export default function WidgetNewsletter() {
             placeholder="Your email…"
           />
         </div>
-        <Button className="w-full" type="submit">
+        <Button className="w-full text-white" type="submit">
           Subscribe
         </Button>
       </form>

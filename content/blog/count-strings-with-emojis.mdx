@@ -1,0 +1,125 @@
+---
+title: "How To Count Strings With Emojis In JavaScript"
+tag: "dev"
+publishedAt: "2024-08-09"
+image: "https://jbt-images.s3.amazonaws.com/posts/domingo-alvarez-e-cs3y8mn6-gk-unsplash-scaled.jpeg"
+summary: "Learn how to count characters in JavaScript accurately. Find out why emojis don't count as one character and how to fix it."
+---
+
+<Image
+  src="https://jbt-images.s3.amazonaws.com/posts/domingo-alvarez-e-cs3y8mn6-gk-unsplash-scaled.jpeg"
+  alt="Emojis"
+/>
+
+I love emojis. Who doesn’t?
+
+I was polishing off a highly intellectual X post a few days ago when I realized something.
+
+<Image
+  src="https://jbt-images.s3.amazonaws.com/posts/twitter.gif"
+  alt="Emojis"
+/>
+
+## Emojis aren’t counted the same as regular characters
+
+When typing out emojis in the new post section of X, you can see how regular characters count less than emojis.
+
+After a quick search, I found out it has something to do with [how they are encoded](https://help.postscript.io/hc/en-us/articles/1260804629950-How-Emojis-and-Special-Characters-Affect-Character-Counts) in the Unicode system.
+
+Essentially, emojis are made of [multiple code points](https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/overview/a-quick-tour-of-unicode.htm#:~:text=Code points are the numbers,four numbers and%2For letters.), and `length` only counts code points, not characters.
+
+Regardless of why it happens, I thought about all the text counters I’ve created and how many exist in SaaS land.
+
+Emojis are not getting their fair shake 😢.
+
+Simply taking the length of the string isn’t an accurate count. Take, for example, something like this:
+
+```js
+import { useState } from "react";
+
+export default function App() {
+  const [text, setText] = useState("");
+
+  function countString() {
+    return text.length;
+  }
+
+  function handleChange(e) {
+    setText(e.target.value);
+  }
+
+  return (
+    <div className="App">
+      <h1>Make the emojis count 👍</h1>
+      <textarea value={text} onChange={handleChange} />
+      <small>Characters: {countString()}</small>
+    </div>
+  );
+}
+```
+
+This is a simple React component that tracks the characters typed into a text field. It is the most common implementation of this feature.
+
+But the output gives us the same problem as my X post:
+
+<Image
+  src="https://jbt-images.s3.amazonaws.com/posts/bad+way.gif"
+  alt="Emojis"
+/>
+
+## Modern web development makes it easy to count characters accurately
+
+You can use a [built-in object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter) called `Intl.Segmenter`.
+
+There is a much broader use case for the object, but it essentially breaks down strings into more meaningful items like words and sentences based on a locale you provide. It offers more granularity than simply using code points.
+
+To fix our example above, all we have to do is update our `countString` function like this:
+
+```js
+import { useState } from "react";
+
+export default function App() {
+  const [text, setText] = useState("");
+
+  function countString() {
+    return Array.from(new Intl.Segmenter().segment(text)).length;
+  }
+
+  function handleChange(e) {
+    setText(e.target.value);
+  }
+
+  return (
+    <div className="App">
+      <h1>Make the emojis count 👍</h1>
+      <textarea value={text} onChange={handleChange} />
+      <small>Characters: {countString()}</small>
+    </div>
+  );
+}
+```
+
+We create a new instance of the `Intl.Segmenter` object and pass our text to it. We put that output into an array and then finally take the `length`, which will be far more accurate than simply taking the `length` of the original string.
+
+Here is the result:
+
+<Image
+  src="https://jbt-images.s3.amazonaws.com/posts/good+way.gif"
+  alt="Emojis"
+/>
+
+## So why doesn’t X count an emoji correctly?
+
+Short answer: I have no idea.
+
+I’ve been programming far too long to delude myself into thinking there is a simple answer.
+
+But `Intl.Segmenter` has [good browser support](https://caniuse.com/?search=Intl.Segmenter), and any performance or memory constraints would be negligible.
+
+My best guess is that the codebase is so large and so old that it isn’t worth the side effects of a refactor.
+
+I’d be happy to learn more if anyone has better insight into this.
+
+I hope this helps 😄.
+
+Happy coding 🤙.

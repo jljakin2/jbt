@@ -46,6 +46,7 @@ export function CustomMDX(props: any) {
   const rehypePrettyCodeOptions = {
     theme: "one-dark-pro",
     keepBackground: false,
+
     onVisitLine(node: any) {
       // Prevent lines from collapsing in `display: grid` mode, and
       // allow empty lines to be copy/pasted
