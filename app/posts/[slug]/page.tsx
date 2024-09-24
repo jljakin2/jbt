@@ -7,6 +7,8 @@ import PostDate from "@/components/post-date";
 import WidgetNewsletter from "@/components/widget-newsletter";
 import WidgetSponsor from "@/components/widget-sponsor";
 import WidgetPosts from "@/components/widget-posts";
+import readingTime from "reading-time";
+import { LinkedIn, Facebook, X } from "@/components/brand-icons";
 
 export async function generateStaticParams() {
   const allBlogs = getBlogPosts();
@@ -44,6 +46,10 @@ export default async function SinglePost({
 
   if (!post) notFound();
 
+  const stats = readingTime(post.content);
+  const postUrl = `https://jeffbuildstech.com/posts/${params.slug}`;
+  const postTitle = post.metadata.title;
+
   return (
     <div className="grow md:flex space-y-8 md:space-y-0 md:space-x-8 pt-12 md:pt-16 pb-16 md:pb-20">
       {/* Middle area */}
@@ -65,59 +71,55 @@ export default async function SinglePost({
           <article>
             {/* Post header */}
             <header>
-              <div className="flex items-center justify-between mb-1">
+              <div className="flex items-center justify-between mb-2">
                 {/* Post date */}
-                <div className="text-xs text-slate-500 uppercase">
-                  <span className="text-sky-500">—</span>{" "}
+                <div className="text-xs text-muted-foreground uppercase">
+                  <span className="text-primary">—</span>{" "}
                   <PostDate dateString={post.metadata.publishedAt} />{" "}
-                  <span className="text-slate-400 dark:text-slate-600">·</span>{" "}
-                  4 Min read
+                  <span className="text-muted-foreground">·</span>{" "}
+                  {Math.ceil(stats.minutes)} Min read
                 </div>
                 {/* Share buttons */}
-                <ul className="inline-flex">
+                <ul className="inline-flex items-center gap-4">
                   <li>
                     <a
-                      className="flex justify-center items-center text-slate-400 dark:text-slate-500 hover:text-sky-500 dark:hover:text-sky-500 transition duration-150 ease-in-out"
-                      href="#0"
+                      className="flex justify-center items-center text-muted-foreground hover:text-primary transition duration-150 ease-in-out"
+                      href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
+                        postUrl
+                      )}&text=${encodeURIComponent(postTitle)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       aria-label="Twitter"
                     >
-                      <svg
-                        className="w-8 h-8 fill-current"
-                        viewBox="0 0 32 32"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="m13.063 9 3.495 4.475L20.601 9h2.454l-5.359 5.931L24 23h-4.938l-3.866-4.893L10.771 23H8.316l5.735-6.342L8 9h5.063Zm-.74 1.347h-1.457l8.875 11.232h1.36l-8.778-11.232Z" />
-                      </svg>
+                      <X className="!w-4 !h-4" />
                     </a>
                   </li>
                   <li>
                     <a
-                      className="flex justify-center items-center text-slate-400 dark:text-slate-500 hover:text-sky-500 dark:hover:text-sky-500 transition duration-150 ease-in-out"
-                      href="#0"
+                      className="flex justify-center items-center text-muted-foreground hover:text-primary transition duration-150 ease-in-out"
+                      href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                        postUrl
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       aria-label="Facebook"
                     >
-                      <svg
-                        className="w-8 h-8 fill-current"
-                        viewBox="0 0 32 32"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M14.023 24 14 17h-3v-3h3v-2c0-2.7 1.672-4 4.08-4 1.153 0 2.144.086 2.433.124v2.821h-1.67c-1.31 0-1.563.623-1.563 1.536V14H21l-1 3h-2.72v7h-3.257Z" />
-                      </svg>
+                      <Facebook className="!w-4 !h-4" />
                     </a>
                   </li>
                   <li>
                     <a
-                      className="flex justify-center items-center text-slate-400 dark:text-slate-500 hover:text-sky-500 dark:hover:text-sky-500 transition duration-150 ease-in-out"
-                      href="#0"
-                      aria-label="Share"
+                      href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+                        postUrl
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="LinkedIn"
+                      className="flex justify-center items-center text-muted-foreground hover:text-primary transition duration-150 ease-in-out"
                     >
-                      <svg
-                        className="w-8 h-8 fill-current"
-                        viewBox="0 0 32 32"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M20 14c1.654 0 3-1.346 3-3s-1.346-3-3-3-3 1.346-3 3c0 .223.029.439.075.649l-3.22 2.012A2.97 2.97 0 0 0 12 13c-1.654 0-3 1.346-3 3s1.346 3 3 3a2.97 2.97 0 0 0 1.855-.661l3.22 2.012c-.046.21-.075.426-.075.649 0 1.654 1.346 3 3 3s3-1.346 3-3-1.346-3-3-3a2.97 2.97 0 0 0-1.855.661l-3.22-2.012c.046-.21.075-.426.075-.649 0-.223-.029-.439-.075-.649l3.22-2.012A2.97 2.97 0 0 0 20 14Z" />
-                      </svg>
+                      <LinkedIn className="!w-4 !h-4" />
+
+                      <span className="sr-only">LinkedIn</span>
                     </a>
                   </li>
                 </ul>
@@ -125,7 +127,7 @@ export default async function SinglePost({
               <h1 className="h1 font-aspekta mb-4">{post.metadata.title}</h1>
             </header>
             {/* <div className="prose text-slate-500 dark:text-slate-400 max-w-none prose-p:leading-normal prose-headings:text-slate-800 dark:prose-headings:text-slate-200 prose-a:font-medium prose-a:text-sky-500 prose-a:no-underline hover:prose-a:underline prose-strong:font-medium prose-strong:text-slate-800 dark:prose-strong:text-slate-100 prose-pre:bg-slate-800 dark:prose-code:text-slate-200"> */}
-            <div className="prose text-muted-foreground max-w-none prose-p:leading-normal prose-headings:text-foreground prose-a:link prose-strong:font-medium prose-strong:text-foreground prose-pre:bg-slate-800 not-prose-pre:prose-code:bg-gray-100 not-prose-pre:prose-code:text-gray-800 dark:not-prose-pre:prose-code:bg-gray-800 dark:not-prose-pre:prose-code:text-gray-200 not-prose-pre:prose-code:rounded-sm not-prose-pre:prose-code:px-1 not-prose-pre:prose-code:py-0.5 not-prose-pre:prose-code:font-normal not-prose-pre:prose-code:font-mono not-prose-pre:prose-code:before:content-[''] not-prose-pre:prose-code:after:content-['']">
+            <div className="prose text-text max-w-none prose-p:leading-loose prose-headings:text-foreground prose-headings:leading-none prose-strong:font-medium prose-strong:text-foreground ">
               <CustomMDX source={post.content} />
             </div>
           </article>

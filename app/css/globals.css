@@ -42,6 +42,7 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+    --text: 222.2 60% 22%;
   }
 
   .dark {
@@ -69,6 +70,7 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --text: 210 30% 82%;
   }
 }
 
@@ -113,7 +115,7 @@
     }
 
     .link {
-      @apply font-medium text-primary hover:underline transition-all duration-300;
+      @apply font-semibold text-primary no-underline hover:underline transition-all duration-300;
     }
   }
 

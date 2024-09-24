@@ -5,10 +5,25 @@ interface PostLinkProps {
   children: React.ReactNode;
 }
 
-export default function PostLink({ href, ...props }: PostLinkProps) {
+export default function PostLink({ href, children, ...props }: PostLinkProps) {
+  const isInternalLink = href && (href.startsWith("/") || href.startsWith("#"));
+
+  if (isInternalLink) {
+    return (
+      <Link href={href} {...props} className="link">
+        {children}
+      </Link>
+    );
+  }
+
   return (
-    <Link href={href} {...props}>
-      {props.children}
+    <Link
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="link"
+    >
+      {children}
     </Link>
   );
 }

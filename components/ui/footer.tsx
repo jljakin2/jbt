@@ -1,40 +1,80 @@
 import { Separator } from "@/components/ui/separator";
-import { Twitter, Github, Linkedin, FileCode2 } from "lucide-react";
-
+import {
+  Github,
+  LinkedIn,
+  X,
+  Hashnode,
+  Medium,
+  Facebook,
+  Devto,
+} from "../brand-icons";
 export default function Footer() {
   return (
     <footer className="container mx-auto py-8">
       <Separator className="mb-8" />
       <div className="flex flex-col items-center space-y-6">
-        <div className="flex space-x-4">
-          <a href="#" className="group">
-            <div className="w-10 h-10 rounded-full border border-muted-foreground/20 flex items-center justify-center group-hover:border-primary transition-colors duration-300">
-              <Twitter
-                size={20}
-                className="text-muted-foreground group-hover:text-primary"
-              />
-            </div>
-            <span className="sr-only">Twitter</span>
-          </a>
-          <a href="#" className="group">
-            <div className="w-10 h-10 rounded-full border border-muted-foreground/20 flex items-center justify-center group-hover:border-primary transition-colors duration-300">
-              <Github
-                size={20}
-                className="text-muted-foreground group-hover:text-primary"
-              />
-            </div>
-            <span className="sr-only">GitHub</span>
-          </a>
-          <a href="#" className="group">
-            <div className="w-10 h-10 rounded-full border border-muted-foreground/20 flex items-center justify-center group-hover:border-primary transition-colors duration-300">
-              <Linkedin
-                size={20}
-                className="text-muted-foreground group-hover:text-primary"
-              />
-            </div>
-            <span className="sr-only">LinkedIn</span>
-          </a>
-        </div>
+        <ul className="flex items-center gap-8">
+          <li>
+            <a
+              href="https://twitter.com/jeffbuildstech"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <X />
+              <span className="sr-only">Twitter</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/jeff-jakinovich/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <LinkedIn />
+              <span className="sr-only">LinkedIn</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/jljakin2"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Github />
+              <span className="sr-only">GitHub</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://dev.to/jeffbuildstech"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Devto />
+              <span className="sr-only">Dev.to</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://hashnode.com/@jeffbuildstech"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Hashnode />
+              <span className="sr-only">Hashnode</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://medium.com/@jeff.jakinovich"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Medium />
+              <span className="sr-only">Medium</span>
+            </a>
+          </li>
+        </ul>
         <p className="text-sm text-muted-foreground">
           © {new Date().getFullYear()} Jeff Jakinovich. All rights reserved.
         </p>

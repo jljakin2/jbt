@@ -39,6 +39,7 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
+        text: "hsl(var(--text))", // for blog content only
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -79,6 +80,9 @@ module.exports = {
           4: "hsl(var(--chart-4))",
           5: "hsl(var(--chart-5))",
         },
+      },
+      animate: {
+        spin: "spin 1s linear infinite",
       },
     },
   },

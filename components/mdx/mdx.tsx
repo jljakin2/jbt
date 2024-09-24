@@ -4,6 +4,8 @@ import PostLink from "./link";
 import PostImage from "./image";
 import rehypePrettyCode from "rehype-pretty-code";
 import PostBanner from "./banner";
+import BlockQuote from "./blockquote";
+import InlineCode from "./inline-code";
 
 const transformToSlug = (input: string) => {
   return input
@@ -37,9 +39,11 @@ const mdxComponents = {
   h2: generateHeading(2),
   h3: generateHeading(3),
   h4: generateHeading(4),
-  Link: PostLink,
+  a: PostLink,
   Image: PostImage,
   Banner: PostBanner,
+  Blockquote: BlockQuote,
+  Code: InlineCode,
 };
 
 export function CustomMDX(props: any) {

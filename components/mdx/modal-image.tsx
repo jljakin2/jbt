@@ -31,13 +31,13 @@ export default function ModalImage({
   return (
     <div className="w-full">
       {/* Image thumbnail */}
-      <div className="relative inline-flex justify-center items-center my-2">
+      <div className="relative inline-flex justify-center items-center">
         <Image
           src={src}
           width={width}
           height={height}
           alt={alt}
-          className={`cursor-pointer w-full h-auto ${className}`}
+          className={`cursor-pointer w-full h-auto shadow-md border border-border ${className}`}
           onClick={() => setModalOpen(true)}
         />
       </div>

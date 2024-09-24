@@ -28,7 +28,7 @@ export default function Navigation() {
             <Link
               href={item.link}
               className={`${
-                pathname === `${item.link}`
+                pathname.includes(item.link)
                   ? "text-primary border-b-2 border-primary pb-1"
                   : "text-muted-foreground hover:text-primary transition-colors"
               }`}
