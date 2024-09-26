@@ -7,6 +7,7 @@ import WidgetNewsletter from "@/components/widget-newsletter";
 import WidgetSponsor from "@/components/widget-sponsor";
 import WidgetBook from "@/components/widget-book";
 import EssayList from "./components/essay-list";
+import WidgetPosts from "@/components/widget-posts";
 
 export const metadata = {
   title: "Home - DevSpace",
@@ -33,8 +34,8 @@ export default async function Home() {
             <EssaysHero />
             <div className="space-y-10">
               <EssayList essays={allBlogs} />
-              <Talks />
-              <FeaturedProjects />
+              {/* <Talks />
+              <FeaturedProjects /> */}
             </div>
           </div>
         </div>
@@ -43,8 +44,9 @@ export default async function Home() {
         <aside className="md:w-[240px] lg:w-[300px] shrink-0">
           <div className="space-y-6">
             <WidgetNewsletter />
-            <WidgetSponsor />
-            <WidgetBook />
+            {/* <WidgetSponsor /> */}
+            <WidgetPosts />
+            {/* <WidgetBook /> */}
           </div>
         </aside>
       </div>

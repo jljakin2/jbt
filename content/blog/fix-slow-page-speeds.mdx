@@ -6,7 +6,10 @@ image: "https://jbt-images.s3.amazonaws.com/posts/glenn-carstens-peters-npxxwgq3
 summary: "Learn how to automate Lighthouse reports in GitHub actions to ensure optimal performance and prevent slow page speeds from driving away users."
 ---
 
-![Post](https://jbt-images.s3.amazonaws.com/posts/glenn-carstens-peters-npxxwgq33zq-unsplash-scaled.jpeg)
+<Image
+  src="https://jbt-images.s3.amazonaws.com/posts/glenn-carstens-peters-npxxwgq33zq-unsplash-scaled.jpeg"
+  alt="fixing slow page speeds on a laptop"
+/>
 
 Imagine you build an incredible app that solves all your user's problems. Your entrepreneur dreams are coming true. Then, one day, a line of code finds a way into your codebase that plummets page speeds. Users are waiting several seconds for each page. Users start to leave. And never come back. Your dreams are dead.
 
@@ -22,11 +25,17 @@ I'm not a huge fan of setting up needless systems or automations on projects bef
 
 A [Lighthouse report is an automated tool](https://developer.chrome.com/docs/lighthouse/overview) to help you improve your web pages. You give it a URL, and it gives you a report on key metrics that affect the quality of your web pages. The high-level report looks like this:
 
-![Post](<https://jbt-images.s3.amazonaws.com/posts/lighthouse-metrics+(1).png>)
+<Image
+  src="https://jbt-images.s3.amazonaws.com/posts/lighthouse-metrics+(1).png"
+  alt="lighthouse performance metrics"
+/>
 
 Each section also has more details with links to articles by Google to help you fix things that might be wrong.
 
-![Post](<https://jbt-images.s3.amazonaws.com/posts/report-details+(1).png>)
+<Image
+  src="https://jbt-images.s3.amazonaws.com/posts/report-details+(1).png"
+  alt="lighthouse accessibility report"
+/>
 
 You can run this report as many times as you want. But it can get annoying to run the report too often. The good news is there is a way you can automate the reports and make sure no code gets added to your repo that hurts your scores.
 
@@ -42,7 +51,7 @@ npm install @lhci/cli
 
 ### Create the NPM script.
 
-Now, create a script in your `package.json` to run the reports locally and in the GitHub action.
+Now, create a script in your <Code>package.json</Code> to run the reports locally and in the GitHub action.
 
 ```json
 "scripts": {
@@ -56,11 +65,11 @@ This is where all the [customizations happen](https://github.com/GoogleChrome/li
 
 I'll show you how to add all the above later, but let's get a basic version working first.
 
-Create a `lighthouserc.js` file at the root of your project.
+Create a <Code>lighthouserc.js</Code> file at the root of your project.
 
 Copy the following contents into the file. One thing to note is that the Lighthouse report will always run on the local build. So, if you haven't built anything yet, you will need to do that first. And if you made changes, you'll want to build again before running the reports. We will automate all this later, but it is good to be aware.
 
-I'm using Next.js, so in the "collect" section, I set it up so Lighthouse runs the production build of my app on `localhost:3000`, and it runs 3 times. Then I have Lighthouse dump the reports in a directory on my root.
+I'm using Next.js, so in the "collect" section, I set it up so Lighthouse runs the production build of my app on <Code>localhost:3000</Code>, and it runs 3 times. Then I have Lighthouse dump the reports in a directory on my root.
 
 Depending on your tech stack and preferences, feel free to change any of these settings.
 
@@ -94,19 +103,25 @@ npm run build && npm run ci: Lighthouse
 
 Your terminal should look something like this:
 
-![Post](https://jbt-images.s3.amazonaws.com/posts/terminal-with-markings.png)
+<Image
+  src="https://jbt-images.s3.amazonaws.com/posts/terminal-with-markings.png"
+  alt="lighthouse cli output"
+/>
 
 You should notice a few things:
 
 1.  You can see the names of any errors. You can click the link next to the name to read more about the errors so you can fix it.
 2.  If you have errors (you most likely will), your code should exit with a status code 1. When we customize our assertions next, we can make sure specific assertions don't force our script to fail.
-3.  The final thing the report will tell you is where these reports live. You can take the HTML file and copy it into your URL, and you should be able to see the full report. All reports should live in a directory called `.lighthouseci` if you used the same outputs command I used when setting up the Lighthouse instructions.
+3.  The final thing the report will tell you is where these reports live. You can take the HTML file and copy it into your URL, and you should be able to see the full report. All reports should live in a directory called <Code>.lighthouseci</Code> if you used the same outputs command I used when setting up the Lighthouse instructions.
 
-![Post](https://jbt-images.s3.amazonaws.com/posts/report-from-command-line.png)
+<Image
+  src="https://jbt-images.s3.amazonaws.com/posts/report-from-command-line.png"
+  alt="full lighthouse report"
+/>
 
 ### Optional: make sure the Lighthouse reports don't get added to your repo
 
-If you want to keep these reports in your repo for any reason, feel free to skip this. Usually, these reports are short-term checks, so I never want to add them to my repo. To make sure they don't get added to your commit, go ahead and add the `.lighthouseci` directory to your `.gitignore`
+If you want to keep these reports in your repo for any reason, feel free to skip this. Usually, these reports are short-term checks, so I never want to add them to my repo. To make sure they don't get added to your commit, go ahead and add the <Code>.lighthouseci</Code> directory to your <Code>.gitignore</Code>
 
 ```text
 ...
@@ -121,13 +136,16 @@ When starting a project, I primarily use Lighthouse to ensure I'm not doing anyt
 
 This means I don't need to address everything Lighthouse finds wrong with my web pages. But I also want to remember them.
 
-This is where I set any assertions that need more work or more learning to `warn` so they don't stop my progress in building the app. Then, when things are more stable, I can come back to address any deeper issues.
+This is where I set any assertions that need more work or more learning to <Code>warn</Code> so they don't stop my progress in building the app. Then, when things are more stable, I can come back to address any deeper issues.
 
-To do this, review all the errors you received when running the report locally. If any of them seem like something you'd want to address later, take the name of the error, add it to your `lighthouserc.js`, and set it to `warn`.
+To do this, review all the errors you received when running the report locally. If any of them seem like something you'd want to address later, take the name of the error, add it to your <Code>lighthouserc.js</Code>, and set it to <Code>warn</Code>.
 
 Take, for example, this error:
 
-![Post](https://jbt-images.s3.amazonaws.com/posts/total-byte-error.png)
+<Image
+  src="https://jbt-images.s3.amazonaws.com/posts/total-byte-error.png"
+  alt="specific lighthouse cli report output"
+/>
 
 I should pay attention to the total-byte-weight but I'll need to investigate further. I'd rather move on for now so I can launch my project, but I also want to remember this error. So setting it to warn allows the report to succeed while still reminding me every run.
 
@@ -197,9 +215,12 @@ module.exports = {
 
 Run the Lighthouse report in GitHub actions I'm assuming you already know what GitHub actions are. So, let's get right into setting them up. First, make a .github directory in your root folder with a workflows directory inside. Then, add a lighthouse.yml file to the workflows directory. It should look something like this:
 
-![Post](https://jbt-images.s3.amazonaws.com/posts/github-action-folder-setup.png)
+<Image
+  src="https://jbt-images.s3.amazonaws.com/posts/github-action-folder-setup.png"
+  alt="lighthouse in a github action"
+/>
 
-Inside the `lighthouse.yml` file, create an action that looks like this:
+Inside the <Code>lighthouse.yml</Code> file, create an action that looks like this:
 
 ```yml
 name: Lighthouse CI
@@ -229,19 +250,25 @@ jobs:
         run: npm run ci:lighthouse
 ```
 
-The main jobs of the action are to set up the Lighthouse report, build the code, and run the report every time you push code to the `main` branch.
+The main jobs of the action are to set up the Lighthouse report, build the code, and run the report every time you push code to the <Code>main</Code> branch.
 
 The great thing about the benchmarks is they act as gatekeepers. If you change the trigger of the action to PRs, you can ensure any code meets the benchmarks before approval.
 
 The output of the action should look like this:
 
-![Post](https://jbt-images.s3.amazonaws.com/posts/github-action-output.png)
+<Image
+  src="https://jbt-images.s3.amazonaws.com/posts/github-action-output.png"
+  alt="lighthouse report ran in a github action"
+/>
 
 My Lighthouse report looks like it failed. That is because my benchmarks for the main categories aren't high enough.
 
-![Post](https://jbt-images.s3.amazonaws.com/posts/errors-in-github-action.png)
+<Image
+  src="https://jbt-images.s3.amazonaws.com/posts/errors-in-github-action.png"
+  alt="lighthouse report github action output"
+/>
 
-Since it was only triggered on pushing to my `main` branch, it doesn't stop any code from merging, but at least I know what the issues are, so I can address them at some point. If the trigger was on PR, then this PR wouldn't allow the code to merge into the branch.
+Since it was only triggered on pushing to my <Code>main</Code> branch, it doesn't stop any code from merging, but at least I know what the issues are, so I can address them at some point. If the trigger was on PR, then this PR wouldn't allow the code to merge into the branch.
 
 ### Wrap up
 

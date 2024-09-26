@@ -37,7 +37,7 @@ export default function ModalImage({
           width={width}
           height={height}
           alt={alt}
-          className={`cursor-pointer w-full h-auto shadow-md border border-border ${className}`}
+          className={`cursor-pointer w-full h-auto shadow-md border border-border my-2 ${className}`}
           onClick={() => setModalOpen(true)}
         />
       </div>

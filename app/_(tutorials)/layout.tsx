@@ -1,7 +1,7 @@
 import "@/app/css/globals.css";
 
 import { Nothing_You_Could_Do } from "next/font/google";
-import Theme from "@/app/theme-provider";
+// import Theme from "@/app/theme-provider";
 import AppProvider from "@/app/app-provider";
 import Image from "next/image";
 import Illustration from "@/public/images/hero-illustration.svg";

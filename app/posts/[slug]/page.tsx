@@ -71,7 +71,7 @@ export default async function SinglePost({
           <article>
             {/* Post header */}
             <header>
-              <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center justify-between mb-4">
                 {/* Post date */}
                 <div className="text-xs text-muted-foreground uppercase">
                   <span className="text-primary">—</span>{" "}
@@ -124,7 +124,7 @@ export default async function SinglePost({
                   </li>
                 </ul>
               </div>
-              <h1 className="h1 font-aspekta mb-4">{post.metadata.title}</h1>
+              <h1 className="h1 font-aspekta mb-6">{post.metadata.title}</h1>
             </header>
             {/* <div className="prose text-slate-500 dark:text-slate-400 max-w-none prose-p:leading-normal prose-headings:text-slate-800 dark:prose-headings:text-slate-200 prose-a:font-medium prose-a:text-sky-500 prose-a:no-underline hover:prose-a:underline prose-strong:font-medium prose-strong:text-slate-800 dark:prose-strong:text-slate-100 prose-pre:bg-slate-800 dark:prose-code:text-slate-200"> */}
             <div className="prose text-text max-w-none prose-p:leading-loose prose-headings:text-foreground prose-headings:leading-none prose-strong:font-medium prose-strong:text-foreground ">
@@ -138,7 +138,7 @@ export default async function SinglePost({
       <aside className="md:w-[240px] lg:w-[300px] shrink-0">
         <div className="space-y-6">
           <WidgetNewsletter />
-          <WidgetSponsor />
+          {/* <WidgetSponsor /> */}
           <WidgetPosts />
         </div>
       </aside>

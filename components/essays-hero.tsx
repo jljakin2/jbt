@@ -77,8 +77,8 @@ export default function EssaysHero() {
           </h1>
           <p className="text-lg text-muted-foreground">
             Coding, design, creativity, product, marketing, copywriting, you
-            name it. I explore only the most valuable ideas so you can become
-            the best builder and seller.
+            name it. I explore the most valuable ideas to help you become a
+            better builder and seller.
           </p>
         </div>
       </div>

@@ -6,7 +6,7 @@ interface InlineCodeProps {
 
 const InlineCode: React.FC<InlineCodeProps> = ({ children }) => {
   return (
-    <code className="px-1 py-0.5 rounded-sm bg-muted text-foreground font-mono text-sm">
+    <code className="px-1 py-0.5 rounded-sm bg-muted text-foreground font-mono text-sm before:invisible after:invisible">
       {children}
     </code>
   );

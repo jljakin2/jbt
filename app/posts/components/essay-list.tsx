@@ -18,16 +18,17 @@ export default function EssayList({ essays }: { essays: any }) {
 
   useEffect(() => {
     // Sort posts by date
-    const sortedBlogs = essays.sort((a, b) => {
+    const sortedBlogs = essays.sort((a: any, b: any) => {
       return (
-        new Date(b.metadata.publishedAt) - new Date(a.metadata.publishedAt)
+        new Date(b.metadata.publishedAt).getTime() -
+        new Date(a.metadata.publishedAt).getTime()
       );
     });
     // Filter posts based on selected tag
     const filtered =
       selectedTag === "all"
         ? sortedBlogs
-        : sortedBlogs.filter((blog) => blog.metadata.tag === selectedTag);
+        : sortedBlogs.filter((blog: any) => blog.metadata.tag === selectedTag);
 
     setFilteredBlogs(filtered);
   }, [selectedTag, essays]);
@@ -56,7 +57,7 @@ export default function EssayList({ essays }: { essays: any }) {
 
       {/* Articles list */}
       <div>
-        {filteredBlogs.map((post, postIndex) => (
+        {filteredBlogs.map((post: any, postIndex: any) => (
           <PostItem key={postIndex} {...post} />
         ))}
       </div>
