@@ -1,6 +1,7 @@
 import "@/app/css/globals.css";
 
 import { Inter } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { ThemeProvider } from "./theme-provider";
 import Header from "@/components/ui/header";
 import Footer from "@/components/ui/footer";
@@ -82,6 +83,7 @@ export default function RootLayout({
           </div>
         </ThemeProvider>
       </body>
+      {process.env.GTAG && <GoogleAnalytics gaId={process.env.GTAG} />}
     </html>
   );
 }
