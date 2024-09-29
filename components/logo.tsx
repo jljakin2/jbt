@@ -14,20 +14,20 @@ const Logo: React.FC<LogoProps> = ({ className }) => {
       xmlns="http://www.w3.org/2000/svg"
       className={`text-foreground ${className}`}
     >
-      <g clip-path="url(#clip0_131_20)">
+      <g clipPath="url(#clip0_131_20)">
         <circle
           cx="124.397"
           cy="124.397"
           r="121.397"
           stroke="currentColor"
-          stroke-width="6"
+          strokeWidth="6"
         />
         <circle
           cx="276.603"
           cy="124.397"
           r="121.397"
           stroke="currentColor"
-          stroke-width="6"
+          strokeWidth="6"
         />
         <line
           x1="191.664"
@@ -35,7 +35,7 @@ const Logo: React.FC<LogoProps> = ({ className }) => {
           x2="219.338"
           y2="48.4574"
           stroke="currentColor"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <line
           x1="184.334"
@@ -43,7 +43,7 @@ const Logo: React.FC<LogoProps> = ({ className }) => {
           x2="232.627"
           y2="65.8193"
           stroke="currentColor"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <line
           x1="175.365"
@@ -51,7 +51,7 @@ const Logo: React.FC<LogoProps> = ({ className }) => {
           x2="239.666"
           y2="82.9059"
           stroke="currentColor"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <line
           x1="166.416"
@@ -59,7 +59,7 @@ const Logo: React.FC<LogoProps> = ({ className }) => {
           x2="246.182"
           y2="101.085"
           stroke="currentColor"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <line
           x1="161.521"
@@ -67,7 +67,7 @@ const Logo: React.FC<LogoProps> = ({ className }) => {
           x2="246.171"
           y2="115.732"
           stroke="currentColor"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <line
           x1="158.276"
@@ -75,7 +75,7 @@ const Logo: React.FC<LogoProps> = ({ className }) => {
           x2="244.825"
           y2="129.844"
           stroke="currentColor"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <line
           x1="156.647"
@@ -83,7 +83,7 @@ const Logo: React.FC<LogoProps> = ({ className }) => {
           x2="244.824"
           y2="145.037"
           stroke="currentColor"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <line
           x1="153.936"
@@ -91,7 +91,7 @@ const Logo: React.FC<LogoProps> = ({ className }) => {
           x2="241.57"
           y2="159.147"
           stroke="currentColor"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <line
           x1="153.945"
@@ -99,7 +99,7 @@ const Logo: React.FC<LogoProps> = ({ className }) => {
           x2="235.339"
           y2="172.716"
           stroke="currentColor"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <line
           x1="158.302"
@@ -107,7 +107,7 @@ const Logo: React.FC<LogoProps> = ({ className }) => {
           x2="229.657"
           y2="186.831"
           stroke="currentColor"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <line
           x1="166.443"
@@ -115,7 +115,7 @@ const Logo: React.FC<LogoProps> = ({ className }) => {
           x2="221.248"
           y2="199.041"
           stroke="currentColor"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <line
           x1="173.232"
@@ -123,7 +123,7 @@ const Logo: React.FC<LogoProps> = ({ className }) => {
           x2="214.2"
           y2="209.625"
           stroke="currentColor"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <line
           x1="186.511"
@@ -131,7 +131,7 @@ const Logo: React.FC<LogoProps> = ({ className }) => {
           x2="206.317"
           y2="215.587"
           stroke="currentColor"
-          stroke-width="2"
+          strokeWidth="2"
         />
       </g>
       <defs>

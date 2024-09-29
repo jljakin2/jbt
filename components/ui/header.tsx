@@ -2,13 +2,14 @@ import Link from "next/link";
 import { ThemeSwitch } from "./theme-switch";
 import Navigation from "./navigation";
 import { Button } from "@/components/ui/button";
+import { ConfettiSideCannons } from "../confetti-side-cannons";
 
 export default function Header() {
   return (
     <header className="mb-2">
       <div className="flex items-center justify-between h-20 before:block">
         <Navigation />
-        <div className="grow flex justify-end space-x-4">
+        <div className="grow flex justify-end space-x-2">
           {/* Search form */}
           {/* <form className="w-full max-w-[276px]">
             <div className="flex flex-wrap">
@@ -41,12 +42,13 @@ export default function Header() {
 
           {/* Light switch */}
           <ThemeSwitch />
+          <ConfettiSideCannons />
 
           {/* Button */}
 
-          <Button className="text-white">
+          {/* <Button className="text-white">
             <Link href="/subscribe">Subscribe</Link>
-          </Button>
+          </Button> */}
         </div>
       </div>
     </header>

@@ -14,7 +14,7 @@ export default async function WidgetPosts() {
             <Link
               key={postIndex}
               className="font-aspekta font-[650] text-sm inline-flex relative hover:text-primary transition-colors"
-              href={`/posts/${post.slug}`}
+              href={`/blog/${post.slug}`}
             >
               {post.metadata.title}
             </Link>

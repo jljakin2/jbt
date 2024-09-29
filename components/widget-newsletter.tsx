@@ -10,46 +10,65 @@ import { LoaderCircle } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function WidgetNewsletter() {
   const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState({ type: "", content: "" });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  useEffect(() => {
+    if (message.content) {
+      const timer = setTimeout(() => {
+        setMessage({ type: "", content: "" });
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-
-    const formData = new FormData(e.currentTarget);
-    const email = formData.get("email");
+    setMessage({ type: "", content: "" });
 
     // Email validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email || !emailPattern.test(email.toString())) {
-      console.error("Invalid email address");
+    if (!email || !emailPattern.test(email)) {
+      setMessage({
+        type: "error",
+        content: "Please enter a valid email address",
+      });
       setLoading(false);
       return;
     }
 
-    fetch(
-      "https://pgn6ugg4j6.execute-api.us-east-1.amazonaws.com/default/convertkitSub",
-      {
+    try {
+      const response = await fetch("/api/subscribe", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email }),
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      })
-      .finally(() => {
-        setLoading(false);
       });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      console.log("Success:", data);
+      setMessage({ type: "success", content: "Thank you for subscribing!" });
+      setEmail("");
+    } catch (error) {
+      console.error("Error:", error);
+      setMessage({
+        type: "error",
+        content: "An error occurred. Please try again.",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -93,15 +112,26 @@ export default function WidgetNewsletter() {
           />
         </div>
       </div>
-      <div className="text-center mb-8">
+      <div className="text-center mb-4">
         <div className="font-aspekta font-[650] mb-1">
-          Never miss an update!
+          Helpful tools for busy builders.
         </div>
-        <p className="text-sm text-slate-500 dark:text-slate-400">
-          Subscribe and join 100K+ developers.
+        <p className="text-sm text-muted-foreground">
+          Small, helpful tools and resources to make your work life easier.
         </p>
       </div>
       <form onSubmit={handleSubmit}>
+        {message.content && (
+          <div
+            className={`mb-4 p-2 text-sm rounded ${
+              message.type === "error"
+                ? "bg-red-100 text-destructive"
+                : "bg-green-100 text-green-700"
+            }`}
+          >
+            {message.content}
+          </div>
+        )}
         <div className="mb-2">
           <label className="sr-only" htmlFor="newsletter">
             Your email…
@@ -111,6 +141,8 @@ export default function WidgetNewsletter() {
             type="email"
             className="form-input py-1 w-full"
             placeholder="Your email…"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <Button className="w-full text-white" type="submit" disabled={loading}>

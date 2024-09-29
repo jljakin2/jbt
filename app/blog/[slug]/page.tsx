@@ -30,10 +30,29 @@ export async function generateMetadata({
   }
 
   const { title, summary: description } = post.metadata;
+  const formattedTitle = params.slug
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 
   return {
-    title,
+    title: formattedTitle,
     description,
+    alternates: {
+      canonical: `/blog/${params.slug}`,
+    },
+    openGraph: {
+      title: formattedTitle,
+      description,
+      type: "article",
+      locale: "en_US",
+      url: `https://jeffbuildstech.com/blog/${params.slug}`,
+      siteName: "Jeff Builds Tech",
+      images: [`https://jbt-images.s3.amazonaws.com/og/OG-${params.slug}.jpg`],
+    },
+    twitter: {
+      images: [`https://jbt-images.s3.amazonaws.com/og/OG-${params.slug}.jpg`],
+    },
   };
 }
 

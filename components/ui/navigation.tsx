@@ -8,7 +8,7 @@ export default function Navigation() {
   const pathname = usePathname();
 
   const navigationMenu = [
-    { label: "Posts", link: "/posts" },
+    { label: "Blog", link: "/blog" },
     // { label: "Tutorials", link: "/tutorials" },
     { label: "Tools", link: "/tools" },
     { label: "Podcast", link: "https://brickbybrick.fm" },

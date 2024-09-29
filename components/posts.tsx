@@ -1,11 +1,11 @@
-import Image from 'next/image'
-import Talk01 from '@/public/images/popular-post-01.jpg'
-import Talk02 from '@/public/images/popular-post-02.jpg'
+import Image from "next/image";
+import Talk01 from "@/public/images/popular-post-01.jpg";
+import Talk02 from "@/public/images/popular-post-02.jpg";
 
-export default function Talks() {
+export default function Posts() {
   return (
     <section>
-      <h2 className="font-aspekta text-xl font-[650] mb-5">Popular Talks</h2>
+      <h2 className="font-aspekta text-xl font-[650] mb-5">Popular Posts</h2>
 
       {/* Cards */}
       <div className="grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-5">
@@ -21,12 +21,20 @@ export default function Talks() {
             alt="Popular post 01"
           />
           <div className="h-full relative flex flex-col items-start justify-between before:mt-auto before:flex-1 p-5">
-            <div className="flex-1 flex items-center text-lg font-aspekta text-white font-[650]">The Third Age of JavaScript</div>
+            <div className="flex-1 flex items-center text-lg font-aspekta text-white font-[650]">
+              The Third Age of JavaScript
+            </div>
             <div className="flex-1 w-full flex justify-end items-end">
               <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41">
-                <circle className="fill-white" cx="20" cy="20" r="20" fillOpacity=".88" />
+                <circle
+                  className="fill-white"
+                  cx="20"
+                  cy="20"
+                  r="20"
+                  fillOpacity=".88"
+                />
                 <path
-                  className="fill-sky-500"
+                  className="fill-primary"
                   d="m24.765 19.5-6.263-4.375a.626.626 0 0 0-1.002.5v8.75c0 .5.564.812 1.002.5l6.263-4.375a.65.65 0 0 0 0-1Z"
                 />
               </svg>
@@ -45,10 +53,18 @@ export default function Talks() {
             alt="Popular post 02"
           />
           <div className="h-full relative flex flex-col items-start justify-between before:mt-auto before:flex-1 p-5">
-            <div className="flex-1 flex items-center text-lg font-aspekta text-white font-[650]">Building in Public Strategy</div>
+            <div className="flex-1 flex items-center text-lg font-aspekta text-white font-[650]">
+              Building in Public Strategy
+            </div>
             <div className="flex-1 w-full flex justify-end items-end">
               <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41">
-                <circle className="fill-white" cx="20" cy="20" r="20" fillOpacity=".88" />
+                <circle
+                  className="fill-white"
+                  cx="20"
+                  cy="20"
+                  r="20"
+                  fillOpacity=".88"
+                />
                 <path
                   className="fill-sky-500"
                   d="m24.765 19.5-6.263-4.375a.626.626 0 0 0-1.002.5v8.75c0 .5.564.812 1.002.5l6.263-4.375a.65.65 0 0 0 0-1Z"
@@ -59,5 +75,5 @@ export default function Talks() {
         </a>
       </div>
     </section>
-  )
+  );
 }

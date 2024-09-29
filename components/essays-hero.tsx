@@ -11,7 +11,7 @@ export default function EssaysHero() {
               width="24"
               height="24"
               viewBox="0 0 24 24"
-              className="fill-background w-[36px] h-[36px]"
+              className="fill-white w-[36px] h-[36px]"
               xmlns="http://www.w3.org/2000/svg"
             >
               <g clipPath="url(#clip0_1048_7398)">

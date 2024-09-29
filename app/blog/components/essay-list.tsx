@@ -35,7 +35,7 @@ export default function EssayList({ essays }: { essays: any }) {
 
   return (
     <section>
-      <h2 className="font-aspekta text-xl font-[650] mb-3">Latest Essays</h2>
+      <h2 className="font-aspekta text-xl font-[650] mb-3">Latest Posts</h2>
 
       {/* Filters */}
       <ul className="flex flex-wrap text-sm border-b border-border">

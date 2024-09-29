@@ -1,7 +1,7 @@
 import { getBlogPosts } from "@/components/mdx/utils";
 import EssaysHero from "@/components/essays-hero";
 import PostItem from "@/app/post-item";
-import Talks from "@/components/talks";
+import Talks from "@/components/posts";
 import FeaturedProjects from "@/components/featured-projects";
 import WidgetNewsletter from "@/components/widget-newsletter";
 import WidgetSponsor from "@/components/widget-sponsor";

@@ -6,7 +6,11 @@ const nextConfig = {
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   // Optionally, add any other Next.js config below
   images: {
-    remotePatterns: [{ hostname: "jbt-images.s3.amazonaws.com" }],
+    remotePatterns: [
+      { hostname: "jbt-images.s3.amazonaws.com" },
+      { hostname: "cdn.sanity.io" },
+      { hostname: "miro.medium.com" },
+    ],
   },
 };
 
