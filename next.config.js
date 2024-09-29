@@ -12,6 +12,20 @@ const nextConfig = {
       { hostname: "miro.medium.com" },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/slow-page-speeds",
+        destination: "/blog/fix-slow-page-speeds",
+        permanent: true,
+      },
+      {
+        source: "/old-blog-post-2",
+        destination: "/new-blog-post-2",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = withMDX(nextConfig);
