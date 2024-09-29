@@ -27,7 +27,7 @@ const inter = Inter({
 // });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://jeffbuildstech.com/"),
+  metadataBase: new URL("https://www.jeffbuildstech.com/"),
   title: {
     default: "Jeff Builds Tech - Dev and Marketer",
     template: "%s | Jeff Builds Tech",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
       "Thoughts and tools for developers and entrepreneurs to accomplish more with less stress.",
     type: "website",
     locale: "en_US",
-    url: "https://jeffbuildstech.com/",
+    url: "https://www.jeffbuildstech.com/",
     siteName: "Jeff Builds Tech",
   },
 };

@@ -14,22 +14,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
 
     return {
-      url: `https://jeffbuildstech.com/blog/${post.slug}`,
+      url: `https://www.jeffbuildstech.com/blog/${post.slug}`,
       lastModified,
     };
   });
 
   return [
     {
-      url: `https://jeffbuildstech.com/`,
+      url: `https://www.jeffbuildstech.com/`,
       lastModified: new Date().toISOString().split("T")[0],
     },
     {
-      url: "https://jeffbuildstech.com/tools",
+      url: "https://www.jeffbuildstech.com/tools",
       lastModified: new Date().toISOString().split("T")[0],
     },
     {
-      url: "https://jeffbuildstech.com/blog",
+      url: "https://www.jeffbuildstech.com/blog",
       lastModified: new Date().toISOString().split("T")[0],
     },
     ...postUrls,

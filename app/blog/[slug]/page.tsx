@@ -46,7 +46,7 @@ export async function generateMetadata({
       description,
       type: "article",
       locale: "en_US",
-      url: `https://jeffbuildstech.com/blog/${params.slug}`,
+      url: `https://www.jeffbuildstech.com/blog/${params.slug}`,
       siteName: "Jeff Builds Tech",
       images: [`https://jbt-images.s3.amazonaws.com/og/OG-${params.slug}.jpg`],
     },

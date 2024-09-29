@@ -16,7 +16,7 @@ import ShineBorder from "@/components/ui/shine-border";
 import Posts from "@/components/posts";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://jeffbuildstech.com/"),
+  metadataBase: new URL("https://www.jeffbuildstech.com/"),
   title: "Jeff Builds Tech - Dev and Marketer",
   alternates: {
     canonical: "./",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
       "Helpful content and tools for developers and entrepreneurs to accomplish more with less stress.",
     type: "website",
     locale: "en_US",
-    url: "https://jeffbuildstech.com/",
+    url: "https://www.jeffbuildstech.com/",
     siteName: "Jeff Builds Tech",
   },
   twitter: {

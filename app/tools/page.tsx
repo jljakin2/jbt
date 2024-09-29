@@ -9,7 +9,7 @@ import WidgetSponsor from "@/components/widget-sponsor";
 import NotionLogo from "@/public/images/Notion_app_logo.png";
 
 export const metadata = {
-  metadataBase: new URL("https://jeffbuildstech.com/"),
+  metadataBase: new URL("https://www.jeffbuildstech.com/"),
   title: "Tools",
   alternates: {
     canonical: "./",
@@ -23,7 +23,7 @@ export const metadata = {
 
     type: "website",
     locale: "en_US",
-    url: "https://jeffbuildstech.com/",
+    url: "https://www.jeffbuildstech.com/",
     siteName: "Jeff Builds Tech",
   },
   twitter: {

@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://jeffbuildstech.com/sitemap.xml",
+    sitemap: "https://www.jeffbuildstech.com/sitemap.xml",
   };
 }
