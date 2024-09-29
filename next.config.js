@@ -20,8 +20,13 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/old-blog-post-2",
-        destination: "/new-blog-post-2",
+        source: "/how-to-count-strings-with-emojis-in-javascript",
+        destination: "/blog/count-strings-with-emojis",
+        permanent: true,
+      },
+      {
+        source: "/stop-spam-bots-with-honeypots",
+        destination: "/blog/stop-spam-bots-with-honeypots",
         permanent: true,
       },
     ];
