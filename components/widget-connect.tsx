@@ -5,7 +5,7 @@ import { Separator } from "./ui/separator";
 
 export default function ProfessionalSocialConnections() {
   return (
-    <div className="hidden md:block rounded-lg border border-border p-6 shadow-sm">
+    <div className="rounded-lg border border-border p-6 shadow-sm">
       <div className="flex items-center space-x-2 mb-2">
         <Smile className="w-5 h-5 text-primary" />
         <h2 className="text-lg font-semibold text-foreground">Say Hi 👋</h2>
