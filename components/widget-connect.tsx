@@ -15,32 +15,32 @@ export default function ProfessionalSocialConnections() {
         <SocialLink
           icon={<Github className="!w-4 !h-4 " />}
           name="GitHub"
-          url="https://github.com/yourusername"
+          url="https://github.com/jljakin2"
         />
         <SocialLink
           icon={<X className="!w-4 !h-4 " />}
           name="Elon's Thing"
-          url="https://twitter.com/yourusername"
+          url="https://twitter.com/jeffbuildstech"
         />
         <SocialLink
           icon={<LinkedIn className="!w-4 !h-4 " />}
           name="LinkedIn"
-          url="https://www.linkedin.com/in/yourprofile"
+          url="https://www.linkedin.com/in/jeff-jakinovich/"
         />
         <SocialLink
           icon={<Devto className="!w-4 !h-4 " />}
           name="Dev.to"
-          url="https://dev.to/yourusername"
+          url="https://dev.to/jeffbuildstech"
         />
         <SocialLink
           icon={<Hashnode className="!w-4 !h-4 " />}
           name="Hashnode"
-          url="https://yourusername.hashnode.dev"
+          url="https://hashnode.com/@jeffbuildstech"
         />
         <SocialLink
           icon={<Medium className="!w-4 !h-4 " />}
           name="Medium"
-          url="https://medium.com/@yourusername"
+          url="https://medium.com/@jeff.jakinovich"
         />
       </div>
     </div>

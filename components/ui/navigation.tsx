@@ -3,28 +3,65 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "../logo";
+import { Sheet, SheetContent, SheetTrigger } from "./sheet";
+import { BookOpenText, Menu, Mic, Pickaxe } from "lucide-react";
+import { useState } from "react";
 
 export default function Navigation() {
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
 
   const navigationMenu = [
-    { label: "Blog", link: "/blog" },
+    { label: "Blog", link: "/blog", icon: <BookOpenText /> },
     // { label: "Tutorials", link: "/tutorials" },
-    { label: "Tools", link: "/tools" },
-    { label: "Podcast", link: "https://brickbybrick.fm" },
+    { label: "Tools", link: "/tools", icon: <Pickaxe /> },
+    { label: "Podcast", link: "https://brickbybrick.fm", icon: <Mic /> },
   ];
+
+  const handleNavigation = (link: any) => {
+    setIsOpen(false);
+  };
 
   return (
     <nav className="flex items-center w-full">
       <ul className="flex items-center space-x-4 font-semibold">
-        <li className="mr-4">
+        <li className="mr-2 md:mr-4">
           <Link href="/">
             <span className="sr-only">Home</span>
             <Logo className="w-14 h-14" />
           </Link>
         </li>
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger className="text-muted-foreground md:hidden">
+            <Menu className="h-5 w-5" />
+          </SheetTrigger>
+          <SheetContent side="left">
+            {navigationMenu.map((item) => (
+              <ul className="flex flex-col w-full">
+                <li className="w-full py-6 text-lg" key={item.label}>
+                  <Link
+                    href={item.link}
+                    className={`${
+                      pathname.includes(item.link)
+                        ? "text-primary font-semibold"
+                        : "text-muted-foreground hover:text-primary transition-colors"
+                    }`}
+                    target={item.label === "Podcast" ? "_blank" : "_self"}
+                    onClick={() => handleNavigation(item.link)}
+                  >
+                    <span className="sr-only">{item.label}</span>
+                    <span className="flex items-center gap-4">
+                      {item.icon}
+                      {item.label}
+                    </span>
+                  </Link>
+                </li>
+              </ul>
+            ))}
+          </SheetContent>
+        </Sheet>
         {navigationMenu.map((item) => (
-          <li className="px-2" key={item.label}>
+          <li className="px-2 hidden md:block" key={item.label}>
             <Link
               href={item.link}
               className={`${

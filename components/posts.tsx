@@ -1,6 +1,7 @@
 import Image from "next/image";
-import Talk01 from "@/public/images/popular-post-01.jpg";
-import Talk02 from "@/public/images/popular-post-02.jpg";
+import Post01 from "@/public/images/popular-post-01.jpg";
+import Post02 from "@/public/images/popular-post-02.jpeg";
+import Link from "next/link";
 
 export default function Posts() {
   return (
@@ -9,20 +10,20 @@ export default function Posts() {
 
       {/* Cards */}
       <div className="grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-5">
-        <a
-          className="relative aspect-video rounded-lg overflow-hidden bg-gradient-to-tr from-slate-800 to-slate-700 odd:rotate-1 even:-rotate-1 hover:rotate-0 transition-transform duration-700 hover:duration-100 ease-in-out shadow-xl"
-          href="#0"
+        <Link
+          className="relative aspect-video rounded-lg overflow-hidden bg-gradient-to-tr from-slate-800 to-slate-700 duration-700 hover:duration-100 ease-in-out shadow-xl"
+          href="/blog/improve-leadership-with-photography"
         >
           <Image
             className="absolute inset-0 w-full h-full object-cover opacity-40"
-            src={Talk01}
+            src={Post01}
             width={336}
             height={189}
             alt="Popular post 01"
           />
           <div className="h-full relative flex flex-col items-start justify-between before:mt-auto before:flex-1 p-5">
             <div className="flex-1 flex items-center text-lg font-aspekta text-white font-[650]">
-              The Third Age of JavaScript
+              Want To Improve Your Leadership? Learn Photography
             </div>
             <div className="flex-1 w-full flex justify-end items-end">
               <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41">
@@ -40,21 +41,21 @@ export default function Posts() {
               </svg>
             </div>
           </div>
-        </a>
-        <a
-          className="relative aspect-video rounded-lg overflow-hidden bg-gradient-to-tr from-slate-800 to-slate-700 odd:rotate-1 even:-rotate-1 hover:rotate-0 transition-transform duration-700 hover:duration-100 ease-in-out shadow-xl"
-          href="#0"
+        </Link>
+        <Link
+          className="relative aspect-video rounded-lg overflow-hidden bg-gradient-to-tr from-slate-800 to-slate-700 duration-700 hover:duration-100 ease-in-out shadow-xl"
+          href="/blog/stop-spam-bots-with-honeypots"
         >
           <Image
             className="absolute inset-0 w-full h-full object-cover opacity-40"
-            src={Talk02}
+            src={Post02}
             width={336}
             height={189}
             alt="Popular post 02"
           />
           <div className="h-full relative flex flex-col items-start justify-between before:mt-auto before:flex-1 p-5">
             <div className="flex-1 flex items-center text-lg font-aspekta text-white font-[650]">
-              Building in Public Strategy
+              How To Stop Form Spam Bots With Honeypot Fields
             </div>
             <div className="flex-1 w-full flex justify-end items-end">
               <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41">
@@ -72,7 +73,7 @@ export default function Posts() {
               </svg>
             </div>
           </div>
-        </a>
+        </Link>
       </div>
     </section>
   );

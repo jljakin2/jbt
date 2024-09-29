@@ -52,6 +52,9 @@ export async function generateMetadata({
     },
     twitter: {
       images: [`https://jbt-images.s3.amazonaws.com/og/OG-${params.slug}.jpg`],
+      card: "summary_large_image",
+      title: formattedTitle,
+      description,
     },
   };
 }

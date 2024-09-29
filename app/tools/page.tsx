@@ -8,19 +8,26 @@ import WidgetSponsor from "@/components/widget-sponsor";
 
 import NotionLogo from "@/public/images/Notion_app_logo.png";
 
-export const metadata: Metadata = {
+export const metadata = {
   metadataBase: new URL("https://jeffbuildstech.com/"),
-  title: "Helpful Business Tools",
+  title: "Tools",
+  alternates: {
+    canonical: "./",
+  },
   description:
-    "Helpful templates, worksheets, and tools for people who are building businesses.",
+    "Helpful worksheets, Notion templates, and custom apps for busy business builders.",
   openGraph: {
-    title: "Helpful Business Tools",
+    title: "Tools",
     description:
-      "Helpful templates, worksheets, and tools for people who are building businesses.",
+      "Helpful worksheets, Notion templates, and custom apps for busy business builders.",
+
     type: "website",
     locale: "en_US",
     url: "https://jeffbuildstech.com/",
     siteName: "Jeff Builds Tech",
+  },
+  twitter: {
+    card: "summary_large_image",
   },
 };
 
@@ -123,7 +130,7 @@ export default function Projects() {
   ];
 
   return (
-    <div className="grow md:flex space-y-8 md:space-y-0 md:space-x-8 pt-12 md:pt-16 pb-16 md:pb-20">
+    <div className="grow md:flex space-y-8 md:space-y-0 md:space-x-8 pt-6 md:pt-16 pb-16 md:pb-20">
       {/* Middle area */}
       <div className="grow">
         <div className="max-w-[700px]">
@@ -174,7 +181,7 @@ export default function Projects() {
       </div>
 
       {/* Right sidebar */}
-      <aside className="md:w-[240px] lg:w-[300px] shrink-0">
+      <aside className="!mt-20 md:!mt-0 md:w-[240px] lg:w-[300px] shrink-0">
         <div className="space-y-6">
           <WidgetNewsletter />
           {/* <WidgetSponsor /> */}

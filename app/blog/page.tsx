@@ -10,8 +10,26 @@ import EssayList from "./components/essay-list";
 import WidgetPosts from "@/components/widget-posts";
 
 export const metadata = {
-  title: "Home - DevSpace",
-  description: "Page description",
+  metadataBase: new URL("https://jeffbuildstech.com/"),
+  title: "Blog",
+  alternates: {
+    canonical: "./",
+  },
+  description:
+    "Helpful content and tutorials for web dev, product management, and career help for busy business builders.",
+  openGraph: {
+    title: "Blog",
+    description:
+      "Helpful content and tutorials for web dev, product management, and career help for busy business builders.",
+
+    type: "website",
+    locale: "en_US",
+    url: "https://jeffbuildstech.com/",
+    siteName: "Jeff Builds Tech",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default async function Home() {
@@ -25,31 +43,28 @@ export default async function Home() {
   });
 
   return (
-    <>
-      {/* Content */}
-      <div className="grow md:flex space-y-8 md:space-y-0 md:space-x-8 pt-12 md:pt-16 pb-16 md:pb-20">
-        {/* Middle area */}
-        <div className="grow">
-          <div className="max-w-[700px]">
-            <EssaysHero />
-            <div className="space-y-10">
-              <EssayList essays={allBlogs} />
-              {/* <Talks />
+    <div className="grow md:flex space-y-8 md:space-y-0 md:space-x-8 pt-6 md:pt-16 pb-16 md:pb-20">
+      {/* Middle area */}
+      <div className="grow">
+        <div className="max-w-[700px]">
+          <EssaysHero />
+          <div className="space-y-10">
+            <EssayList essays={allBlogs} />
+            {/* <Talks />
               <FeaturedProjects /> */}
-            </div>
           </div>
         </div>
-
-        {/* Right sidebar */}
-        <aside className="md:w-[240px] lg:w-[300px] shrink-0">
-          <div className="space-y-6">
-            <WidgetNewsletter />
-            {/* <WidgetSponsor /> */}
-            <WidgetPosts />
-            {/* <WidgetBook /> */}
-          </div>
-        </aside>
       </div>
-    </>
+
+      {/* Right sidebar */}
+      <aside className="!mt-20 md:!mt-0 md:w-[240px] lg:w-[300px] shrink-0">
+        <div className="space-y-6">
+          <WidgetNewsletter />
+          {/* <WidgetSponsor /> */}
+          <WidgetPosts />
+          {/* <WidgetBook /> */}
+        </div>
+      </aside>
+    </div>
   );
 }
