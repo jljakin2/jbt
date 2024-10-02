@@ -10,7 +10,11 @@ export default function PostLink({ href, children, ...props }: PostLinkProps) {
 
   if (isInternalLink) {
     return (
-      <Link href={href} {...props} className="link">
+      <Link
+        href={href}
+        {...props}
+        className="font-semibold text-primary no-underline hover:underline transition-all duration-300"
+      >
         {children}
       </Link>
     );
@@ -21,7 +25,7 @@ export default function PostLink({ href, children, ...props }: PostLinkProps) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="link"
+      className="font-semibold text-primary no-underline hover:underline transition-all duration-300"
     >
       {children}
     </Link>

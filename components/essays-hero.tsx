@@ -66,11 +66,11 @@ export default function EssaysHero() {
 
           <h1 className="h1 font-aspekta mb-5">
             Thoughts on{" "}
-            <span className="inline-flex relative text-primary before:absolute before:inset-0 before:bg-sky-200 before:opacity-30 before:-z-10 before:-rotate-2 before:translate-y-1/4">
+            <span className="inline-flex relative text-primary before:absolute before:inset-0 before:bg-sky-200 before:opacity-30 before:-z-10 before:-rotate-2 before:translate-y-1/5">
               building
             </span>{" "}
             and{" "}
-            <span className="inline-flex relative text-primary before:absolute before:inset-0 before:bg-sky-200 before:opacity-30 before:-z-10 before:-rotate-2 before:translate-y-1/4">
+            <span className="inline-flex relative text-primary before:absolute before:inset-0 before:bg-sky-200 before:opacity-30 before:-z-10 before:-rotate-2 before:translate-y-1/5">
               selling
             </span>{" "}
             quality tech products.
