@@ -33,7 +33,7 @@ export default function EssaysHero() {
             <span className="inline-flex relative text-primary before:absolute before:inset-0 before:bg-sky-200 before:opacity-30 before:-z-10 before:-rotate-2 before:translate-y-1/5">
               useful tools
             </span>{" "}
-            to make work easier.
+            to make work more enjoyable.
           </h1>
           <p className="text-lg text-muted-foreground">
             Templates, worksheets, custom apps, and more. It doesn't need to be

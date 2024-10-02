@@ -132,7 +132,7 @@ export default function About() {
               Social, SEO, events, influencer, you name it. Then I picked up a
               book called{" "}
               <a
-                className="link"
+                className="font-semibold text-primary no-underline hover:underline transition-all duration-300"
                 href="https://www.amazon.com/Learn-Python-Hard-Way-Introduction/dp/0134692888/ref=sr_1_1?crid=CSRKAKUXFENG&dib=eyJ2IjoiMSJ9.Jsi9FEra3XWdrQnZX3Mt5QElFFIXBcRk2NWUPdIwjU27HCp6f40Yc3nCUS72X4HY.Hhigpfrs7GEJMyZs9DEyEvVu_PHWXtSw8pWYHYhvuMM&dib_tag=se&keywords=learn+python+the+hardway&qid=1727639174&sprefix=learn+python+the+hardwa%2Caps%2C140&sr=8-1"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -153,12 +153,12 @@ export default function About() {
                 href="https://www.stitch3d.io"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="link"
+                className="font-semibold text-primary no-underline hover:underline transition-all duration-300"
               >
                 Stitch3D
               </a>
-              , where we're revolutionizing the 3D LIDAR industry by moving all
-              their workflows to the web.
+              , where we're revolutionizing the 3D LIDAR industry by moving
+              their work from the desktop to the cloud.
             </p>
             <p className="text-muted-foreground mb-6">
               I have a hard time sitting still and love to work on new ideas. If
