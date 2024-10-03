@@ -117,7 +117,7 @@ export default function WidgetNewsletter() {
           Helpful tools for busy builders.
         </div>
         <p className="text-sm text-muted-foreground">
-          Small, helpful tools and resources to make your work life easier.
+          Tools and resources to make your work life easier.
         </p>
       </div>
       <form onSubmit={handleSubmit}>
