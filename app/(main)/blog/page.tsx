@@ -13,7 +13,7 @@ export const metadata = {
   metadataBase: new URL("https://www.jeffbuildstech.com/"),
   title: "Blog",
   alternates: {
-    canonical: "./",
+    canonical: "/blog",
   },
   description:
     "Helpful content and tutorials for web dev, product management, and career help for busy business builders.",

@@ -1,4 +1,4 @@
-import StarterCard from "./components/v60/starter-card";
+import StarterCard from "./components/starter-card";
 
 export default function StartPage() {
   return (

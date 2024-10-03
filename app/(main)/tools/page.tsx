@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Metadata } from "next/types";
 
 import ToolsHero from "@/components/tools-hero";
-import ProjectCard from "../project-card";
+import ProjectCard from "@/app//project-card";
 import WidgetNewsletter from "@/components/widget-newsletter";
 import WidgetSponsor from "@/components/widget-sponsor";
 
@@ -12,7 +12,7 @@ export const metadata = {
   metadataBase: new URL("https://www.jeffbuildstech.com/"),
   title: "Tools",
   alternates: {
-    canonical: "./",
+    canonical: "/tools",
   },
   description:
     "Helpful worksheets, Notion templates, and custom apps for busy business builders.",

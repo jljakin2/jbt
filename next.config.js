@@ -10,6 +10,7 @@ const nextConfig = {
       { hostname: "jbt-images.s3.amazonaws.com" },
       { hostname: "cdn.sanity.io" },
       { hostname: "miro.medium.com" },
+      { hostname: "djg4kctbfokfu.cloudfront.net" },
     ],
   },
   async redirects() {

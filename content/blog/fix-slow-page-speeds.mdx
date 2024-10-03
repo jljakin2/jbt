@@ -2,12 +2,12 @@
 title: "Goodbye Slow Page Speeds: Automate Lighthouse Reports with GitHub Actions"
 tag: "dev"
 publishedAt: "2024-07-10"
-image: "https://jbt-images.s3.amazonaws.com/posts/glenn-carstens-peters-npxxwgq33zq-unsplash-scaled.jpeg"
+image: "https://djg4kctbfokfu.cloudfront.net/posts/glenn-carstens-peters-npxxwgq33zq-unsplash-scaled.jpeg"
 summary: "Learn how to automate Lighthouse reports in GitHub actions to ensure optimal performance and prevent slow page speeds from driving away users."
 ---
 
 <Image
-  src="https://jbt-images.s3.amazonaws.com/posts/glenn-carstens-peters-npxxwgq33zq-unsplash-scaled.jpeg"
+  src="https://djg4kctbfokfu.cloudfront.net/posts/glenn-carstens-peters-npxxwgq33zq-unsplash-scaled.jpeg"
   alt="fixing slow page speeds on a laptop"
 />
 
@@ -26,14 +26,14 @@ I'm not a huge fan of setting up needless systems or automations on projects bef
 A [Lighthouse report is an automated tool](https://developer.chrome.com/docs/lighthouse/overview) to help you improve your web pages. You give it a URL, and it gives you a report on key metrics that affect the quality of your web pages. The high-level report looks like this:
 
 <Image
-  src="https://jbt-images.s3.amazonaws.com/posts/lighthouse-metrics+(1).png"
+  src="https://djg4kctbfokfu.cloudfront.net/posts/lighthouse-metrics+(1).png"
   alt="lighthouse performance metrics"
 />
 
 Each section also has more details with links to articles by Google to help you fix things that might be wrong.
 
 <Image
-  src="https://jbt-images.s3.amazonaws.com/posts/report-details+(1).png"
+  src="https://djg4kctbfokfu.cloudfront.net/posts/report-details+(1).png"
   alt="lighthouse accessibility report"
 />
 
@@ -104,7 +104,7 @@ npm run build && npm run ci: Lighthouse
 Your terminal should look something like this:
 
 <Image
-  src="https://jbt-images.s3.amazonaws.com/posts/terminal-with-markings.png"
+  src="https://djg4kctbfokfu.cloudfront.net/posts/terminal-with-markings.png"
   alt="lighthouse cli output"
 />
 
@@ -115,7 +115,7 @@ You should notice a few things:
 3.  The final thing the report will tell you is where these reports live. You can take the HTML file and copy it into your URL, and you should be able to see the full report. All reports should live in a directory called <Code>.lighthouseci</Code> if you used the same outputs command I used when setting up the Lighthouse instructions.
 
 <Image
-  src="https://jbt-images.s3.amazonaws.com/posts/report-from-command-line.png"
+  src="https://djg4kctbfokfu.cloudfront.net/posts/report-from-command-line.png"
   alt="full lighthouse report"
 />
 
@@ -143,7 +143,7 @@ To do this, review all the errors you received when running the report locally. 
 Take, for example, this error:
 
 <Image
-  src="https://jbt-images.s3.amazonaws.com/posts/total-byte-error.png"
+  src="https://djg4kctbfokfu.cloudfront.net/posts/total-byte-error.png"
   alt="specific lighthouse cli report output"
 />
 
@@ -216,7 +216,7 @@ module.exports = {
 Run the Lighthouse report in GitHub actions I'm assuming you already know what GitHub actions are. So, let's get right into setting them up. First, make a .github directory in your root folder with a workflows directory inside. Then, add a lighthouse.yml file to the workflows directory. It should look something like this:
 
 <Image
-  src="https://jbt-images.s3.amazonaws.com/posts/github-action-folder-setup.png"
+  src="https://djg4kctbfokfu.cloudfront.net/posts/github-action-folder-setup.png"
   alt="lighthouse in a github action"
 />
 
@@ -257,14 +257,14 @@ The great thing about the benchmarks is they act as gatekeepers. If you change t
 The output of the action should look like this:
 
 <Image
-  src="https://jbt-images.s3.amazonaws.com/posts/github-action-output.png"
+  src="https://djg4kctbfokfu.cloudfront.net/posts/github-action-output.png"
   alt="lighthouse report ran in a github action"
 />
 
 My Lighthouse report looks like it failed. That is because my benchmarks for the main categories aren't high enough.
 
 <Image
-  src="https://jbt-images.s3.amazonaws.com/posts/errors-in-github-action.png"
+  src="https://djg4kctbfokfu.cloudfront.net/posts/errors-in-github-action.png"
   alt="lighthouse report github action output"
 />
 

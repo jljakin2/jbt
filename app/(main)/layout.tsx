@@ -2,15 +2,10 @@ import "@/app/css/globals.css";
 
 import { Inter } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { ThemeProvider } from "./theme-provider";
+import { ThemeProvider } from "../theme-provider";
 import Header from "@/components/ui/header";
 import Footer from "@/components/ui/footer";
 import { Metadata } from "next/types";
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
 
 // const aspekta = localFont({
 //   src: [
@@ -55,21 +50,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      {/* suppressHydrationWarning: https://github.com/vercel/next.js/issues/44343 */}
-      <body
-        className={`${inter.variable} font-inter antialiased bg-background text-foreground tracking-tight`}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
-      </body>
-      {process.env.GTAG && <GoogleAnalytics gaId={process.env.GTAG} />}
-    </html>
+    <div className="max-w-7xl mx-auto">
+      <div className="min-h-screen flex">
+        {/* <SideNavigation /> */}
+
+        {/* Main content */}
+        <main className="grow overflow-hidden px-6">
+          <div className="w-full h-full max-w-[1072px] mx-auto flex flex-col">
+            <Header />
+
+            {children}
+            <Footer />
+          </div>
+        </main>
+      </div>
+    </div>
   );
 }

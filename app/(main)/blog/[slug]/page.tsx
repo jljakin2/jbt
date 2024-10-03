@@ -48,10 +48,10 @@ export async function generateMetadata({
       locale: "en_US",
       url: `https://www.jeffbuildstech.com/blog/${params.slug}`,
       siteName: "Jeff Builds Tech",
-      images: [`https://jbt-images.s3.amazonaws.com/og/OG-${params.slug}.jpg`],
+      images: [`https://djg4kctbfokfu.cloudfront.net/og/OG-${params.slug}.jpg`],
     },
     twitter: {
-      images: [`https://jbt-images.s3.amazonaws.com/og/OG-${params.slug}.jpg`],
+      images: [`https://djg4kctbfokfu.cloudfront.net/og/OG-${params.slug}.jpg`],
       card: "summary_large_image",
       title: formattedTitle,
       description,
