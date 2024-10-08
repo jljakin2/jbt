@@ -41,10 +41,14 @@
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.3.0",
     "framer-motion": "^11.11.0",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.2",
     "lucide-react": "^0.441.0",
     "next": "^14.0.3",
     "next-mdx-remote": "^5.0.0",
     "next-themes": "^0.3.0",
+    "openai": "^4.67.3",
+    "puppeteer": "^23.5.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.0",
@@ -56,6 +60,7 @@
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.3.3",
+    "unsplash-js": "^7.0.19",
     "zod": "^3.23.8"
   },
   "devDependencies": {
