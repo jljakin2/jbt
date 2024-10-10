@@ -60,14 +60,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} font-inter antialiased bg-background text-foreground tracking-tight`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        {children}
       </body>
       {process.env.GTAG && <GoogleAnalytics gaId={process.env.GTAG} />}
     </html>

@@ -5,31 +5,16 @@ import { Button } from "@/components/ui/button";
 import { useSearchParams } from "next/navigation";
 import PulsatingButton from "@/components/ui/pulsating-button";
 import ReactMarkdown from "react-markdown";
-import dynamic from "next/dynamic";
 import { ArrowLeftIcon } from "lucide-react";
 import Link from "next/link";
-import { StyleSheet } from "@react-pdf/renderer";
-
-const PDFDownloadLink = dynamic(
-  () => import("@react-pdf/renderer").then((mod) => mod.PDFDownloadLink),
-  { ssr: false }
-);
-const Document = dynamic(
-  () => import("@react-pdf/renderer").then((mod) => mod.Document),
-  { ssr: false }
-);
-const Page = dynamic(
-  () => import("@react-pdf/renderer").then((mod) => mod.Page),
-  { ssr: false }
-);
-const Text = dynamic(
-  () => import("@react-pdf/renderer").then((mod) => mod.Text),
-  { ssr: false }
-);
-const View = dynamic(
-  () => import("@react-pdf/renderer").then((mod) => mod.View),
-  { ssr: false }
-);
+import {
+  StyleSheet,
+  Text,
+  View,
+  Page,
+  Document,
+  PDFDownloadLink,
+} from "@react-pdf/renderer";
 
 // Define styles
 const styles = StyleSheet.create({
