@@ -86,7 +86,8 @@ module.exports = {
   		},
   		animation: {
   			'border-beam': 'border-beam calc(var(--duration)*1s) infinite linear',
-  			shine: 'shine var(--duration) infinite linear'
+  			shine: 'shine var(--duration) infinite linear',
+  			pulse: 'pulse var(--duration) ease-out infinite'
   		},
   		keyframes: {
   			'border-beam': {
@@ -103,6 +104,14 @@ module.exports = {
   				},
   				to: {
   					'background-position': '0% 0%'
+  				}
+  			},
+  			pulse: {
+  				'0%, 100%': {
+  					boxShadow: '0 0 0 0 var(--pulse-color)'
+  				},
+  				'50%': {
+  					boxShadow: '0 0 0 8px var(--pulse-color)'
   				}
   			}
   		}
