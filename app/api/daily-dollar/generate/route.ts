@@ -1,58 +1,42 @@
 import { NextResponse } from "next/server";
 import openai from "../../openai";
-import puppeteer from "puppeteer";
+import axios from "axios";
+import { load } from "cheerio";
 
 async function getRandomMarketingLesson() {
-  let browser;
   try {
-    // @ts-ignore
-    browser = await puppeteer.launch({ headless: "new" });
-    const page = await browser.newPage();
+    const response = await axios.get("https://marketingexamples.com/");
+    const $ = load(response.data);
 
-    await page.goto("https://marketingexamples.com/", {
-      waitUntil: "networkidle0",
-    });
-
-    const lessons = await page.evaluate(() => {
-      const cards = document.querySelectorAll("a.card");
-      return Array.from(cards).map((card: any) => {
-        const title =
-          card.querySelector("h4")?.textContent?.trim() || "No title found";
-        const url = card.href;
-        const category =
-          card.querySelector(".card__bottom-tag")?.textContent?.trim() ||
-          "No category found";
-        const readTime =
-          card.querySelector(".pCard__bottom-link-text")?.textContent?.trim() ||
-          "No read time found";
-        return { title, url, category, readTime };
-      });
-    });
+    const lessons = $("a.card")
+      .map((_, card) => {
+        const $card: any = $(card);
+        return {
+          title: $card.find("h4").text().trim(),
+          url: new URL($card.attr("href"), "https://marketingexamples.com")
+            .href,
+          category: $card.find(".card__bottom-tag").text().trim(),
+          readTime: $card.find(".pCard__bottom-link-text").text().trim(),
+        };
+      })
+      .get();
 
     if (lessons.length === 0) {
       throw new Error("No lessons found");
     }
 
-    const randomLesson: any =
-      lessons[Math.floor(Math.random() * lessons.length)];
+    const randomLesson: any = lessons[Math.floor(Math.random() * lessons.length)];
 
     // Fetch the content of the selected lesson
-    await page.goto(randomLesson.url, { waitUntil: "networkidle0" });
-    const articleContent = await page.evaluate(() => {
-      const articleElement = document.querySelector("article");
-      return articleElement ? articleElement.innerText : "No content found";
-    });
-
-    randomLesson.content = articleContent;
+    const lessonResponse = await axios.get(randomLesson.url);
+    const $lesson = load(lessonResponse.data);
+    randomLesson.content =
+      $lesson("article").text().trim() || "No content found";
 
     return randomLesson;
   } catch (error) {
     console.error("Error in getRandomMarketingLesson:", error);
     throw error;
-  } finally {
-    if (browser) {
-      await browser.close();
-    }
   }
 }
 
