@@ -50,20 +50,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="max-w-7xl mx-auto">
-      <div className="min-h-screen flex">
-        {/* <SideNavigation /> */}
+    <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
 
-        {/* Main content */}
-        <main className="grow overflow-hidden px-6">
-          <div className="w-full h-full max-w-[1072px] mx-auto flex flex-col">
-            <Header />
+      <div className="max-w-7xl mx-auto">
+        <div className="min-h-screen flex">
+          {/* <SideNavigation /> */}
 
-            {children}
-            <Footer />
-          </div>
-        </main>
+          {/* Main content */}
+          <main className="grow overflow-hidden px-6">
+            <div className="w-full h-full max-w-[1072px] mx-auto flex flex-col">
+              <Header />
+
+              {children}
+              <Footer />
+            </div>
+          </main>
+        </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 }

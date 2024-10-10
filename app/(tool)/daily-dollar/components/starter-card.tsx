@@ -49,7 +49,7 @@ export default function StarterCard() {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await fetch("/daily-dollar/generate", {
+      const response = await fetch("/api/daily-dollar/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

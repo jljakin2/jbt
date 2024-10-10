@@ -19,7 +19,7 @@ interface ItemProps {
 
 export default function ProjectCard({ item }: ItemProps) {
   return (
-    <Link
+    <a
       className="rounded-lg border border-border hover:border-muted-foreground transition-color ease-in-out p-5 group"
       href={item.slug}
     >
@@ -60,6 +60,6 @@ export default function ProjectCard({ item }: ItemProps) {
           </svg>
         </div>
       </div>
-    </Link>
+    </a>
   );
 }
