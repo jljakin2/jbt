@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import openai from "../../../api/openai";
+import openai from "../../openai";
 import puppeteer from "puppeteer";
 
 async function getRandomMarketingLesson() {
