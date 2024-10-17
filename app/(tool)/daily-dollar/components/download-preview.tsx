@@ -252,6 +252,8 @@ export default function DownloadPreview() {
     }
   }, [searchParams]);
 
+  console.log(content);
+
   const MarkdownComponents: any = {
     p: ({ children }: { children: any }) => (
       <p className="mb-4 text-sm">{children}</p>

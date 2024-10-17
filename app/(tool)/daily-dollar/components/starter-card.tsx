@@ -49,12 +49,16 @@ export default function StarterCard() {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await fetch("/api/daily-dollar/generate", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://7i7k56eh0b.execute-api.us-east-1.amazonaws.com/dev/daily-dollar",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({}),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to generate content");
@@ -69,7 +73,7 @@ export default function StarterCard() {
       sessionStorage.setItem(
         contentId,
         JSON.stringify({
-          ...data,
+          ...data.data, // the api returns an object with a data property and a message property
         })
       );
 
