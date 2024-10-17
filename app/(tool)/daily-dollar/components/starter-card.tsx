@@ -61,9 +61,6 @@ export default function StarterCard() {
         }
       );
 
-      if (!response.ok) {
-        throw new Error("Failed to generate content");
-      }
       console.log("response", response);
       const data = await response.json();
       console.log("data after json", data);
