@@ -48,6 +48,7 @@ export default function StarterCard() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    console.log("about to call api");
     try {
       const response = await fetch(
         "https://7i7k56eh0b.execute-api.us-east-1.amazonaws.com/dev/daily-dollar",
