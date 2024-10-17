@@ -1,4 +1,6 @@
+import Logo from "@/components/logo";
 import StarterCard from "./components/starter-card";
+import Link from "next/link";
 
 export const metadata = {
   metadataBase: new URL("https://www.jeffbuildstech.com/"),
@@ -39,6 +41,14 @@ export default function DailyDollarPage() {
           opacity: 0.1,
         }}
       />
+      <header className="absolute top-0 left-0 w-full p-4 z-20">
+        <div className="container mx-auto">
+          <Link href="/">
+            <span className="sr-only">Home</span>
+            <Logo className="w-14 h-14" />
+          </Link>
+        </div>
+      </header>
       <StarterCard />
     </div>
   );
