@@ -61,9 +61,7 @@ export default function StarterCard() {
         }
       );
 
-      console.log("response", response);
       const data = await response.json();
-      console.log("data after json", data);
 
       // Generate a unique ID on the client side
       const contentId = uuidv4();
