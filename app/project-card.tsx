@@ -25,8 +25,8 @@ export default function ProjectCard({ item }: ItemProps) {
     >
       <div className="flex flex-col h-full">
         <div className="grow">
-          <div className="flex items-center justify-between space-x-2">
-            <div className="h-10 w-10 flex items-center justify-center border border-border rounded-full mb-2">
+          <div className="flex items-center justify-between space-x-2 mb-2">
+            <div className="h-10 w-10 flex items-center justify-center border border-border rounded-full ">
               {item.icon}
             </div>
             <div className="flex items-center space-x-2">

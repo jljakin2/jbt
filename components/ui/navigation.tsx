@@ -24,7 +24,7 @@ export default function Navigation() {
 
   return (
     <nav className="flex items-center w-full">
-      <ul className="flex items-center space-x-4 font-semibold">
+      <ul className="flex items-center space-x-4">
         <li className="mr-2 md:mr-4">
           <Link href="/">
             <span className="sr-only">Home</span>
@@ -66,7 +66,7 @@ export default function Navigation() {
               href={item.link}
               className={`${
                 pathname.includes(item.link)
-                  ? "text-primary border-b-2 border-primary pb-1"
+                  ? "text-primary font-medium border-b-2 border-primary pb-1"
                   : "text-muted-foreground hover:text-primary transition-colors"
               }`}
               target={item.label === "Podcast" ? "_blank" : "_self"}
