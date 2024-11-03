@@ -30,6 +30,14 @@ import {
   Highlighter,
 } from "lucide-react";
 import { useAtomicEssay } from "../hooks/use-atomic-essay";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { essayTemplates } from "../lib/templates";
 
 const toolbar = [
   {
@@ -102,6 +110,17 @@ export default function MarkdownEditor({
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [undoStack, setUndoStack] = useState<UndoState[]>([]);
   const [currentValue, setCurrentValue] = useState(markdown);
+
+  const handleTemplateChange = (templateName: string) => {
+    const template = essayTemplates.find((t) => t.name === templateName);
+    if (
+      template &&
+      markdown.trim() ===
+        "# My Atomic Essay\n\nStart writing your essay here..."
+    ) {
+      setMarkdown(template.content);
+    }
+  };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if ((e.metaKey || e.ctrlKey) && e.key === "z") {
@@ -281,22 +300,41 @@ export default function MarkdownEditor({
       <CardHeader className="flex-none">
         <div className="flex items-center justify-between">
           <CardTitle>Atomic Essay Writer</CardTitle>
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant={showPreview ? "default" : "ghost"}
-                  size="sm"
-                  onClick={() => setShowPreview(!showPreview)}
-                >
-                  <Eye className="h-4 w-4" />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Toggle Preview</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+          <div className="flex items-center gap-2">
+            <Select onValueChange={handleTemplateChange}>
+              <SelectTrigger className="w-[180px] text-left">
+                <SelectValue placeholder="Choose template..." />
+              </SelectTrigger>
+              <SelectContent>
+                {essayTemplates.map((template) => (
+                  <SelectItem key={template.name} value={template.name}>
+                    <>
+                      <div>{template.name}</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">
+                        {template.description}
+                      </div>
+                    </>
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant={showPreview ? "default" : "ghost"}
+                    size="sm"
+                    onClick={() => setShowPreview(!showPreview)}
+                  >
+                    <Eye className="h-4 w-4" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Toggle Preview</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
         </div>
         <TooltipProvider>
           <div className="flex items-center gap-2">

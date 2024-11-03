@@ -19,16 +19,27 @@ export default function PreviewPane() {
   const previewRef = useRef<HTMLDivElement>(null);
 
   const handleDownload = async () => {
-    if (previewRef.current) {
-      try {
-        const dataUrl = await toPng(previewRef.current, { quality: 0.95 });
-        const link = document.createElement("a");
-        link.download = "my-atomic-essay.png";
-        link.href = dataUrl;
-        link.click();
-      } catch (err) {
-        console.error("Failed to generate image:", err);
-      }
+    if (!previewRef.current) return;
+
+    try {
+      const dataUrl = await toPng(previewRef.current, {
+        quality: 1.0,
+        pixelRatio: 3,
+        skipAutoScale: true,
+        style: {
+          transform: "scale(1)", // Ensures no scaling during capture
+        },
+        fontEmbedCSS: "", // Ensures fonts are properly embedded
+        backgroundColor: "#ffffff", // Ensures white background
+      });
+
+      // Create download link
+      const link = document.createElement("a");
+      link.download = "atomic-essay.png";
+      link.href = dataUrl;
+      link.click();
+    } catch (err) {
+      console.error("Error generating image:", err);
     }
   };
 
@@ -47,7 +58,7 @@ export default function PreviewPane() {
             [&>ul]:my-2 [&>ul>li]:my-1 [&>ul]:ml-4
             [&>ol]:my-2 [&>ol>li]:my-1 [&>ol]:ml-4
             [&>blockquote]:pl-4 [&>blockquote]:border-l-4 [&>blockquote]:border-gray-200 [&>blockquote]:italic [&>blockquote]:my-2
-            mark:bg-yellow-200 mark:px-1 mark:rounded-sm"
+            [&_mark]:bg-yellow-100 [&_mark]:px-1 [&_mark]:rounded-md [&_mark]:-rotate-2"
           ref={previewRef}
           data-color-mode="light"
         >
