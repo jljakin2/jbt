@@ -28,6 +28,7 @@ import {
   Quote,
   Minus,
   Highlighter,
+  Download,
 } from "lucide-react";
 import { useAtomicEssay } from "../hooks/use-atomic-essay";
 import {
@@ -38,58 +39,57 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { essayTemplates } from "../lib/templates";
-
-const toolbar = [
-  {
-    icon: <Bold className="h-4 w-4" />,
-    action: "**",
-    tooltip: "Bold (for key points)",
-  },
-  {
-    icon: <Italic className="h-4 w-4" />,
-    action: "*",
-    tooltip: "Italic (for emphasis)",
-  },
-  {
-    icon: <Highlighter className="h-4 w-4" />,
-    action: "==",
-    tooltip: "Highlight (for important phrases)",
-  },
-  {
-    icon: <Heading1 className="h-4 w-4" />,
-    action: "# ",
-    tooltip: "Main Heading",
-  },
-  {
-    icon: <Heading2 className="h-4 w-4" />,
-    action: "## ",
-    tooltip: "Subheading",
-  },
-  {
-    icon: <Heading3 className="h-4 w-4" />,
-    action: "### ",
-    tooltip: "Section heading",
-  },
-  {
-    icon: <List className="h-4 w-4" />,
-    action: "- ",
-    tooltip: "Bullet Points (for lists)",
-  },
-  {
-    icon: <ListOrdered className="h-4 w-4" />,
-    action: "1. ",
-    tooltip: "Numbered List (for steps/sequence)",
-  },
-  {
-    icon: <Quote className="h-4 w-4" />,
-    action: "> ",
-    tooltip: "Blockquote (for key takeaways)",
-  },
-  {
-    icon: <Minus className="h-4 w-4" />,
-    action: "---\n",
-    tooltip: "Divider (for section breaks)",
-  },
+import { Separator } from "@/components/ui/separator";
+import { toPng } from "html-to-image";
+import { PreviewContent } from "./preview-content";
+const toolbarGroups = [
+  // Group 1: Text formatting
+  [
+    { icon: <Bold className="h-4 w-4" />, action: "**", tooltip: "Bold" },
+    { icon: <Italic className="h-4 w-4" />, action: "*", tooltip: "Italic" },
+    {
+      icon: <Highlighter className="h-4 w-4" />,
+      action: "==",
+      tooltip: "Highlight",
+    },
+  ],
+  // Group 2: Headers
+  [
+    {
+      icon: <Heading1 className="h-4 w-4" />,
+      action: "# ",
+      tooltip: "Heading 1",
+    },
+    {
+      icon: <Heading2 className="h-4 w-4" />,
+      action: "## ",
+      tooltip: "Heading 2",
+    },
+    {
+      icon: <Heading3 className="h-4 w-4" />,
+      action: "### ",
+      tooltip: "Heading 3",
+    },
+  ],
+  // Group 3: Lists
+  [
+    {
+      icon: <List className="h-4 w-4" />,
+      action: "- ",
+      tooltip: "Bullet List",
+    },
+    {
+      icon: <ListOrdered className="h-4 w-4" />,
+      action: "1. ",
+      tooltip: "Numbered List",
+    },
+    { icon: <Quote className="h-4 w-4" />, action: "> ", tooltip: "Quote" },
+    {
+      icon: <Minus className="h-4 w-4" />,
+      action: "---\n",
+      tooltip: "Divider",
+    },
+  ],
 ];
 
 interface UndoState {
@@ -108,6 +108,7 @@ export default function MarkdownEditor({
 }: MarkdownEditorProps) {
   const { markdown, setMarkdown, wordCount } = useAtomicEssay();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const previewRef = useRef<HTMLDivElement>(null);
   const [undoStack, setUndoStack] = useState<UndoState[]>([]);
   const [currentValue, setCurrentValue] = useState(markdown);
 
@@ -242,8 +243,8 @@ export default function MarkdownEditor({
     const end = textarea.selectionEnd;
     const text = textarea.value;
 
-    // For highlight, we want to wrap just the selected text
-    if (action === "==") {
+    // For text formatting (bold, italic, highlight)
+    if (action === "**" || action === "*" || action === "==") {
       const before = text.substring(0, start);
       const selected = text.substring(start, end);
       const after = text.substring(end);
@@ -251,7 +252,7 @@ export default function MarkdownEditor({
       const newText = before + action + selected + action + after;
       setMarkdown(newText);
 
-      // Position cursor after the highlighted text
+      // Position cursor after the formatted text
       setTimeout(() => {
         textarea.focus();
         const newCursorPos = selected
@@ -262,7 +263,7 @@ export default function MarkdownEditor({
       return;
     }
 
-    // For other formatting options, handle line-based formatting
+    // For line-based formatting (headers, lists, quotes)
     const lineStart = text.lastIndexOf("\n", start - 1) + 1;
     const lineEnd = text.indexOf("\n", start);
     const actualLineEnd = lineEnd === -1 ? text.length : lineEnd;
@@ -274,24 +275,63 @@ export default function MarkdownEditor({
     // Remove any existing heading markers or list markers from the line
     const cleanLine = currentLine.replace(/^(#{1,3}|-|\d+\.)\s+/, "");
 
-    if (action === "- " || action === "1. ") {
-      // For lists, add to start of line
-      const newText = before + action + cleanLine + after;
-      setMarkdown(newText);
-      const newCursorPos = lineStart + action.length + cleanLine.length;
-      setTimeout(() => {
-        textarea.focus();
-        textarea.setSelectionRange(newCursorPos, newCursorPos);
-      }, 0);
-    } else {
-      // For headings, add to start of line
-      const newText = before + action + cleanLine + after;
-      setMarkdown(newText);
-      const newCursorPos = lineStart + action.length + cleanLine.length;
-      setTimeout(() => {
-        textarea.focus();
-        textarea.setSelectionRange(newCursorPos, newCursorPos);
-      }, 0);
+    const newText = before + action + cleanLine + after;
+    setMarkdown(newText);
+    const newCursorPos = lineStart + action.length + cleanLine.length;
+    setTimeout(() => {
+      textarea.focus();
+      textarea.setSelectionRange(newCursorPos, newCursorPos);
+    }, 0);
+  };
+
+  const getSlugifiedTitle = (markdown: string): string => {
+    // Find the first H1 heading using regex
+    const h1Match = markdown.match(/^#\s+(.+)$/m);
+    if (!h1Match) return "untitled";
+
+    // Get the heading text and slugify it
+    const title = h1Match[1];
+    return title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-") // Replace non-alphanumeric chars with hyphens
+      .replace(/^-+|-+$/g, ""); // Remove leading/trailing hyphens
+  };
+
+  const handleDownload = async () => {
+    if (!previewRef.current) return;
+
+    try {
+      // Temporarily make the preview visible
+      const previewElement = previewRef.current;
+      previewElement.style.display = "block";
+      console.log("previewElement", previewElement);
+
+      // Get the actual height after making it visible
+      const height = previewElement.offsetHeight;
+
+      const dataUrl = await toPng(previewElement, {
+        quality: 1.0,
+        pixelRatio: 3,
+        width: 600,
+        height, // Use the actual content height
+        skipAutoScale: true,
+        style: {
+          transform: "scale(1)",
+        },
+        backgroundColor: "#ffffff",
+      });
+
+      // Hide it again
+      previewElement.style.display = "none";
+
+      const fileName = `${getSlugifiedTitle(markdown)}.png`;
+
+      const link = document.createElement("a");
+      link.download = fileName;
+      link.href = dataUrl;
+      link.click();
+    } catch (err) {
+      console.error("Error generating image:", err);
     }
   };
 
@@ -334,28 +374,52 @@ export default function MarkdownEditor({
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
-          </div>
-        </div>
-        <TooltipProvider>
-          <div className="flex items-center gap-2">
-            {toolbar.map((item) => (
-              <Tooltip key={item.tooltip}>
+            <TooltipProvider>
+              <Tooltip>
                 <TooltipTrigger asChild>
                   <Button
                     variant="ghost"
                     size="sm"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleToolbarClick(item.action);
-                    }}
+                    onClick={handleDownload}
+                    disabled={wordCount > 300}
                   >
-                    {item.icon}
+                    <Download className="h-4 w-4" />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>{item.tooltip}</p>
+                  <p>Download</p>
                 </TooltipContent>
               </Tooltip>
+            </TooltipProvider>
+          </div>
+        </div>
+        <TooltipProvider>
+          <div className="flex flex-wrap gap-2">
+            {toolbarGroups.map((group, groupIndex) => (
+              <div key={groupIndex} className="flex items-center gap-1">
+                {group.map((item) => (
+                  <Tooltip key={item.tooltip}>
+                    <TooltipTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleToolbarClick(item.action);
+                        }}
+                      >
+                        {item.icon}
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{item.tooltip}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                ))}
+                {groupIndex < toolbarGroups.length - 1 && (
+                  <Separator orientation="vertical" className="h-4" />
+                )}
+              </div>
             ))}
           </div>
         </TooltipProvider>
@@ -374,6 +438,19 @@ export default function MarkdownEditor({
           </div>
         </div>
       </CardContent>
+      <div
+        ref={previewRef}
+        style={{
+          width: "600px",
+          padding: "32px",
+          background: "white",
+          borderRadius: "12px",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+          display: "none", // Start hidden, we'll toggle this in handleDownload
+        }}
+      >
+        <PreviewContent markdown={markdown} />
+      </div>
     </Card>
   );
 }
