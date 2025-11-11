@@ -148,8 +148,22 @@ export default async function SinglePost({
               </div>
               <h1 className="h1 font-aspekta mb-6">{post.metadata.title}</h1>
             </header>
-            {/* <div className="prose text-slate-500 dark:text-slate-400 max-w-none prose-p:leading-normal prose-headings:text-slate-800 dark:prose-headings:text-slate-200 prose-a:font-medium prose-a:text-sky-500 prose-a:no-underline hover:prose-a:underline prose-strong:font-medium prose-strong:text-slate-800 dark:prose-strong:text-slate-100 prose-pre:bg-slate-800 dark:prose-code:text-slate-200"> */}
-            <div className="prose text-text max-w-none prose-p:leading-loose prose-headings:text-foreground prose-headings:leading-none prose-strong:font-medium prose-strong:text-foreground ">
+            <div className="prose text-text max-w-none
+              prose-p:leading-relaxed prose-p:mb-6
+              prose-headings:text-foreground prose-headings:font-semibold prose-headings:tracking-tight
+              prose-h2:text-3xl prose-h2:leading-tight prose-h2:mt-12 prose-h2:mb-6
+              prose-h3:text-2xl prose-h3:leading-snug prose-h3:mt-10 prose-h3:mb-4
+              prose-h4:text-xl prose-h4:leading-snug prose-h4:mt-8 prose-h4:mb-3
+              prose-strong:font-semibold prose-strong:text-foreground
+              prose-ul:my-6 prose-ul:space-y-2
+              prose-ol:my-6 prose-ol:space-y-2
+              prose-li:leading-relaxed
+              prose-blockquote:my-6 prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-6 prose-blockquote:italic
+              prose-pre:my-6 prose-pre:rounded-lg
+              prose-code:text-sm prose-code:font-mono
+              prose-img:my-8 prose-img:rounded-lg
+              prose-hr:my-12 prose-hr:border-border
+              prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline prose-a:transition-all">
               <CustomMDX source={post.content} />
             </div>
           </article>
