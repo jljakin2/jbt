@@ -211,7 +211,7 @@ export default function Projects() {
           </defs>
         </svg>
       ),
-      slug: "https://jeffbuildstech.com/daily-dollar",
+      slug: "/daily-dollar",
       title: "Daily Dollar",
       excerpt:
         "Practice your marketing skills everyday with a quick exercise based on the content from Marketing Examples blog.",
@@ -252,7 +252,7 @@ export default function Projects() {
           </defs>
         </svg>
       ),
-      slug: "https://jeffbuildstech.com/v60",
+      slug: "/v60",
       title: "v60 Coffee Guide",
       excerpt:
         "Learn how to make the perfect pour-over coffee with this v60 coffee guide. Life is short. Drink better coffee.",
@@ -281,7 +281,7 @@ export default function Projects() {
           </defs>
         </svg>
       ),
-      slug: "https://jeffbuildstech.com/atomic-essay",
+      slug: "/atomic-essay",
       title: "Atomic Essay",
       excerpt:
         "Create an atomic essay and download it as an image to share on social media.",
