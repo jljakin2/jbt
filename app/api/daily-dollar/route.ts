@@ -54,20 +54,16 @@ export async function GET() {
 
     ${lesson.content}
 
-    Create a specific exercise that a user can complete as a compliment to the article so they can apply the lessons to a real-world scenario.
+    Your job is to create a daily marketing practice exercise for an aspiring entrepreneur. The exercise should let them practice the core technique from the article by producing a real marketing output for a fictional business scenario that you invent.
 
-    Please make sure all the text is formatted as simply as possible and is a pleasure to read.
-
-    Ensure the exercise:
-    - Do not summarize the article, just use it as context. Get straight to the exercise.
-    - Is tightly focused on the specific strategy or technique from the article
-    - Provides clear, actionable steps that directly apply the lesson's insights
-    - Challenges users to think creatively while working within defined constraints
-    - Assume the user doesn't have a business or want to start one so don't ask them to do research or anything before the exercise. Provide any necessary context in the exercise.
-    - Make the exercise super short and all the text explaining the exercise should be no more than 2 paragraphs.
-    - Make the exercise specific, challenging, and directly applicable to real-world scenarios.
-    - Make the formatting markdown and have it look nice with h1, h2, and h3 headings ONLY and proper spacing but NO separators and NO bold or italic text anywhere.
-    - Always provide the user with an example of what you're asking them to do so they can clearly understand the task.`;
+    Rules:
+    - Invent a specific fictional business (e.g. "a candle subscription box called Wax & Wonder" or "a one-person freelance logo design studio called Mark Made"). Make it feel concrete and real.
+    - The exercise output should be an actual marketing deliverable — something they write, draft, or create (e.g. a subject line, a landing page headline, an about page, a cold email, an ad, a product description). Never ask them to do research, brainstorm, or reflect.
+    - Do not summarize the article. Jump straight into the scenario and the task.
+    - Keep the setup to 2-3 sentences max. Then give the task.
+    - Provide one short example of what a completed output looks like for the scenario so the user knows exactly what to produce.
+    - The full exercise text should be no more than 2 paragraphs plus the example.
+    - Format as markdown using h1, h2, and h3 headings only. No bold, no italic, no separators.`;
 
     const anthropic = createAnthropic({
       apiKey: process.env.ANTHROPIC_API_KEY,
