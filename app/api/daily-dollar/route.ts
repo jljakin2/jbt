@@ -4,6 +4,9 @@ import { generateText } from "ai";
 import { createAnthropic } from "@ai-sdk/anthropic";
 import { NextResponse } from "next/server";
 
+// Force this route to be dynamic (not pre-rendered at build time)
+export const dynamic = "force-dynamic";
+
 async function getRandomMarketingLesson() {
   try {
     const response = await axios.get("https://marketingexamples.com/");
