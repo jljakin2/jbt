@@ -69,7 +69,7 @@ export default async function SinglePost({
   if (!post) notFound();
 
   const stats = readingTime(post.content);
-  const postUrl = `https://jeffbuildstech.com/posts/${params.slug}`;
+  const postUrl = `https://www.jeffbuildstech.com/blog/${params.slug}`;
   const postTitle = post.metadata.title;
 
   return (

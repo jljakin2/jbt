@@ -1,3 +1,5 @@
+"use client";
+
 import { Separator } from "@/components/ui/separator";
 import {
   Github,
@@ -8,6 +10,7 @@ import {
   Facebook,
   Devto,
 } from "../brand-icons";
+
 export default function Footer() {
   return (
     <footer className="container mx-auto py-8">

@@ -50,16 +50,7 @@ export default function StarterCard() {
     setIsLoading(true);
     console.log("about to call api");
     try {
-      const response = await fetch(
-        "https://7i7k56eh0b.execute-api.us-east-1.amazonaws.com/dev/daily-dollar",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({}),
-        }
-      );
+      const response = await fetch("/api/daily-dollar");
 
       const data = await response.json();
 
