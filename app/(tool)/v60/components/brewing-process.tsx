@@ -17,53 +17,56 @@ interface BrewingStep {
   gifUrl: string;
 }
 
-const brewingSteps: BrewingStep[] = [
-  {
-    time: 0,
-    title: "Add 60g of water",
-    subTitle: "Wait until 0:45",
-    hint: "This is the bloom phase. Be patient here. This is flavor town, baby 😋",
-    gifUrl: "https://djg4kctbfokfu.cloudfront.net/tools/v60/bloom.gif",
-  },
-  {
-    time: 45,
-    title: "Pour water in circular motion",
-    subTitle: "Aim to reach 300g by 1:15",
-    hint: "This is somewhat fast pouring. Keep the water flow steady. No need to be perfect though 🙂.",
-    gifUrl: "https://djg4kctbfokfu.cloudfront.net/tools/v60/initial-pour.gif",
-  },
-  {
-    time: 75,
-    title: "Continue pouring but slower",
-    subTitle: "Aim to reach 500g by 1:45",
-    hint: "Your cone should be quite full during this time. This helps to retain the heat ☕.",
-    gifUrl: "https://djg4kctbfokfu.cloudfront.net/tools/v60/second-pour.gif",
-  },
-  {
-    time: 105,
-    title: "Stir the coffee",
-    subTitle: "Stir once in both directions",
-    hint: "Make this a calm stir. No tornadoes, please 🌪️.",
-    gifUrl: "https://djg4kctbfokfu.cloudfront.net/tools/v60/stir.gif",
-  },
-  {
-    time: 120,
-    title: "Give it one last swirl",
-    subTitle: "Pick it up and swirl it in your hand",
-    hint: "After the coffee has drained a bit, give the cone a good swirl. We want a flat bed of coffee grounds to drain from.",
-    gifUrl: "https://djg4kctbfokfu.cloudfront.net/tools/v60/swirl.gif",
-  },
-  {
-    time: 135,
-    title: "Let it rest",
-    subTitle: "Let gravity do its thing",
-    hint: "You've done all the hard work. Congrats 🎊. Now just wait until all the coffee has drained.",
-    gifUrl: "https://djg4kctbfokfu.cloudfront.net/tools/v60/rest.gif",
-  },
-];
+function getBrewingSteps(servings: number): BrewingStep[] {
+  return [
+    {
+      time: 0,
+      title: `Add ${servings * 60}g of water`,
+      subTitle: "Wait until 0:45",
+      hint: "This is the bloom phase. Be patient here. This is flavor town, baby 😋",
+      gifUrl: "https://djg4kctbfokfu.cloudfront.net/tools/v60/bloom.gif",
+    },
+    {
+      time: 45,
+      title: "Pour water in circular motion",
+      subTitle: `Aim to reach ${servings * 300}g by 1:15`,
+      hint: "This is somewhat fast pouring. Keep the water flow steady. No need to be perfect though 🙂.",
+      gifUrl: "https://djg4kctbfokfu.cloudfront.net/tools/v60/initial-pour.gif",
+    },
+    {
+      time: 75,
+      title: "Continue pouring but slower",
+      subTitle: `Aim to reach ${servings * 500}g by 1:45`,
+      hint: "Your cone should be quite full during this time. This helps to retain the heat ☕.",
+      gifUrl: "https://djg4kctbfokfu.cloudfront.net/tools/v60/second-pour.gif",
+    },
+    {
+      time: 105,
+      title: "Stir the coffee",
+      subTitle: "Stir once in both directions",
+      hint: "Make this a calm stir. No tornadoes, please 🌪️.",
+      gifUrl: "https://djg4kctbfokfu.cloudfront.net/tools/v60/stir.gif",
+    },
+    {
+      time: 120,
+      title: "Give it one last swirl",
+      subTitle: "Pick it up and swirl it in your hand",
+      hint: "After the coffee has drained a bit, give the cone a good swirl. We want a flat bed of coffee grounds to drain from.",
+      gifUrl: "https://djg4kctbfokfu.cloudfront.net/tools/v60/swirl.gif",
+    },
+    {
+      time: 135,
+      title: "Let it rest",
+      subTitle: "Let gravity do its thing",
+      hint: "You've done all the hard work. Congrats 🎊. Now just wait until all the coffee has drained.",
+      gifUrl: "https://djg4kctbfokfu.cloudfront.net/tools/v60/rest.gif",
+    },
+  ];
+}
 
 interface BrewingProcessProps {
   onRestart: () => void;
+  servings: number;
 }
 
 const stepVariants = {
@@ -87,7 +90,8 @@ const stepTransition = {
   duration: 0.5,
 };
 
-export default function BrewingProcess({ onRestart }: BrewingProcessProps) {
+export default function BrewingProcess({ onRestart, servings }: BrewingProcessProps) {
+  const brewingSteps = getBrewingSteps(servings);
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
