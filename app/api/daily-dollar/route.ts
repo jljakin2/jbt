@@ -72,7 +72,7 @@ export async function GET() {
     });
 
     const { text } = await generateText({
-      model: anthropic("claude-3-5-sonnet-20241022"),
+      model: anthropic("claude-sonnet-4-6"),
       prompt: prompt,
     });
 
