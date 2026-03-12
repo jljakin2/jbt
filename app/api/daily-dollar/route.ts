@@ -50,9 +50,11 @@ export async function GET() {
     const lesson = await getRandomMarketingLesson();
     console.log("got the lesson");
 
-    const prompt = `Read this article: ${lesson.url}.
+    const prompt = `Here is the content of a marketing article from ${lesson.url}:
 
-    Then create a specific exercise that a user can complete as a compliment to the article so they can apply the lessons to a real-world scenario.
+    ${lesson.content}
+
+    Create a specific exercise that a user can complete as a compliment to the article so they can apply the lessons to a real-world scenario.
 
     Please make sure all the text is formatted as simply as possible and is a pleasure to read.
 
@@ -72,7 +74,7 @@ export async function GET() {
     });
 
     const { text } = await generateText({
-      model: anthropic("claude-sonnet-4-6"),
+      model: anthropic("claude-haiku-4-5-20251001"),
       prompt: prompt,
     });
 
