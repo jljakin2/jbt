@@ -17,11 +17,11 @@ interface BrewingStep {
   gifUrl: string;
 }
 
-function getBrewingSteps(servings: number): BrewingStep[] {
+function getBrewingSteps(people: number): BrewingStep[] {
   return [
     {
       time: 0,
-      title: `Add ${servings * 60}g of water`,
+      title: `Add ${people * 30}g of water`,
       subTitle: "Wait until 0:45",
       hint: "This is the bloom phase. Be patient here. This is flavor town, baby 😋",
       gifUrl: "https://djg4kctbfokfu.cloudfront.net/tools/v60/bloom.gif",
@@ -29,14 +29,14 @@ function getBrewingSteps(servings: number): BrewingStep[] {
     {
       time: 45,
       title: "Pour water in circular motion",
-      subTitle: `Aim to reach ${servings * 300}g by 1:15`,
+      subTitle: `Aim to reach ${people * 150}g by 1:15`,
       hint: "This is somewhat fast pouring. Keep the water flow steady. No need to be perfect though 🙂.",
       gifUrl: "https://djg4kctbfokfu.cloudfront.net/tools/v60/initial-pour.gif",
     },
     {
       time: 75,
       title: "Continue pouring but slower",
-      subTitle: `Aim to reach ${servings * 500}g by 1:45`,
+      subTitle: `Aim to reach ${people * 250}g by 1:45`,
       hint: "Your cone should be quite full during this time. This helps to retain the heat ☕.",
       gifUrl: "https://djg4kctbfokfu.cloudfront.net/tools/v60/second-pour.gif",
     },
@@ -66,7 +66,7 @@ function getBrewingSteps(servings: number): BrewingStep[] {
 
 interface BrewingProcessProps {
   onRestart: () => void;
-  servings: number;
+  people: number;
 }
 
 const stepVariants = {
@@ -90,8 +90,8 @@ const stepTransition = {
   duration: 0.5,
 };
 
-export default function BrewingProcess({ onRestart, servings }: BrewingProcessProps) {
-  const brewingSteps = getBrewingSteps(servings);
+export default function BrewingProcess({ onRestart, people }: BrewingProcessProps) {
+  const brewingSteps = getBrewingSteps(people);
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);

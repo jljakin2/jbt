@@ -19,7 +19,7 @@ export default function StarterCard() {
   const [showInventory, setShowInventory] = useState(false);
   const [startBrewing, setStartBrewing] = useState(false);
   const [isScrollable, setIsScrollable] = useState(false);
-  const [servings, setServings] = useState(1);
+  const [people, setPeople] = useState(2);
   const contentRef = useRef<HTMLDivElement>(null);
 
   const inventoryItems = [
@@ -28,11 +28,11 @@ export default function StarterCard() {
       icon: <V60 className="w-12 h-12" />,
     },
     {
-      name: `${servings * 30}g of medium ground coffee`,
+      name: `${people * 15}g of medium ground coffee`,
       icon: <Beans className="w-12 h-12" />,
     },
     {
-      name: `${servings * 500}ml of hot water in kettle`,
+      name: `${people * 250}ml of hot water in kettle`,
       icon: <Kettle className="w-12 h-12" />,
     },
     { name: "Food scale", icon: <Scale className="w-12 h-12" /> },
@@ -59,7 +59,7 @@ export default function StarterCard() {
   };
 
   if (startBrewing) {
-    return <BrewingProcess onRestart={handleRestart} servings={servings} />;
+    return <BrewingProcess onRestart={handleRestart} people={people} />;
   }
 
   return (
@@ -90,28 +90,28 @@ export default function StarterCard() {
                   from James Hoffman.
                 </p>
                 <div className="flex flex-col items-center mb-8">
-                  <p className="text-sm text-[#6c6c6c] mb-3">How many cups?</p>
+                  <p className="text-sm text-[#6c6c6c] mb-3">How many people?</p>
                   <div className="flex items-center gap-4">
                     <button
-                      onClick={() => setServings((s) => Math.max(1, s - 1))}
-                      disabled={servings === 1}
+                      onClick={() => setPeople((p) => Math.max(1, p - 1))}
+                      disabled={people === 1}
                       className="w-9 h-9 rounded-full border border-[#8FA967] text-[#8FA967] flex items-center justify-center disabled:opacity-30 hover:bg-[#8FA967] hover:text-white transition-colors"
                     >
                       <Minus className="w-4 h-4" />
                     </button>
                     <span className="text-2xl font-bold text-[#4a4a4a] w-6 text-center">
-                      {servings}
+                      {people}
                     </span>
                     <button
-                      onClick={() => setServings((s) => Math.min(4, s + 1))}
-                      disabled={servings === 4}
+                      onClick={() => setPeople((p) => Math.min(4, p + 1))}
+                      disabled={people === 4}
                       className="w-9 h-9 rounded-full border border-[#8FA967] text-[#8FA967] flex items-center justify-center disabled:opacity-30 hover:bg-[#8FA967] hover:text-white transition-colors"
                     >
                       <Plus className="w-4 h-4" />
                     </button>
                   </div>
                   <p className="text-xs text-[#9c9c9c] mt-2">
-                    {servings * 30}g coffee · {servings * 500}ml water
+                    {people * 15}g coffee · {people * 250}ml water
                   </p>
                 </div>
               </>
