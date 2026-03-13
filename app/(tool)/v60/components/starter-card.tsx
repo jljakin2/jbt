@@ -13,12 +13,13 @@ import Beans from "./illustrations/beans";
 import Kettle from "./illustrations/kettle";
 import Scale from "./illustrations/scale";
 import Cup from "./illustrations/cup";
-import { Coffee, ThumbsUp } from "lucide-react";
+import { Coffee, ThumbsUp, Minus, Plus } from "lucide-react";
 
 export default function StarterCard() {
   const [showInventory, setShowInventory] = useState(false);
   const [startBrewing, setStartBrewing] = useState(false);
   const [isScrollable, setIsScrollable] = useState(false);
+  const [people, setPeople] = useState(2);
   const contentRef = useRef<HTMLDivElement>(null);
 
   const inventoryItems = [
@@ -27,11 +28,11 @@ export default function StarterCard() {
       icon: <V60 className="w-12 h-12" />,
     },
     {
-      name: "30g of medium ground coffee",
+      name: `${people * 15}g of medium ground coffee`,
       icon: <Beans className="w-12 h-12" />,
     },
     {
-      name: "500ml of hot water in kettle",
+      name: `${people * 250}ml of hot water in kettle`,
       icon: <Kettle className="w-12 h-12" />,
     },
     { name: "Food scale", icon: <Scale className="w-12 h-12" /> },
@@ -58,7 +59,7 @@ export default function StarterCard() {
   };
 
   if (startBrewing) {
-    return <BrewingProcess onRestart={handleRestart} />;
+    return <BrewingProcess onRestart={handleRestart} people={people} />;
   }
 
   return (
@@ -88,6 +89,31 @@ export default function StarterCard() {
                   </a>{" "}
                   from James Hoffman.
                 </p>
+                <div className="flex flex-col items-center mb-8">
+                  <p className="text-sm text-[#6c6c6c] mb-3">How many people?</p>
+                  <div className="flex items-center gap-4">
+                    <button
+                      onClick={() => setPeople((p) => Math.max(1, p - 1))}
+                      disabled={people === 1}
+                      className="w-9 h-9 rounded-full border border-[#8FA967] text-[#8FA967] flex items-center justify-center disabled:opacity-30 hover:bg-[#8FA967] hover:text-white transition-colors"
+                    >
+                      <Minus className="w-4 h-4" />
+                    </button>
+                    <span className="text-2xl font-bold text-[#4a4a4a] w-6 text-center">
+                      {people}
+                    </span>
+                    <button
+                      onClick={() => setPeople((p) => Math.min(4, p + 1))}
+                      disabled={people === 4}
+                      className="w-9 h-9 rounded-full border border-[#8FA967] text-[#8FA967] flex items-center justify-center disabled:opacity-30 hover:bg-[#8FA967] hover:text-white transition-colors"
+                    >
+                      <Plus className="w-4 h-4" />
+                    </button>
+                  </div>
+                  <p className="text-xs text-[#9c9c9c] mt-2">
+                    {people * 15}g coffee · {people * 250}ml water
+                  </p>
+                </div>
               </>
             )}
             {!showInventory ? (
