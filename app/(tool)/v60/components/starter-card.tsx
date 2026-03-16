@@ -103,8 +103,8 @@ export default function StarterCard() {
                       {people}
                     </span>
                     <button
-                      onClick={() => setPeople((p) => Math.min(4, p + 1))}
-                      disabled={people === 4}
+                      onClick={() => setPeople((p) => Math.min(6, p + 1))}
+                      disabled={people === 6}
                       className="w-9 h-9 rounded-full border border-[#8FA967] text-[#8FA967] flex items-center justify-center disabled:opacity-30 hover:bg-[#8FA967] hover:text-white transition-colors"
                     >
                       <Plus className="w-4 h-4" />
