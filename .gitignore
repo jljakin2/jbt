@@ -37,3 +37,12 @@ next-env.d.ts
 
 # contentlayer
 .contentlayer
+
+# private context (personal strategy — never commit)
+CLAUDE.md
+CLAUDE.local.md
+*.local.md
+build-backlog.md
+follow-list.md
+keyword-tracking-plan.md
+menu-of-help.md
