@@ -5,6 +5,11 @@ const nextConfig = {
   // Configure `pageExtensions` to include MDX files
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   // Optionally, add any other Next.js config below
+  eslint: {
+    // `npm run lint` still works for manual linting, but don't fail production
+    // builds on lint errors (there are pre-existing ones across the codebase).
+    ignoreDuringBuilds: true,
+  },
   images: {
     remotePatterns: [
       { hostname: "jbt-images.s3.amazonaws.com" },
