@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "ngrok http --url=fawn-causal-regularly.ngrok-free.app 3000 --log=stdout > /dev/null 2>&1 & next dev",
+    "dev:local": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "sync-photos": "node scripts/sync-photos.mjs"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.58",
@@ -76,6 +78,8 @@
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.10",
     "autoprefixer": "^10.4.16",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^14.0.3",
     "postcss": "^8.4.32",
     "tailwindcss": "^3.3.6"
   }

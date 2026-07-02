@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "../logo";
 import { Sheet, SheetContent, SheetTrigger } from "./sheet";
-import { BookOpenText, Menu, Mic, Pickaxe } from "lucide-react";
+import { BookOpenText, Camera, Menu, Mic, Pickaxe } from "lucide-react";
 import { useState } from "react";
 
 export default function Navigation() {
@@ -15,7 +15,12 @@ export default function Navigation() {
     { label: "Blog", link: "/blog", icon: <BookOpenText /> },
     // { label: "Tutorials", link: "/tutorials" },
     { label: "Tools", link: "/tools", icon: <Pickaxe /> },
-    { label: "Podcast", link: "https://brickbybrick.fm", icon: <Mic /> },
+    { label: "Play", link: "/play", icon: <Camera /> },
+    {
+      label: "Podcast",
+      link: "https://brickxbrick-git-main-jljakin2s-projects.vercel.app/",
+      icon: <Mic />,
+    },
   ];
 
   const handleNavigation = (link: any) => {
@@ -37,8 +42,8 @@ export default function Navigation() {
           </SheetTrigger>
           <SheetContent side="left">
             {navigationMenu.map((item) => (
-              <ul className="flex flex-col w-full">
-                <li className="w-full py-6 text-lg" key={item.label}>
+              <ul className="flex flex-col w-full" key={item.label}>
+                <li className="w-full py-6 text-lg">
                   <Link
                     href={item.link}
                     className={`${
