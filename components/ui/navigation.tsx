@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "../logo";
 import { Sheet, SheetContent, SheetTrigger } from "./sheet";
-import { BookOpenText, Camera, Menu, Mic, Pickaxe } from "lucide-react";
+import { BookOpenText, Menu, Mic, Pickaxe } from "lucide-react";
 import { useState } from "react";
 
 export default function Navigation() {
@@ -15,7 +15,6 @@ export default function Navigation() {
     { label: "Blog", link: "/blog", icon: <BookOpenText /> },
     // { label: "Tutorials", link: "/tutorials" },
     { label: "Tools", link: "/tools", icon: <Pickaxe /> },
-    { label: "Play", link: "/play", icon: <Camera /> },
     {
       label: "Podcast",
       link: "https://brickxbrick-git-main-jljakin2s-projects.vercel.app/",

@@ -55,13 +55,14 @@ export default function PlayHero() {
           <h1 className="h1 font-aspekta mb-5 max-w-[700px]">
             I like to{" "}
             <span className="inline-flex relative text-primary before:absolute before:inset-0 before:bg-sky-200 before:opacity-30 before:-z-10 before:-rotate-2 before:translate-y-1/5">
-              experiment
+              play
             </span>
             .
           </h1>
           <p className="text-lg text-muted-foreground">
-            I used to run a photography business. I still like to shoot
-            today. Here are some of my favorites.
+            I experiment with lots of hobbies and interests. Sometimes they turn
+            into businesses. I used to run a photography business, and I still
+            like to shoot today. Here are some of my favorites.
           </p>
         </div>
       </div>

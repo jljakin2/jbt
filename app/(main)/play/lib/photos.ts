@@ -2,6 +2,8 @@ export interface Photo {
   id: string;
   /** Web-sized image URL (photography/web/ on S3, served via CloudFront). */
   src: string;
+  /** Thumbnail URL (max 640px) used by the masonry grid. */
+  thumbSrc: string;
   /** Intrinsic pixel dimensions of the web-sized image — prevents layout shift. */
   width: number;
   height: number;
@@ -28,6 +30,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "2369204858-r1-018-7a",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/2369204858-R1-018-7A.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/2369204858-R1-018-7A.jpg",
     width: 1716,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich",
@@ -36,6 +39,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "dsc02075-edit-edit-hr",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/DSC02075-Edit-Edit_HR.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/DSC02075-Edit-Edit_HR.jpg",
     width: 2560,
     height: 1707,
     alt: "Photograph by Jeff Jakinovich",
@@ -44,6 +48,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "dscf0048-hr",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/DSCF0048_HR.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/DSCF0048_HR.jpg",
     width: 1706,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich",
@@ -52,6 +57,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "dscf0118-edit-hr",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/DSCF0118-Edit_HR.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/DSCF0118-Edit_HR.jpg",
     width: 1706,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich",
@@ -60,6 +66,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "dscf0167-hr",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/DSCF0167_HR.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/DSCF0167_HR.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich",
@@ -68,6 +75,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "dscf0361",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/DSCF0361.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/DSCF0361.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich",
@@ -76,6 +84,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "dscf0375",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/DSCF0375.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/DSCF0375.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich",
@@ -84,6 +93,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "dscf0401",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/DSCF0401.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/DSCF0401.jpg",
     width: 1706,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich",
@@ -92,6 +102,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "dscf0403",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/DSCF0403.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/DSCF0403.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich",
@@ -100,6 +111,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "dscf6751-hr",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/DSCF6751_HR.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/DSCF6751_HR.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich",
@@ -108,6 +120,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "dscf6772-edit-hr",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/DSCF6772-Edit_HR.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/DSCF6772-Edit_HR.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich",
@@ -116,6 +129,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "dscf6779-edit-hr",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/DSCF6779-Edit_HR.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/DSCF6779-Edit_HR.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich",
@@ -124,6 +138,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "dscf6906-edit-hr",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/DSCF6906-Edit_HR.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/DSCF6906-Edit_HR.jpg",
     width: 1706,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich",
@@ -132,6 +147,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-7670-edit-hr",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_7670-Edit_HR.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_7670-Edit_HR.jpg",
     width: 1706,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich",
@@ -140,6 +156,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-7710-hr",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_7710_HR.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_7710_HR.jpg",
     width: 1706,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich",
@@ -148,6 +165,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-7713-hr",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_7713_HR.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_7713_HR.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich",
@@ -156,6 +174,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-7804-hr",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_7804_HR.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_7804_HR.jpg",
     width: 1707,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich",
@@ -164,6 +183,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-7812-edit-hr",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_7812-Edit_HR.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_7812-Edit_HR.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich",
@@ -172,6 +192,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-7832-hr",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_7832_HR.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_7832_HR.jpg",
     width: 1706,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich",
@@ -180,6 +201,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-7977-hr",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_7977_HR.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_7977_HR.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich",
@@ -188,6 +210,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-7998-hr",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_7998_HR.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_7998_HR.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich",
@@ -196,6 +219,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-8124-hr",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_8124_HR.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_8124_HR.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich",
@@ -204,6 +228,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-8128-hr",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_8128_HR.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_8128_HR.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich",
@@ -212,6 +237,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-8207-hr",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_8207_HR.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_8207_HR.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich",
@@ -220,6 +246,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-8216-hr",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_8216_HR.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_8216_HR.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich",
@@ -228,6 +255,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-8298-hr",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_8298_HR.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_8298_HR.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich",
@@ -236,6 +264,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "mary-wall-1000",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/Mary%20wall%201000.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/Mary%20wall%201000.jpg",
     width: 2560,
     height: 1707,
     alt: "Photograph by Jeff Jakinovich",
@@ -244,6 +273,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "masters-17-of-85",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/Masters%20(17%20of%2085).jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/Masters%20(17%20of%2085).jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich",
@@ -252,6 +282,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "masters-20-of-85",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/Masters%20(20%20of%2085).jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/Masters%20(20%20of%2085).jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich",
@@ -260,6 +291,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "masters-22-of-85",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/Masters%20(22%20of%2085).jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/Masters%20(22%20of%2085).jpg",
     width: 2560,
     height: 1707,
     alt: "Photograph by Jeff Jakinovich",
@@ -268,6 +300,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "masters-48-of-85",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/Masters%20(48%20of%2085).jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/Masters%20(48%20of%2085).jpg",
     width: 1706,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich",
@@ -276,6 +309,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "masters-52-of-85",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/Masters%20(52%20of%2085).jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/Masters%20(52%20of%2085).jpg",
     width: 2560,
     height: 1707,
     alt: "Photograph by Jeff Jakinovich",
@@ -284,6 +318,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "masters-64-of-85",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/Masters%20(64%20of%2085).jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/Masters%20(64%20of%2085).jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich",
@@ -292,6 +327,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "masters-72-of-85",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/Masters%20(72%20of%2085).jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/Masters%20(72%20of%2085).jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich",
@@ -300,6 +336,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-0661",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_0661.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_0661.jpg",
     width: 2560,
     height: 1920,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -308,6 +345,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-0879",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_0879.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_0879.jpg",
     width: 1708,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -316,6 +354,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-0946",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_0946.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_0946.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -324,6 +363,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-1012",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_1012.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_1012.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -332,6 +372,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-1128",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_1128.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_1128.jpg",
     width: 2560,
     height: 1708,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -340,6 +381,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-1293",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_1293.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_1293.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -348,6 +390,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-1341",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_1341.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_1341.jpg",
     width: 2048,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -356,6 +399,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-1408",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_1408.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_1408.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -364,6 +408,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-1529",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_1529.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_1529.jpg",
     width: 2560,
     height: 1708,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -372,6 +417,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-1580",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_1580.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_1580.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -380,6 +426,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-1586",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_1586.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_1586.jpg",
     width: 2560,
     height: 1705,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -388,6 +435,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-1681",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_1681.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_1681.jpg",
     width: 1706,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -396,6 +444,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-1741",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_1741.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_1741.jpg",
     width: 2560,
     height: 1675,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -404,6 +453,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-1897",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_1897.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_1897.jpg",
     width: 2560,
     height: 1608,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -412,6 +462,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-1931",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_1931.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_1931.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -420,6 +471,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-2262",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_2262.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_2262.jpg",
     width: 1439,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -428,6 +480,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-2727",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_2727.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_2727.jpg",
     width: 1708,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -436,6 +489,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-2738",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_2738.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_2738.jpg",
     width: 2560,
     height: 1920,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -444,6 +498,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-2884",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_2884.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_2884.jpg",
     width: 2560,
     height: 1708,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -452,6 +507,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-2896",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_2896.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_2896.jpg",
     width: 2048,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -460,6 +516,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-2936",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_2936.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_2936.jpg",
     width: 2560,
     height: 1708,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -468,6 +525,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-2977",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_2977.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_2977.jpg",
     width: 1920,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -476,6 +534,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "4956018862-r1-e015",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/4956018862-R1-E015.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/4956018862-R1-E015.jpg",
     width: 2560,
     height: 1716,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -484,6 +543,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "4956018862-r1-e020",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/4956018862-R1-E020.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/4956018862-R1-E020.jpg",
     width: 2560,
     height: 1716,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -492,6 +552,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "4956018862-r1-e030",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/4956018862-R1-E030.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/4956018862-R1-E030.jpg",
     width: 2560,
     height: 1716,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -500,6 +561,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "atlas-studio-13-of-16",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/Atlas%20Studio%20(13%20of%2016).jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/Atlas%20Studio%20(13%20of%2016).jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -508,6 +570,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "atlas-studio-15-of-16",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/Atlas%20Studio%20(15%20of%2016).jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/Atlas%20Studio%20(15%20of%2016).jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -516,6 +579,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "atlas-studio-3-of-16",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/Atlas%20Studio%20(3%20of%2016).jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/Atlas%20Studio%20(3%20of%2016).jpg",
     width: 2560,
     height: 1707,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -524,6 +588,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "atlas-studio-5-of-16",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/Atlas%20Studio%20(5%20of%2016).jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/Atlas%20Studio%20(5%20of%2016).jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -532,6 +597,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "atlas-studio-6-of-16",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/Atlas%20Studio%20(6%20of%2016).jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/Atlas%20Studio%20(6%20of%2016).jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -540,6 +606,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "atlas-studio-9-of-16",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/Atlas%20Studio%20(9%20of%2016).jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/Atlas%20Studio%20(9%20of%2016).jpg",
     width: 1707,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -548,6 +615,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "dsc07322-edit-hr",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/DSC07322-Edit_HR.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/DSC07322-Edit_HR.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -556,6 +624,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "new-york-1-of-2",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/New%20York%20(1%20of%202).jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/New%20York%20(1%20of%202).jpg",
     width: 2560,
     height: 1707,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -564,6 +633,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "new-york-2-of-2",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/New%20York%20(2%20of%202).jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/New%20York%20(2%20of%202).jpg",
     width: 1706,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -572,6 +642,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-2561",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_2561.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_2561.jpg",
     width: 1946,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -580,6 +651,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-2658",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_2658.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_2658.jpg",
     width: 2560,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -588,6 +660,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-2662",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_2662.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_2662.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -596,6 +669,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-2681",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_2681.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_2681.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -604,6 +678,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-2705",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_2705.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_2705.jpg",
     width: 2560,
     height: 1710,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -612,6 +687,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-2766",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_2766.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_2766.jpg",
     width: 2560,
     height: 1707,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -620,6 +696,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-2794",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_2794.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_2794.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -628,6 +705,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-2960",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_2960.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_2960.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -636,6 +714,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-3446",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_3446.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_3446.jpg",
     width: 2560,
     height: 1706,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -644,6 +723,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-3472",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_3472.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_3472.jpg",
     width: 2050,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -652,6 +732,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-4005",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_4005.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_4005.jpg",
     width: 2048,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -660,6 +741,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-4057",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_4057.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_4057.jpg",
     width: 2560,
     height: 1703,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -668,6 +750,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-4059",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_4059.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_4059.jpg",
     width: 2045,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize
@@ -676,6 +759,7 @@ export const PHOTOS: Photo[] = [
   {
     id: "img-4166",
     src: "https://djg4kctbfokfu.cloudfront.net/photography/web/IMG_4166.jpg",
+    thumbSrc: "https://djg4kctbfokfu.cloudfront.net/photography/thumb/IMG_4166.jpg",
     width: 2048,
     height: 2560,
     alt: "Photograph by Jeff Jakinovich", // TODO: personalize

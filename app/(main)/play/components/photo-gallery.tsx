@@ -84,15 +84,17 @@ export default function PhotoGallery({ photos }: PhotoGalleryProps) {
           >
             {/* Skeleton sits behind the image via bg-muted until pixels arrive;
                 the blur-up placeholder paints instantly on top of it. */}
+            {/* `unoptimized` + self-hosted thumb: served straight from
+                CloudFront, no Vercel image-optimization quota. */}
             <Image
-              src={photo.src}
+              src={photo.thumbSrc}
               alt={photo.alt}
               width={photo.width}
               height={photo.height}
-              sizes="(min-width: 768px) 33vw, 50vw"
               placeholder="blur"
               blurDataURL={photo.blurDataURL}
               priority={i < PRIORITY_COUNT}
+              unoptimized
               className="h-auto w-full"
             />
           </button>
@@ -113,7 +115,7 @@ export default function PhotoGallery({ photos }: PhotoGalleryProps) {
               src={photos[i].src}
               alt=""
               fill
-              sizes="90vw"
+              unoptimized
             />
           ))}
         </div>

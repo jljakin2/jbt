@@ -9,13 +9,17 @@
  * Then run:        npm run sync-photos
  * Finally:         review photos.ts (order, alt text), commit, deploy.
  *
- * What it does:
- *   - ADD: for each original not yet in the manifest — creates a web-sized
- *     copy (max 2560px, q80 JPEG) in photography/web/, reads dimensions,
- *     generates a tiny base64 blur placeholder, appends an entry to
- *     app/(main)/play/lib/photos.ts
- *   - PRUNE: for each manifest entry whose original no longer exists —
- *     removes the entry and deletes the orphaned photography/web/ derivative
+ * What it does, per new original:
+ *   - creates a web-sized copy (max 2560px, q80 JPEG) → photography/web/
+ *   - creates a thumbnail    (max 640px,  q75 JPEG) → photography/thumb/
+ *   - uploads both with long immutable Cache-Control headers
+ *   - reads dimensions + generates a tiny base64 blur placeholder
+ *   - appends a ready entry to app/(main)/play/lib/photos.ts
+ * And per removed original: prunes the manifest entry and deletes the
+ * orphaned web/ and thumb/ derivatives.
+ *
+ * The site serves these derivatives directly (next/image `unoptimized`) —
+ * NO Vercel image optimization, so zero transformation/cache-write quota.
  *
  * Requirements: aws CLI (profile "JeffBuildsTech" or set AWS_PROFILE),
  * macOS `sips`. No npm dependencies.
@@ -28,10 +32,13 @@ import path from "node:path";
 const BUCKET = "jbt-images";
 const PREFIX = "photography/";
 const WEB_PREFIX = "photography/web/";
+const THUMB_PREFIX = "photography/thumb/";
 const ARCHIVE_PREFIX = "photography/archive/";
 const CDN = "https://djg4kctbfokfu.cloudfront.net";
 const MANIFEST = "app/(main)/play/lib/photos.ts";
 const PROFILE = process.env.AWS_PROFILE || "JeffBuildsTech";
+/** Images are content-addressed by filename; safe to cache "forever". */
+const CACHE_CONTROL = "public, max-age=31536000, immutable";
 
 const aws = (args, opts = {}) =>
   execFileSync("aws", [...args, "--profile", PROFILE], {
@@ -43,7 +50,7 @@ const stem = (f) => f.replace(/\.[^.]+$/, "");
 const slug = (f) =>
   stem(f).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 
-// ── 1. List originals in the bucket (excluding web/ and archive/) ──
+// ── 1. List originals in the bucket (excluding derivatives + archive) ──
 let keys;
 try {
   const out = aws([
@@ -56,6 +63,7 @@ try {
   keys = (JSON.parse(out || "[]") || []).filter(
     (k) =>
       !k.startsWith(WEB_PREFIX) &&
+      !k.startsWith(THUMB_PREFIX) &&
       !k.startsWith(ARCHIVE_PREFIX) &&
       /\.(jpe?g|png)$/i.test(k)
   );
@@ -84,10 +92,12 @@ for (const block of orphans) {
   const webFile = webFileOf(block);
   console.log(`pruning ${webFile} (original removed from bucket)`);
   manifest = manifest.replace(block + "\n", "");
-  try {
-    aws(["s3", "rm", `s3://${BUCKET}/${WEB_PREFIX}${webFile}`, "--quiet"]);
-  } catch {
-    console.warn(`  (could not delete web derivative — remove it manually)`);
+  for (const prefix of [WEB_PREFIX, THUMB_PREFIX]) {
+    try {
+      aws(["s3", "rm", `s3://${BUCKET}/${prefix}${webFile}`, "--quiet"]);
+    } catch {
+      /* derivative may not exist; ignore */
+    }
   }
 }
 
@@ -116,11 +126,12 @@ if (newKeys.length > 0) {
   const work = mkdtempSync(path.join(tmpdir(), "sync-photos-"));
   for (const key of newKeys) {
     const file = path.basename(key);
-    const webName = `${stem(file)}.jpg`; // web copies are always jpeg
+    const webName = `${stem(file)}.jpg`; // derivatives are always jpeg
     process.stdout.write(`processing ${file} ... `);
 
     const orig = path.join(work, `orig${path.extname(file)}`);
     const web = path.join(work, "web.jpg");
+    const thumb = path.join(work, "thumb.jpg");
     const tiny = path.join(work, "tiny.jpg");
 
     aws(["s3", "cp", `s3://${BUCKET}/${key}`, orig, "--quiet"]);
@@ -129,10 +140,22 @@ if (newKeys.length > 0) {
       ["-Z", "2560", "-s", "format", "jpeg", "-s", "formatOptions", "80", orig, "--out", web],
       { stdio: "ignore" }
     );
-    aws([
-      "s3", "cp", web, `s3://${BUCKET}/${WEB_PREFIX}${webName}`,
-      "--content-type", "image/jpeg", "--quiet",
-    ]);
+    execFileSync(
+      "sips",
+      ["-Z", "640", "-s", "format", "jpeg", "-s", "formatOptions", "75", orig, "--out", thumb],
+      { stdio: "ignore" }
+    );
+    for (const [local, prefix] of [
+      [web, WEB_PREFIX],
+      [thumb, THUMB_PREFIX],
+    ]) {
+      aws([
+        "s3", "cp", local, `s3://${BUCKET}/${prefix}${webName}`,
+        "--content-type", "image/jpeg",
+        "--cache-control", CACHE_CONTROL,
+        "--quiet",
+      ]);
+    }
 
     const dims = execFileSync("sips", ["-g", "pixelWidth", "-g", "pixelHeight", web], {
       encoding: "utf8",
@@ -147,12 +170,13 @@ if (newKeys.length > 0) {
     );
     const b64 = readFileSync(tiny).toString("base64");
 
-    const url = `${CDN}/photography/web/${encodeURIComponent(webName)}`;
+    const enc = encodeURIComponent(webName);
     entries.push(
       [
         "  {",
         `    id: ${JSON.stringify(slug(file))},`,
-        `    src: ${JSON.stringify(url)},`,
+        `    src: ${JSON.stringify(`${CDN}/photography/web/${enc}`)},`,
+        `    thumbSrc: ${JSON.stringify(`${CDN}/photography/thumb/${enc}`)},`,
         `    width: ${width},`,
         `    height: ${height},`,
         `    alt: "Photograph by Jeff Jakinovich", // TODO: personalize`,

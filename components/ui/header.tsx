@@ -3,6 +3,7 @@ import { ThemeSwitch } from "./theme-switch";
 import Navigation from "./navigation";
 import { Button } from "@/components/ui/button";
 import { ConfettiSideCannons } from "../confetti-side-cannons";
+import { PlayNavButton } from "./play-nav-button";
 
 export default function Header() {
   return (
@@ -43,6 +44,8 @@ export default function Header() {
           {/* Light switch */}
           <ThemeSwitch />
           <ConfettiSideCannons />
+          {/* Play — its own thing */}
+          <PlayNavButton />
 
           {/* Button */}
 

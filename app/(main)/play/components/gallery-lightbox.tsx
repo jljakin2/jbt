@@ -173,10 +173,10 @@ export default function GalleryLightbox({
                   alt={photo.alt}
                   width={photo.width}
                   height={photo.height}
-                  sizes="90vw"
                   priority
                   placeholder="blur"
                   blurDataURL={photo.blurDataURL}
+                  unoptimized
                   className="block h-auto max-h-[52vh] w-auto max-w-[80vw] animate-[fadeIn_700ms_ease-out] object-contain sm:max-w-[55vw] lg:max-w-[48vw]"
                 />
                 {/* The recess, under a single light from above: the window's
@@ -239,7 +239,7 @@ export default function GalleryLightbox({
                       src={photos[n].src}
                       alt=""
                       fill
-                      sizes="90vw"
+                      unoptimized
                     />
                   ))}
               </div>

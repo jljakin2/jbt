@@ -90,6 +90,7 @@ module.exports = {
         pulse: "pulse var(--duration) ease-out infinite",
         "fade-in": "fadeIn 300ms ease-in",
         "fade-out": "fadeOut 300ms ease-in",
+        wiggle: "wiggle 0.5s ease-in-out infinite",
       },
       keyframes: {
         "border-beam": {
@@ -123,6 +124,11 @@ module.exports = {
         fadeOut: {
           "0%": { opacity: "1" },
           "100%": { opacity: "0" },
+        },
+        wiggle: {
+          "0%, 100%": { transform: "rotate(0deg) scale(1)" },
+          "25%": { transform: "rotate(-12deg) scale(1.2)" },
+          "75%": { transform: "rotate(12deg) scale(1.2)" },
         },
       },
     },
