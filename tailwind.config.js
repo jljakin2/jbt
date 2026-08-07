@@ -11,6 +11,7 @@ module.exports = {
       fontFamily: {
         inter: ["var(--font-inter)", "sans-serif"],
         aspekta: ["var(--font-aspekta)", "sans-serif"],
+        hand: ["var(--font-hand)", "cursive"],
       },
       fontSize: {
         xs: ["0.75rem", { lineHeight: "1.5" }],

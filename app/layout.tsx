@@ -1,6 +1,6 @@
 import "@/app/css/globals.css";
 
-import { Inter } from "next/font/google";
+import { Inter, Permanent_Marker } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { ThemeProvider } from "./theme-provider";
 import Header from "@/components/ui/header";
@@ -9,6 +9,15 @@ import { Metadata } from "next/types";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+// Sharpie-style marker font — used for the workshop sticky notes in The Owner's
+// Delusion.
+const marker = Permanent_Marker({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-hand",
   display: "swap",
 });
 
@@ -58,7 +67,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       {/* suppressHydrationWarning: https://github.com/vercel/next.js/issues/44343 */}
       <body
-        className={`${inter.variable} font-inter antialiased bg-background text-foreground tracking-tight`}
+        className={`${inter.variable} ${marker.variable} font-inter antialiased bg-background text-foreground tracking-tight`}
       >
         {children}
       </body>
