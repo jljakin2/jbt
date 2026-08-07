@@ -17,14 +17,14 @@ import Posts from "@/components/posts";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.jeffbuildstech.com/"),
-  title: "Jeff Builds Tech - Dev and Marketer",
+  title: "Jeff Jakinovich - Product Leader | Jeff Builds Tech",
   alternates: {
     canonical: "./",
   },
   description:
     "Helpful content and tools for developers and entrepreneurs to accomplish more with less stress.",
   openGraph: {
-    title: "Jeff Builds Tech - Dev and Marketer",
+    title: "Jeff Jakinovich - Product Leader | Jeff Builds Tech",
     description:
       "Helpful content and tools for developers and entrepreneurs to accomplish more with less stress.",
     type: "website",
@@ -60,7 +60,7 @@ export default function Home() {
                 👋
               </h1>
               <p className="text-lg text-muted-foreground mb-6">
-                Full-stack dev | Digital marketer | Product person
+                Design | Product | Engineering
               </p>
               <div className="flex items-center gap-2 mb-8">
                 <Link
@@ -126,11 +126,11 @@ export default function Home() {
           <section className="mb-12">
             <h2 className="h3 font-aspekta text-foreground mb-4">About Me</h2>
             <p className="text-muted-foreground mb-6">
-              Before 2018, I did anything and everything related to marketing.
+              Before 2018, I was a marketer.
             </p>
             <p className="text-muted-foreground mb-6">
-              Social, SEO, events, influencer, you name it. Then I picked up a
-              book called{" "}
+              I did marketing. Social, SEO, events, influencers. Anything that
+              moved the needle, I tried it. Then I picked up a book called{" "}
               <a
                 className="font-semibold text-primary no-underline hover:underline transition-all duration-300"
                 href="https://www.amazon.com/Learn-Python-Hard-Way-Introduction/dp/0134692888/ref=sr_1_1?crid=CSRKAKUXFENG&dib=eyJ2IjoiMSJ9.Jsi9FEra3XWdrQnZX3Mt5QElFFIXBcRk2NWUPdIwjU27HCp6f40Yc3nCUS72X4HY.Hhigpfrs7GEJMyZs9DEyEvVu_PHWXtSw8pWYHYhvuMM&dib_tag=se&keywords=learn+python+the+hardway&qid=1727639174&sprefix=learn+python+the+hardwa%2Caps%2C140&sr=8-1"
@@ -143,12 +143,12 @@ export default function Home() {
             </p>
 
             <p className="text-muted-foreground mb-6">
-              Since 2018, I've been obsessed with building stuff with code. I've
-              built in-house apps for companies, automated hundreds of
-              processes, and built more side-projects than I can count.
+              I got obsessed with building. I shipped in house apps at Bosch,
+              automated hundreds of manual processes, and stacked up more side
+              projects than I can count.
             </p>
             <p className="text-muted-foreground mb-6">
-              Currently, I'm leading the development efforts at{" "}
+              In 2022,{" "}
               <a
                 href="https://www.stitch3d.io"
                 target="_blank"
@@ -157,13 +157,20 @@ export default function Home() {
               >
                 Stitch3D
               </a>
-              , where we're revolutionizing the 3D LIDAR industry by moving
-              their work from the desktop to the cloud.
+              , brought me on as an early technical hire. I built the a
+              significant portion of the platform from scratch: frontend,
+              backend, infrastructure. Today I run product there as CPO.
+              Strategy, UI/UX, customer discovery, compliance. SOC 2 Type 2,
+              fully attested, with a 3 person engineering team.
             </p>
             <p className="text-muted-foreground mb-6">
-              I have a hard time sitting still and love to work on new ideas. If
-              you have anything you want to chat about, don't be shy. Say hello
-              on any of my channels. 👋
+              I didn't plan any of this. But a decade of marketing before a
+              decade of building means I speak both languages, and that
+              combination has helped more than anything I did on purpose.
+            </p>
+            <p className="text-muted-foreground mb-6">
+              I can't sit still and love to work on new ideas. If you're working
+              on something interesting, say hello. 👋
             </p>
           </section>
 

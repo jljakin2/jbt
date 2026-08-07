@@ -25,7 +25,7 @@ import { Metadata } from "next/types";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.jeffbuildstech.com/"),
   title: {
-    default: "Jeff Builds Tech - Dev and Marketer",
+    default: "Jeff Jakinovich - Product Leader | Jeff Builds Tech",
     template: "%s | Jeff Builds Tech",
   },
   alternates: {
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   description:
     "Thoughts and tools for developers and entrepreneurs to accomplish more with less stress.",
   openGraph: {
-    title: "Jeff Builds Tech - Dev and Marketer",
+    title: "Jeff Jakinovich - Product Leader | Jeff Builds Tech",
     description:
       "Thoughts and tools for developers and entrepreneurs to accomplish more with less stress.",
     type: "website",
@@ -51,12 +51,11 @@ export default function RootLayout({
 }) {
   return (
     <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
       <div className="max-w-7xl mx-auto">
         <div className="min-h-screen flex">
           {/* <SideNavigation /> */}
