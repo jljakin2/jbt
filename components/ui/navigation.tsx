@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Logo from "../logo";
 import { Sheet, SheetContent, SheetTrigger } from "./sheet";
 import { BookOpenText, Menu, Mic, Pickaxe } from "lucide-react";
+import { PlayNavButton } from "./play-nav-button";
 import { useState } from "react";
 
 export default function Navigation() {
@@ -80,6 +81,10 @@ export default function Navigation() {
             </Link>
           </li>
         ))}
+        {/* Play — its own thing, so it keeps its icon instead of a text label */}
+        <li className="px-2">
+          <PlayNavButton />
+        </li>
         {/* <li className="py-2">
           <Link
             href="/projects"

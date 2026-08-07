@@ -129,8 +129,11 @@ export default function Home() {
               Before 2018, I was a marketer.
             </p>
             <p className="text-muted-foreground mb-6">
-              I did marketing. Social, SEO, events, influencers. Anything that
-              moved the needle, I tried it. Then I picked up a book called{" "}
+              I did social, SEO, events, influencers. Anything that moved the
+              needle, I tried it.
+            </p>
+            <p className="text-muted-foreground mb-6">
+              Then I picked up a book called{" "}
               <a
                 className="font-semibold text-primary no-underline hover:underline transition-all duration-300"
                 href="https://www.amazon.com/Learn-Python-Hard-Way-Introduction/dp/0134692888/ref=sr_1_1?crid=CSRKAKUXFENG&dib=eyJ2IjoiMSJ9.Jsi9FEra3XWdrQnZX3Mt5QElFFIXBcRk2NWUPdIwjU27HCp6f40Yc3nCUS72X4HY.Hhigpfrs7GEJMyZs9DEyEvVu_PHWXtSw8pWYHYhvuMM&dib_tag=se&keywords=learn+python+the+hardway&qid=1727639174&sprefix=learn+python+the+hardwa%2Caps%2C140&sr=8-1"
@@ -157,11 +160,14 @@ export default function Home() {
               >
                 Stitch3D
               </a>
-              , brought me on as an early technical hire. I built the a
-              significant portion of the platform from scratch: frontend,
-              backend, infrastructure. Today I run product there as CPO.
-              Strategy, UI/UX, customer discovery, compliance. SOC 2 Type 2,
-              fully attested, with a 3 person engineering team.
+              , brought me on as an early technical hire. I built a significant
+              portion of the platform from scratch: frontend, backend, and
+              infrastructure.
+            </p>
+            <p className="text-muted-foreground mb-6">
+              Today I run product there as CPO. This includes strategy, UI/UX,
+              customer discovery, compliance (SOC 2 Type 2, fully attested!),
+              and shipping features constantly.
             </p>
             <p className="text-muted-foreground mb-6">
               I didn't plan any of this. But a decade of marketing before a
@@ -169,8 +175,8 @@ export default function Home() {
               combination has helped more than anything I did on purpose.
             </p>
             <p className="text-muted-foreground mb-6">
-              I can't sit still and love to work on new ideas. If you're working
-              on something interesting, say hello. 👋
+              I can't sit still and love to work on new ideas, so if you're
+              working on something interesting...say hello. 👋
             </p>
           </section>
 
@@ -187,7 +193,7 @@ export default function Home() {
       {/* Right sidebar */}
       <aside className="!mt-20 md:!mt-0 md:w-[240px] lg:w-[300px] shrink-0">
         <div className="space-y-6">
-          <WidgetNewsletter />
+          {/* <WidgetNewsletter /> */}
           <WidgetConnect />
           {/* <WidgetSponsor /> */}
         </div>

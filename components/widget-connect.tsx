@@ -19,7 +19,7 @@ export default function ProfessionalSocialConnections() {
         />
         <SocialLink
           icon={<X className="!w-4 !h-4 " />}
-          name="Elon's Thing"
+          name="X (Twitter)"
           url="https://twitter.com/jeffbuildstech"
         />
         <SocialLink
@@ -27,7 +27,7 @@ export default function ProfessionalSocialConnections() {
           name="LinkedIn"
           url="https://www.linkedin.com/in/jeff-jakinovich/"
         />
-        <SocialLink
+        {/* <SocialLink
           icon={<Devto className="!w-4 !h-4 " />}
           name="Dev.to"
           url="https://dev.to/jeffbuildstech"
@@ -41,7 +41,7 @@ export default function ProfessionalSocialConnections() {
           icon={<Medium className="!w-4 !h-4 " />}
           name="Medium"
           url="https://medium.com/@jeff.jakinovich"
-        />
+        /> */}
       </div>
     </div>
   );
