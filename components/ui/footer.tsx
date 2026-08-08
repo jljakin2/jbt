@@ -47,7 +47,7 @@ export default function Footer() {
               <span className="sr-only">GitHub</span>
             </a>
           </li>
-          <li>
+          {/* <li>
             <a
               href="https://dev.to/jeffbuildstech"
               target="_blank"
@@ -76,7 +76,7 @@ export default function Footer() {
               <Medium />
               <span className="sr-only">Medium</span>
             </a>
-          </li>
+          </li> */}
         </ul>
         <p className="text-sm text-muted-foreground">
           © {new Date().getFullYear()} Jeff Jakinovich. All rights reserved.
