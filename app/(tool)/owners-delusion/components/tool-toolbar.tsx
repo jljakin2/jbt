@@ -1,14 +1,23 @@
 "use client";
 
-import { Clock, Contrast, Eye, Glasses, Play, Timer } from "lucide-react";
+import {
+  Clock,
+  Contrast,
+  Eye,
+  Glasses,
+  Palette,
+  Play,
+  Timer,
+} from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { useOwnersDelusion } from "../hooks/use-owners-delusion";
-import { TOOLS, BLINK, type ToolId } from "../lib/lenses";
+import { TOOLS, BLINK, COLORBLIND, type ToolId } from "../lib/lenses";
 
 const ICONS: Record<ToolId, React.ReactNode> = {
   none: <Eye className="h-4 w-4" />,
   squint: <Glasses className="h-4 w-4" />,
   grayscale: <Contrast className="h-4 w-4" />,
+  colorblind: <Palette className="h-4 w-4" />,
   blink: <Timer className="h-4 w-4" />,
 };
 
@@ -47,6 +56,7 @@ export default function ToolToolbar() {
         </div>
 
         {activeTool === "squint" && <SquintOptions />}
+        {activeTool === "colorblind" && <ColorblindOptions />}
         {activeTool === "blink" && <BlinkOptions />}
       </div>
     </div>
@@ -85,6 +95,38 @@ function SquintOptions() {
       />
       <span className="w-9 text-right font-courier text-xs text-gray-500">
         {squint}px
+      </span>
+    </OptionsStrip>
+  );
+}
+
+function ColorblindOptions() {
+  const { colorblindType, setColorblindType } = useOwnersDelusion();
+  return (
+    <OptionsStrip>
+      <div className="flex overflow-hidden rounded-md border border-gray-300">
+        {COLORBLIND.map((cb) => {
+          const active = cb.id === colorblindType;
+          return (
+            <button
+              key={cb.id}
+              type="button"
+              onClick={() => setColorblindType(cb.id)}
+              aria-pressed={active}
+              title={cb.hint}
+              className={`px-3 py-1 text-sm transition-colors ${
+                active
+                  ? "bg-gray-900 text-white"
+                  : "bg-white text-gray-700 hover:bg-gray-100"
+              }`}
+            >
+              {cb.label}
+            </button>
+          );
+        })}
+      </div>
+      <span className="ml-auto font-courier text-xs text-gray-500">
+        {COLORBLIND.find((cb) => cb.id === colorblindType)?.hint}
       </span>
     </OptionsStrip>
   );

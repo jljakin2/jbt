@@ -1,7 +1,7 @@
 "use client";
 
 import { create } from "zustand";
-import type { ToolId } from "../lib/lenses";
+import type { ColorblindType, ToolId } from "../lib/lenses";
 import { BLINK } from "../lib/lenses";
 
 interface OwnersDelusionState {
@@ -9,9 +9,10 @@ interface OwnersDelusionState {
   image: string | null;
   imageName: string | null;
 
-  /** Active tool + squint blur radius (px). */
+  /** Active tool + its options. */
   activeTool: ToolId;
   squint: number;
+  colorblindType: ColorblindType;
 
   /** Blink test: glance length, overlay running, glance taken. */
   blinkSeconds: number;
@@ -25,6 +26,7 @@ interface OwnersDelusionState {
   clearImage: () => void;
   setActiveTool: (tool: ToolId) => void;
   setSquint: (px: number) => void;
+  setColorblindType: (t: ColorblindType) => void;
   setBlinkSeconds: (s: number) => void;
   startBlink: () => void;
   stopBlink: () => void;
@@ -44,6 +46,7 @@ export const useOwnersDelusion = create<OwnersDelusionState>((set) => ({
   image: null,
   imageName: null,
   squint: 6,
+  colorblindType: "deuteranopia",
   blinkSeconds: BLINK.defaultSeconds,
   ...freshExam,
 
@@ -51,6 +54,7 @@ export const useOwnersDelusion = create<OwnersDelusionState>((set) => ({
   clearImage: () => set({ image: null, imageName: null, ...freshExam }),
   setActiveTool: (tool) => set({ activeTool: tool }),
   setSquint: (px) => set({ squint: px }),
+  setColorblindType: (t) => set({ colorblindType: t }),
   setBlinkSeconds: (s) => set({ blinkSeconds: s }),
   startBlink: () => set({ blinkActive: true }),
   stopBlink: () => set({ blinkActive: false }),
