@@ -32,6 +32,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: "https://www.jeffbuildstech.com/blog",
       lastModified: new Date().toISOString().split("T")[0],
     },
+    ...["owners-delusion", "atomic-essay", "daily-dollar", "v60"].map((tool) => ({
+      url: `https://www.jeffbuildstech.com/${tool}`,
+      lastModified: new Date().toISOString().split("T")[0],
+    })),
     ...postUrls,
   ];
 }

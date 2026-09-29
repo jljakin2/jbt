@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Metadata } from "next/types";
+import { Eye } from "lucide-react";
 
 import ToolsHero from "@/components/tools-hero";
 import ProjectCard from "@/app//project-card";
@@ -285,6 +286,15 @@ export default function Projects() {
       title: "Atomic Essay",
       excerpt:
         "Create an atomic essay and download it as an image to share on social media.",
+      isNew: false,
+    },
+    {
+      id: 3,
+      icon: <Eye className="h-5 w-5" />,
+      slug: "/owners-delusion",
+      title: "The Owner's Delusion",
+      excerpt:
+        "You've gone blind to your own work. Paste a screenshot and see it the way a stranger does: squint it, gray it, blink-test it.",
       isNew: true,
     },
   ];
