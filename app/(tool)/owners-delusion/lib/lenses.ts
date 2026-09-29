@@ -3,7 +3,7 @@
 export const BUTTERFIELD_URL = "https://www.youtube.com/watch?v=kLe-zy5r0Mk";
 
 // One tool is active at a time, like a filter row in a photo app. "none" is Normal.
-export type ToolId = "none" | "squint" | "grayscale" | "blink";
+export type ToolId = "none" | "squint" | "grayscale" | "colorblind" | "blink";
 
 export interface Tool {
   id: ToolId;
@@ -33,6 +33,15 @@ export const TOOLS: Tool[] = [
     ],
   },
   {
+    id: "colorblind",
+    label: "Colorblind",
+    prompts: [
+      "Can you still find the button?",
+      "Did two different states just become the same color?",
+      "Is anything here explained by color alone?",
+    ],
+  },
+  {
     id: "blink",
     label: "Blink",
     prompts: [
@@ -43,6 +52,38 @@ export const TOOLS: Tool[] = [
   },
 ];
 
+// Color-vision deficiency simulation. Standard approximation matrices used by
+// most colorblind checkers (sRGB, 4x5 feColorMatrix). Good enough to show what
+// disappears; not a clinical model.
+export type ColorblindType = "deuteranopia" | "protanopia" | "tritanopia";
+
+export const COLORBLIND: {
+  id: ColorblindType;
+  label: string;
+  hint: string;
+  matrix: string;
+}[] = [
+  {
+    id: "deuteranopia",
+    label: "Deuteranopia",
+    hint: "Green-blind. The most common type.",
+    matrix: "0.625 0.375 0 0 0  0.7 0.3 0 0 0  0 0.3 0.7 0 0  0 0 0 1 0",
+  },
+  {
+    id: "protanopia",
+    label: "Protanopia",
+    hint: "Red-blind.",
+    matrix:
+      "0.567 0.433 0 0 0  0.558 0.442 0 0 0  0 0.242 0.758 0 0  0 0 0 1 0",
+  },
+  {
+    id: "tritanopia",
+    label: "Tritanopia",
+    hint: "Blue-blind. Rare.",
+    matrix: "0.95 0.05 0 0 0  0 0.433 0.567 0 0  0 0.475 0.525 0 0  0 0 0 1 0",
+  },
+];
+
 export const BLINK = {
   /** Selectable glance durations, in seconds. */
   durations: [2, 3, 5],
@@ -50,7 +91,10 @@ export const BLINK = {
 };
 
 /** Sticky notes for the active tool. Blink's only make sense once it's been run. */
-export function activePrompts(activeTool: ToolId, blinkSeen: boolean): string[] {
+export function activePrompts(
+  activeTool: ToolId,
+  blinkSeen: boolean,
+): string[] {
   if (activeTool === "blink" && !blinkSeen) return [];
   return TOOLS.find((t) => t.id === activeTool)?.prompts ?? [];
 }
