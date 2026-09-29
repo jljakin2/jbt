@@ -12,6 +12,7 @@ module.exports = {
         inter: ["var(--font-inter)", "sans-serif"],
         aspekta: ["var(--font-aspekta)", "sans-serif"],
         hand: ["var(--font-hand)", "cursive"],
+        courier: ["var(--font-courier)", "monospace"],
       },
       fontSize: {
         xs: ["0.75rem", { lineHeight: "1.5" }],
@@ -92,6 +93,7 @@ module.exports = {
         "fade-in": "fadeIn 300ms ease-in",
         "fade-out": "fadeOut 300ms ease-in",
         wiggle: "wiggle 0.5s ease-in-out infinite",
+        "blink-bar": "blinkBar 1s linear forwards",
       },
       keyframes: {
         "border-beam": {
@@ -125,6 +127,10 @@ module.exports = {
         fadeOut: {
           "0%": { opacity: "1" },
           "100%": { opacity: "0" },
+        },
+        blinkBar: {
+          from: { width: "100%" },
+          to: { width: "0%" },
         },
         wiggle: {
           "0%, 100%": { transform: "rotate(0deg) scale(1)" },

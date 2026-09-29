@@ -4,7 +4,6 @@
 import { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 import { useOwnersDelusion } from "../hooks/use-owners-delusion";
-import { BLINK } from "../lib/lenses";
 
 type Phase = "countdown" | "reveal";
 
@@ -20,8 +19,7 @@ export default function BlinkTest() {
     timers.current = [];
   };
 
-  // 3..2..1 → flash the artifact for a few seconds → gone. No writing screen;
-  // the helper notes carry the reflection questions.
+  // 3..2..1, show the artifact for the chosen glance, then gone.
   useEffect(() => {
     if (!blinkActive) return;
     clearTimers();
@@ -32,7 +30,7 @@ export default function BlinkTest() {
     timers.current.push(
       setTimeout(() => {
         setPhase("reveal");
-        markBlinkSeen(); // the glance has happened; the helper is now relevant
+        markBlinkSeen();
       }, 2100),
     );
     timers.current.push(
@@ -51,8 +49,9 @@ export default function BlinkTest() {
   if (!blinkActive || !image) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0a0a0a] text-white">
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gray-950 text-white">
       <button
+        type="button"
         onClick={stopBlink}
         aria-label="Close blink test"
         className="absolute right-4 top-4 rounded-full p-2 text-white/60 transition-colors hover:bg-white/10 hover:text-white"
@@ -62,11 +61,11 @@ export default function BlinkTest() {
 
       {phase === "countdown" && (
         <div className="flex flex-col items-center gap-6">
-          <div className="font-mono text-[9rem] font-bold leading-none tabular-nums">
+          <div className="font-courier text-[9rem] font-bold leading-none tabular-nums">
             {count}
           </div>
           <p className="max-w-sm text-center text-sm text-white/60">
-            You get one glance. Notice what jumps out — and what it&apos;s asking
+            You get one glance. Notice what jumps out and what it&apos;s asking
             you to do.
           </p>
         </div>
@@ -82,23 +81,12 @@ export default function BlinkTest() {
           />
           <div className="h-1 w-56 overflow-hidden rounded-full bg-white/15">
             <div
-              className="h-full bg-white"
-              style={{ animation: `blinkbar ${blinkSeconds}s linear forwards` }}
+              className="h-full animate-blink-bar bg-white"
+              style={{ animationDuration: `${blinkSeconds}s` }}
             />
           </div>
         </div>
       )}
-
-      <style jsx>{`
-        @keyframes blinkbar {
-          from {
-            width: 100%;
-          }
-          to {
-            width: 0%;
-          }
-        }
-      `}</style>
     </div>
   );
 }

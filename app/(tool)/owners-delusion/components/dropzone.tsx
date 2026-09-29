@@ -56,22 +56,22 @@ export default function Dropzone() {
         }}
         className={`group flex w-full max-w-md flex-col items-center gap-3 rounded-2xl border-2 border-dashed px-8 py-10 text-center transition-colors ${
           dragging
-            ? "border-[#2f9e6b] bg-[#2f9e6b]/5"
-            : "border-[#cfcfc8] bg-white/50 hover:border-[#18181b]/40 hover:bg-white"
+            ? "border-gray-900 bg-white"
+            : "border-gray-300 bg-white/60 hover:border-gray-500 hover:bg-white"
         }`}
       >
-        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#18181b] text-white transition-transform group-hover:scale-105">
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-900 text-white transition-transform group-hover:scale-105">
           <ImageUp className="h-6 w-6" />
         </div>
-        <div className="text-lg font-semibold text-[#18181b]">
+        <div className="text-lg font-semibold text-gray-900">
           Drop in what you made
         </div>
-        <p className="max-w-xs text-sm text-[#6b7280]">
-          A landing page, an ad, a screen — anything you&apos;ve gone blind to.
-          We&apos;ll help you see it like a stranger will.
+        <p className="max-w-xs text-sm text-gray-500">
+          A landing page, an ad, a screen. Anything you&apos;ve gone blind to.
+          See it like a stranger will.
         </p>
 
-        <div className="mt-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 font-mono text-[11px] uppercase tracking-wide text-[#a3a29c]">
+        <div className="mt-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-gray-400">
           <span className="inline-flex items-center gap-1">
             <ClipboardPaste className="h-3.5 w-3.5" /> Paste
           </span>
@@ -84,9 +84,8 @@ export default function Dropzone() {
         </div>
       </button>
 
-      <p className="max-w-sm text-center text-xs text-[#a3a29c]">
-        Everything stays in your browser. Nothing is uploaded — private by
-        default.
+      <p className="max-w-sm text-center text-xs text-gray-400">
+        Everything stays in your browser. Nothing is uploaded.
       </p>
 
       <input

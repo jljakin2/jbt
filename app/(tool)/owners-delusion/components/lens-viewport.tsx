@@ -4,23 +4,19 @@
 import { useOwnersDelusion } from "../hooks/use-owners-delusion";
 
 export default function LensViewport() {
-  const { image, imageName, mode, activeLens, squint } = useOwnersDelusion();
+  const { image, imageName, activeTool, squint } = useOwnersDelusion();
 
   if (!image) return null;
 
-  // Lenses only apply in Clarity mode — other modes examine the raw artifact.
   const filter =
-    mode !== "clarity"
-      ? "none"
-      : activeLens === "squint"
-        ? `blur(${squint}px)`
-        : activeLens === "grayscale"
-          ? "grayscale(1)"
-          : "none";
+    activeTool === "squint"
+      ? `blur(${squint}px)`
+      : activeTool === "grayscale"
+        ? "grayscale(1)"
+        : "none";
 
   return (
-    // The artifact under examination — capped so it and its notes read as one
-    // grouped unit rather than the image floating alone in empty space.
+    // Height-capped so the image and its notes read as one grouped unit.
     <img
       src={image}
       alt={imageName ?? "Your uploaded design"}

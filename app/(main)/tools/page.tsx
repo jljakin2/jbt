@@ -286,7 +286,7 @@ export default function Projects() {
       title: "Atomic Essay",
       excerpt:
         "Create an atomic essay and download it as an image to share on social media.",
-      isNew: true,
+      isNew: false,
     },
     {
       id: 3,
@@ -294,7 +294,7 @@ export default function Projects() {
       slug: "/owners-delusion",
       title: "The Owner's Delusion",
       excerpt:
-        "You've gone blind to your own work. Paste a screenshot and see it like a first-time viewer will — squint it, gray it, and blink-test it.",
+        "You've gone blind to your own work. Paste a screenshot and see it the way a stranger does: squint it, gray it, blink-test it.",
       isNew: true,
     },
   ];
