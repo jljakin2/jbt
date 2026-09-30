@@ -23,7 +23,7 @@ export default function OwnersDelusionContainer() {
 
   return (
     <div className="relative flex h-[calc(100svh-64px)] w-full flex-col">
-      <div className="flex min-h-0 flex-1 items-center justify-center overflow-y-auto px-10 pb-10 pt-28">
+      <div className="flex min-h-0 flex-1 items-center justify-center overflow-y-auto px-4 pb-16 pt-32 sm:px-10 sm:pb-10 sm:pt-28">
         <div className="relative">
           <LensViewport />
           <PromptNotes />
@@ -37,7 +37,7 @@ export default function OwnersDelusionContainer() {
         onClick={clearImage}
         title="Start over"
         aria-label="Start over with a new image"
-        className="absolute right-4 top-4 z-30 flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-400 shadow-sm transition-colors hover:text-gray-900"
+        className="absolute bottom-4 left-4 z-30 flex h-11 w-11 items-center justify-center rounded-full bg-white text-gray-400 shadow-[0_0_0_1px_rgb(0_0_0/0.06),0_1px_2px_rgb(0_0_0/0.06),0_4px_8px_rgb(0_0_0/0.04)] transition-colors hover:text-gray-900"
       >
         <RotateCcw className="h-4 w-4" />
       </button>
