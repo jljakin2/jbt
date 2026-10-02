@@ -6,6 +6,11 @@ import rehypePrettyCode from "rehype-pretty-code";
 import PostBanner from "./banner";
 import BlockQuote from "./blockquote";
 import InlineCode from "./inline-code";
+import PullQuote from "./pull-quote";
+import Callout from "./callout";
+import Mark from "./mark";
+import Sidenote from "./sidenote";
+import Figure from "./figure";
 
 const transformToSlug = (input: string) => {
   return input
@@ -44,6 +49,12 @@ const mdxComponents = {
   Banner: PostBanner,
   Blockquote: BlockQuote,
   Code: InlineCode,
+  // Reading-rhythm devices. See each file for usage.
+  PullQuote,
+  Callout,
+  Mark,
+  Sidenote,
+  Figure,
 };
 
 export function CustomMDX(props: any) {

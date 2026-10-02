@@ -1,13 +1,9 @@
 import { getBlogPosts } from "@/components/mdx/utils";
-import EssaysHero from "@/components/essays-hero";
-import PostItem from "@/app/post-item";
-import Talks from "@/components/posts";
-import FeaturedProjects from "@/components/featured-projects";
-import WidgetNewsletter from "@/components/widget-newsletter";
-import WidgetSponsor from "@/components/widget-sponsor";
-import WidgetBook from "@/components/widget-book";
-import EssayList from "./components/essay-list";
-import WidgetPosts from "@/components/widget-posts";
+import { CATEGORY_TAGS } from "./lib/categories";
+import BlogIndex from "./components/blog-index";
+
+const description =
+  "Teardowns of other people's products, build logs of my own tools, and thoughts in between. I make complicated things click.";
 
 export const metadata = {
   metadataBase: new URL("https://www.jeffbuildstech.com/"),
@@ -15,16 +11,13 @@ export const metadata = {
   alternates: {
     canonical: "/blog",
   },
-  description:
-    "Helpful content and tutorials for web dev, product management, and career help for busy business builders.",
+  description,
   openGraph: {
     title: "Blog",
-    description:
-      "Helpful content and tutorials for web dev, product management, and career help for busy business builders.",
-
+    description,
     type: "website",
     locale: "en_US",
-    url: "https://www.jeffbuildstech.com/",
+    url: "https://www.jeffbuildstech.com/blog",
     siteName: "Jeff Builds Tech",
   },
   twitter: {
@@ -32,39 +25,18 @@ export const metadata = {
   },
 };
 
-export default async function Home() {
-  const allBlogs = getBlogPosts();
-
-  // Sort posts by date
-  allBlogs.sort((a, b) => {
-    return new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
-      ? -1
-      : 1;
-  });
+export default function BlogPage() {
+  // Posts outside the three categories stay reachable by URL but are not listed.
+  const essays = getBlogPosts()
+    .filter((post) => CATEGORY_TAGS.includes(post.metadata.tag ?? ""))
+    .sort((a, b) => new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime())
+    .map((post) => ({ slug: post.slug, metadata: post.metadata }));
 
   return (
-    <div className="grow md:flex space-y-8 md:space-y-0 md:space-x-8 pt-6 md:pt-16 pb-16 md:pb-20">
-      {/* Middle area */}
-      <div className="grow">
-        <div className="max-w-[700px]">
-          <EssaysHero />
-          <div className="space-y-10">
-            <EssayList essays={allBlogs} />
-            {/* <Talks />
-              <FeaturedProjects /> */}
-          </div>
-        </div>
+    <div className="grow pt-6 md:pt-16 pb-16 md:pb-20">
+      <div className="max-w-[700px] mx-auto">
+        <BlogIndex essays={essays} />
       </div>
-
-      {/* Right sidebar */}
-      <aside className="!mt-20 md:!mt-0 md:w-[240px] lg:w-[300px] shrink-0">
-        <div className="space-y-6">
-          <WidgetNewsletter />
-          {/* <WidgetSponsor /> */}
-          <WidgetPosts />
-          {/* <WidgetBook /> */}
-        </div>
-      </aside>
     </div>
   );
 }
