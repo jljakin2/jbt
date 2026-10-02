@@ -6,6 +6,8 @@ import { CustomMDX } from "@/components/mdx/mdx";
 import PostDate from "@/components/post-date";
 // import WidgetNewsletter from "@/components/widget-newsletter";
 import readingTime from "reading-time";
+import CategoryTag from "../components/category-tag";
+import { categoryOf } from "../lib/categories";
 import { LinkedIn, Facebook, X } from "@/components/brand-icons";
 
 export async function generateStaticParams() {
@@ -93,8 +95,9 @@ export default async function SinglePost({
             <header>
               <div className="flex items-center justify-between mb-4">
                 {/* Post date */}
-                <div className="text-xs text-muted-foreground uppercase">
-                  <span className="text-primary">—</span>{" "}
+                <div className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground uppercase">
+                  {categoryOf(post.metadata.tag) ? <CategoryTag tag={post.metadata.tag} /> : <span className="text-primary">—</span>}
+                  <span>·</span>
                   <PostDate dateString={post.metadata.publishedAt} />{" "}
                   <span className="text-muted-foreground">·</span>{" "}
                   {Math.ceil(stats.minutes)} Min read

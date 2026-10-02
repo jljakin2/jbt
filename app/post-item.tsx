@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import PostDate from "@/components/post-date";
 import { categoryLabel } from "@/app/(main)/blog/lib/categories";
+import CategoryTag from "@/app/(main)/blog/components/category-tag";
 
 export default function PostItem({ ...props }) {
   return (
@@ -15,15 +16,15 @@ export default function PostItem({ ...props }) {
           alt={props.metadata.title}
         />
         <div>
-          <div className="text-xs text-muted-foreground uppercase mb-1">
+          <div className="mb-1 flex items-center gap-1.5 text-xs uppercase text-muted-foreground">
             {categoryLabel(props.metadata.tag) ? (
               <>
-                <span className="text-primary">{categoryLabel(props.metadata.tag)}</span>
-                <span className="mx-1.5">·</span>
+                <CategoryTag tag={props.metadata.tag} />
+                <span>·</span>
               </>
             ) : (
               <span className="text-primary">—</span>
-            )}{" "}
+            )}
             <PostDate dateString={props.metadata.publishedAt} />
           </div>
           <h3 className="font-aspekta text-lg font-[650] mb-1">

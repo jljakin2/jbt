@@ -3,10 +3,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { Hammer, Lightbulb, Scissors } from "lucide-react";
 import PostDate from "@/components/post-date";
 import BlogMark from "@/components/blog-mark";
 import { CATEGORIES } from "../lib/categories";
+import CategoryTag from "./category-tag";
 
 export type Essay = {
   slug: string;
@@ -15,16 +15,6 @@ export type Essay = {
 
 /** Rows shown per category before "Show more". */
 const CAP = 10;
-
-const CAT_ICON: Record<string, React.ReactNode> = {
-  teardown: <Scissors className="h-4 w-4" />,
-  "build-log": <Hammer className="h-4 w-4" />,
-  thoughts: <Lightbulb className="h-4 w-4" />,
-};
-
-function catOf(e: Essay) {
-  return CATEGORIES.find((c) => c.tag === e.metadata.tag);
-}
 
 /** Featured + New header, then every post grouped by category. */
 export default function BlogIndex({ essays }: { essays: Essay[] }) {
@@ -80,8 +70,8 @@ function FeaturedPlusNew({ essays }: { essays: Essay[] }) {
         <div className="grid grid-cols-[minmax(0,1fr)] gap-8 sm:grid-cols-[1.35fr_1fr]">
           <Link href={`/blog/${first.slug}`} className="group block min-w-0">
             <Thumb e={first} sizes="400px" className="aspect-[16/10] w-full" />
-            <p className="mt-4 text-xs uppercase text-muted-foreground">
-              <span className="text-primary">{catOf(first)?.label}</span> · <PostDate dateString={first.metadata.publishedAt} />
+            <p className="mt-4 flex items-center gap-1.5 text-xs uppercase text-muted-foreground">
+              <CategoryTag tag={first.metadata.tag} /> · <PostDate dateString={first.metadata.publishedAt} />
             </p>
             <h2 className="mt-1 font-aspekta text-2xl font-[650] leading-snug text-foreground group-hover:text-primary transition-colors [text-wrap:balance]">
               {first.metadata.title}
@@ -100,7 +90,7 @@ function FeaturedPlusNew({ essays }: { essays: Essay[] }) {
                     <Link href={`/blog/${e.slug}`} className="group flex items-center gap-4">
                       <Thumb e={e} sizes="80px" className="h-14 w-20 sm:hidden" />
                       <span className="min-w-0">
-                        <span className="block text-xs uppercase text-primary">{catOf(e)?.label}</span>
+                        <CategoryTag tag={e.metadata.tag} className="mb-0.5" />
                         <span className="mt-0.5 block font-medium leading-snug text-foreground group-hover:text-primary transition-colors [text-wrap:pretty]">
                           {e.metadata.title}
                         </span>
@@ -122,12 +112,13 @@ function FeaturedPlusNew({ essays }: { essays: Essay[] }) {
 function Row({ e }: { e: Essay }) {
   return (
     <li>
-      <Link href={`/blog/${e.slug}`} className="group flex items-center gap-4">
+      <Link href={`/blog/${e.slug}`} className="group flex items-start gap-4">
         <span className="min-w-0 grow">
           <span className="block font-medium leading-snug text-foreground group-hover:text-primary transition-colors [text-wrap:pretty]">{e.metadata.title}</span>
           <span className="mt-0.5 block text-sm text-muted-foreground tabular-nums"><PostDate dateString={e.metadata.publishedAt} /></span>
         </span>
-        <Arrow className="hidden shrink-0 text-sky-500 opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100 motion-reduce:transition-none sm:block" />
+        {/* Optically centered on the title's first line: (line-height − glyph height) / 2 ≈ 5px. */}
+        <Arrow className="mt-[5px] hidden shrink-0 text-sky-500 opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100 motion-reduce:transition-none sm:block" />
       </Link>
     </li>
   );
@@ -143,12 +134,9 @@ function Grouped({ essays, expanded, onToggle }: { essays: Essay[]; expanded: Re
         const hidden = all.length - items.length;
         return (
           <section key={c.tag} id={c.tag} className="grid gap-3 border-b border-border py-7 scroll-mt-24 last:border-b-0 sm:grid-cols-[150px_1fr] sm:gap-8 sm:py-9">
-            <h2 className="flex items-center gap-2.5 font-aspekta text-base font-[650] text-foreground sm:sticky sm:top-24 sm:self-start">
-              <span className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/10 text-primary">{CAT_ICON[c.tag]}</span>
-              {c.label}
-            </h2>
+            <h2 className="sm:sticky sm:top-24 sm:self-start"><CategoryTag tag={c.tag} variant="header" /></h2>
             {all.length === 0 ? (
-              <p className="text-sm text-muted-foreground">First one coming.</p>
+              <p className="pt-[2px] text-sm text-muted-foreground">First one coming.</p>
             ) : (
               <div>
                 <ul className="space-y-5">{items.map((e) => <Row key={e.slug} e={e} />)}</ul>
