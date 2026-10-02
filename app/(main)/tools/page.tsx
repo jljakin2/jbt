@@ -4,8 +4,6 @@ import { Eye } from "lucide-react";
 
 import ToolsHero from "@/components/tools-hero";
 import ProjectCard from "@/app//project-card";
-import WidgetNewsletter from "@/components/widget-newsletter";
-import WidgetSponsor from "@/components/widget-sponsor";
 
 import NotionLogo from "@/public/images/Notion_app_logo.png";
 
@@ -300,10 +298,10 @@ export default function Projects() {
   ];
 
   return (
-    <div className="grow md:flex space-y-8 md:space-y-0 md:space-x-8 pt-6 md:pt-16 pb-16 md:pb-20">
+    <div className="grow pt-6 md:pt-16 pb-16 md:pb-20">
       {/* Middle area */}
       <div className="grow">
-        <div className="max-w-[700px]">
+        <div className="max-w-[700px] mx-auto">
           <ToolsHero />
           <section>
             {/* Page title */}
@@ -362,14 +360,6 @@ export default function Projects() {
           </section>
         </div>
       </div>
-
-      {/* Right sidebar */}
-      <aside className="!mt-20 md:!mt-0 md:w-[240px] lg:w-[300px] shrink-0">
-        <div className="space-y-6">
-          <WidgetNewsletter />
-          {/* <WidgetSponsor /> */}
-        </div>
-      </aside>
     </div>
   );
 }

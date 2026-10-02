@@ -4,9 +4,7 @@ import { getBlogPosts } from "@/components/mdx/utils";
 import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx/mdx";
 import PostDate from "@/components/post-date";
-import WidgetNewsletter from "@/components/widget-newsletter";
-import WidgetSponsor from "@/components/widget-sponsor";
-import WidgetPosts from "@/components/widget-posts";
+// import WidgetNewsletter from "@/components/widget-newsletter";
 import readingTime from "reading-time";
 import { LinkedIn, Facebook, X } from "@/components/brand-icons";
 
@@ -73,10 +71,10 @@ export default async function SinglePost({
   const postTitle = post.metadata.title;
 
   return (
-    <div className="grow md:flex space-y-8 md:space-y-0 md:space-x-8 pt-12 md:pt-16 pb-16 md:pb-20">
+    <div className="grow pt-12 md:pt-16 pb-16 md:pb-20">
       {/* Middle area */}
       <div className="grow">
-        <div className="max-w-[700px]">
+        <div className="max-w-[620px] mx-auto">
           {/* Back */}
           {/* <div className="mb-3">
             <Link
@@ -148,8 +146,10 @@ export default async function SinglePost({
               </div>
               <h1 className="h1 font-aspekta mb-6">{post.metadata.title}</h1>
             </header>
+            {/* Reading settings: 17px body, ~75 characters per line at 620px, one line of space between paragraphs, looser leading on dark. */}
             <div className="prose text-text max-w-none
-              prose-p:leading-relaxed prose-p:mb-6
+              prose-p:text-[17px] prose-p:leading-[1.625] prose-p:mb-[2em] prose-p:mt-0 dark:prose-p:leading-[1.7] prose-p:[text-wrap:pretty]
+              prose-li:text-[17px] dark:prose-li:leading-[1.7]
               prose-headings:text-foreground prose-headings:font-semibold prose-headings:tracking-tight
               prose-h2:text-3xl prose-h2:leading-tight prose-h2:mt-12 prose-h2:mb-6
               prose-h3:text-2xl prose-h3:leading-snug prose-h3:mt-10 prose-h3:mb-4
@@ -167,17 +167,13 @@ export default async function SinglePost({
               <CustomMDX source={post.content} />
             </div>
           </article>
+
+          {/* Newsletter capture, parked until the form actually does something.
+          <div className="mt-16">
+            <WidgetNewsletter />
+          </div> */}
         </div>
       </div>
-
-      {/* Right sidebar */}
-      <aside className="!mt-20 md:!mt-0 md:w-[240px] lg:w-[300px] shrink-0">
-        <div className="space-y-6">
-          <WidgetNewsletter />
-          {/* <WidgetSponsor /> */}
-          <WidgetPosts />
-        </div>
-      </aside>
     </div>
   );
 }

@@ -1,10 +1,7 @@
 import Image from "next/image";
 import { BorderBeam } from "@/components/ui/border-beam";
-import WidgetNewsletter from "@/components/widget-newsletter";
-import WidgetSponsor from "@/components/widget-sponsor";
 import AboutImg from "@/public/images/jbt_hero.svg";
 import Experience from "@/components/experience";
-import WidgetConnect from "@/components/widget-connect";
 import { Button } from "@/components/ui/button";
 import { Github, LinkedIn, X } from "@/components/brand-icons";
 import Link from "next/link";
@@ -39,10 +36,10 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="grow md:flex space-y-8 md:space-y-0 md:space-x-8 pt-6 md:pt-16 pb-16 md:pb-20">
+    <div className="grow pt-6 md:pt-16 pb-16 md:pb-20">
       {/* Middle area */}
       <div className="grow">
-        <div className="max-w-[700px]">
+        <div className="max-w-[700px] mx-auto">
           <section className="mb-8 flex flex-col justify-center items-center gap-4 p-2 md:p-8 relative border-b border-border">
             <Image
               className="w-full md:w-1/2 mb-8"
@@ -189,15 +186,6 @@ export default function Home() {
           </section>
         </div>
       </div>
-
-      {/* Right sidebar */}
-      <aside className="!mt-20 md:!mt-0 md:w-[240px] lg:w-[300px] shrink-0">
-        <div className="space-y-6">
-          {/* <WidgetNewsletter /> */}
-          <WidgetConnect />
-          {/* <WidgetSponsor /> */}
-        </div>
-      </aside>
     </div>
   );
 }
