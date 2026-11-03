@@ -6,6 +6,8 @@ export const dynamic = "force-static";
 export { metadata, viewport } from "next-sanity/studio";
 
 // The editor, embedded in the site so it works from a phone's home screen. Not linked anywhere; noindex via next-sanity's metadata.
+// Plain route + hash history: /studio is prerendered at build and every studio screen lives in the URL hash, so no
+// request ever reaches a server function (Vercel timed out rendering it on demand).
 export default function StudioPage() {
   if (!isSanityConfigured) {
     return (
@@ -14,5 +16,5 @@ export default function StudioPage() {
       </main>
     );
   }
-  return <NextStudio config={config} />;
+  return <NextStudio config={config} history="hash" />;
 }
