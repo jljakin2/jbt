@@ -1,76 +1,60 @@
-import Link from "next/link";
 import type { Metadata } from "next";
-import { getBlogPosts } from "@/components/mdx/utils";
 import { notFound } from "next/navigation";
-import { CustomMDX } from "@/components/mdx/mdx";
+import PostBody from "@/components/post-body";
+import { toPlainText } from "@portabletext/toolkit";
 import PostDate from "@/components/post-date";
 // import WidgetNewsletter from "@/components/widget-newsletter";
 import readingTime from "reading-time";
 import CategoryTag from "../components/category-tag";
 import { categoryOf } from "../lib/categories";
+import { ogImage } from "../lib/posts";
+import { getPost, getPosts } from "@/sanity/queries";
 import { LinkedIn, Facebook, X } from "@/components/brand-icons";
 
-export async function generateStaticParams() {
-  const allBlogs = getBlogPosts();
+const SITE = "https://www.jeffbuildstech.com";
 
-  return allBlogs.map((post) => ({
-    slug: post.slug,
-  }));
+// Published posts are prerendered; one published after the build renders on first request and is cached until the webhook clears it.
+export async function generateStaticParams() {
+  return (await getPosts()).map((post) => ({ slug: post.slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata | undefined> {
-  const post = getBlogPosts().find((post) => post.slug === params.slug);
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata | undefined> {
+  const post = await getPost(params.slug);
+  if (!post) return;
 
-  if (!post) {
-    return;
-  }
-
-  const { title, summary: description } = post.metadata;
-  const formattedTitle = params.slug
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-
+  const { title, summary: description } = post;
+  const image = ogImage(post);
   return {
-    title: formattedTitle,
+    title,
     description,
     alternates: {
       canonical: `/blog/${params.slug}`,
     },
     openGraph: {
-      title: formattedTitle,
+      title,
       description,
       type: "article",
       locale: "en_US",
-      url: `https://www.jeffbuildstech.com/blog/${params.slug}`,
+      url: `${SITE}/blog/${params.slug}`,
       siteName: "Jeff Builds Tech",
-      images: [`https://djg4kctbfokfu.cloudfront.net/og/OG-${params.slug}.jpg`],
+      images: [image],
     },
     twitter: {
-      images: [`https://djg4kctbfokfu.cloudfront.net/og/OG-${params.slug}.jpg`],
+      images: [image],
       card: "summary_large_image",
-      title: formattedTitle,
+      title,
       description,
     },
   };
 }
 
-export default async function SinglePost({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const post = getBlogPosts().find((post) => post.slug === params.slug);
-
+export default async function SinglePost({ params }: { params: { slug: string } }) {
+  const post = await getPost(params.slug);
   if (!post) notFound();
 
-  const stats = readingTime(post.content);
-  const postUrl = `https://www.jeffbuildstech.com/blog/${params.slug}`;
-  const postTitle = post.metadata.title;
+  const minutes = Math.max(1, Math.ceil(readingTime(toPlainText(post.body)).minutes));
+  const postUrl = `${SITE}/blog/${params.slug}`;
+  const postTitle = post.title;
 
   return (
     <div className="grow pt-12 md:pt-16 pb-16 md:pb-20">
@@ -96,11 +80,11 @@ export default async function SinglePost({
               <div className="flex items-center justify-between mb-4">
                 {/* Post date */}
                 <div className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground uppercase">
-                  {categoryOf(post.metadata.tag) ? <CategoryTag tag={post.metadata.tag} /> : <span className="text-primary">—</span>}
+                  {categoryOf(post.tag) ? <CategoryTag tag={post.tag} /> : <span className="text-primary">—</span>}
                   <span>·</span>
-                  <PostDate dateString={post.metadata.publishedAt} />{" "}
+                  <PostDate dateString={post.publishedAt} />{" "}
                   <span className="text-muted-foreground">·</span>{" "}
-                  {Math.ceil(stats.minutes)} Min read
+                  {minutes} Min read
                 </div>
                 {/* Share buttons */}
                 <ul className="inline-flex items-center gap-4">
@@ -147,7 +131,7 @@ export default async function SinglePost({
                   </li>
                 </ul>
               </div>
-              <h1 className="h1 font-aspekta mb-6">{post.metadata.title}</h1>
+              <h1 className="h1 font-aspekta mb-6">{post.title}</h1>
             </header>
             {/* Reading settings: 17px body, ~75 characters per line at 620px, one line of space between paragraphs, looser leading on dark. */}
             <div className="prose text-text max-w-none
@@ -167,7 +151,7 @@ export default async function SinglePost({
               prose-img:my-8 prose-img:rounded-lg
               prose-hr:my-12 prose-hr:border-border
               prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline prose-a:transition-all">
-              <CustomMDX source={post.content} />
+              <PostBody value={post.body} />
             </div>
           </article>
 

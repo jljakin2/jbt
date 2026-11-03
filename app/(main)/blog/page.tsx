@@ -1,5 +1,4 @@
-import { getBlogPosts } from "@/components/mdx/utils";
-import { CATEGORY_TAGS } from "./lib/categories";
+import { getBlogEntries } from "./lib/posts";
 import BlogIndex from "./components/blog-index";
 
 const description =
@@ -25,12 +24,9 @@ export const metadata = {
   },
 };
 
-export default function BlogPage() {
-  // Posts outside the three categories stay reachable by URL but are not listed.
-  const essays = getBlogPosts()
-    .filter((post) => CATEGORY_TAGS.includes(post.metadata.tag ?? ""))
-    .sort((a, b) => new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime())
-    .map((post) => ({ slug: post.slug, metadata: post.metadata }));
+export default async function BlogPage() {
+  // Static. The Sanity fetch is tagged, so the webhook at /api/revalidate refreshes it when a post changes.
+  const essays = await getBlogEntries();
 
   return (
     <div className="grow pt-6 md:pt-16 pb-16 md:pb-20">

@@ -1,41 +1,21 @@
 import { MetadataRoute } from "next";
-import { getBlogPosts } from "@/components/mdx/utils";
+import { getPosts } from "@/sanity/queries";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const posts: any = await getBlogPosts();
-
-  const postUrls = posts.map((post: any) => {
-    let lastModified;
-    try {
-      lastModified = new Date(post.publishedAt).toISOString().split("T")[0];
-    } catch (error) {
-      console.error(`Invalid date for post: ${post.slug}`, error);
-      lastModified = new Date().toISOString().split("T")[0]; // Use current date as fallback
-    }
-
-    return {
-      url: `https://www.jeffbuildstech.com/blog/${post.slug}`,
-      lastModified,
-    };
-  });
+  const today = new Date().toISOString().split("T")[0];
+  const posts = await getPosts();
 
   return [
-    {
-      url: `https://www.jeffbuildstech.com/`,
-      lastModified: new Date().toISOString().split("T")[0],
-    },
-    {
-      url: "https://www.jeffbuildstech.com/tools",
-      lastModified: new Date().toISOString().split("T")[0],
-    },
-    {
-      url: "https://www.jeffbuildstech.com/blog",
-      lastModified: new Date().toISOString().split("T")[0],
-    },
+    { url: "https://www.jeffbuildstech.com/", lastModified: today },
+    { url: "https://www.jeffbuildstech.com/tools", lastModified: today },
+    { url: "https://www.jeffbuildstech.com/blog", lastModified: today },
     ...["owners-delusion", "atomic-essay", "daily-dollar", "v60"].map((tool) => ({
       url: `https://www.jeffbuildstech.com/${tool}`,
-      lastModified: new Date().toISOString().split("T")[0],
+      lastModified: today,
     })),
-    ...postUrls,
+    ...posts.map((post) => ({
+      url: `https://www.jeffbuildstech.com/blog/${post.slug}`,
+      lastModified: post.publishedAt,
+    })),
   ];
 }

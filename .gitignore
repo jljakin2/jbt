@@ -43,3 +43,6 @@ CLAUDE.md
 CLAUDE.local.md
 *.local.md
 /context/
+
+# One-time migration cache (scripts/migrate-posts-to-sanity.mjs)
+scripts/.sanity-asset-cache.json
