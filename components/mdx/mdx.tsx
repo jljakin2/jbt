@@ -12,7 +12,7 @@ import Mark from "./mark";
 import Sidenote from "./sidenote";
 import Figure from "./figure";
 
-const transformToSlug = (input: string) => {
+export const transformToSlug = (input: string) => {
   return input
     .toLowerCase()
     .trim()
